@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html class="dark" dir="rtl" lang="ar">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Cloud Coffee | الملف الشخصي</title>
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#beb3ad",
+                    "surface-bright": "#3c3936",
+                    "tertiary-container": "#a59a92",
+                    "surface-variant": "#373432",
+                    "surface": "#151311",
+                    "on-secondary-fixed": "#201a17",
+                    "primary-container": "#b8966e",
+                    "inverse-primary": "#755936",
+                    "surface-container-highest": "#373432",
+                    "on-tertiary-fixed": "#211a15",
+                    "surface-dim": "#151311",
+                    "surface-container-lowest": "#100e0c",
+                    "on-error": "#690005",
+                    "on-primary-fixed": "#2a1700",
+                    "secondary": "#cfc4be",
+                    "background": "#151311",
+                    "inverse-surface": "#e8e1dd",
+                    "primary": "#e5c095",
+                    "inverse-on-surface": "#33302d",
+                    "error-container": "#93000a",
+                    "on-primary": "#422c0d",
+                    "on-surface-variant": "#d2c4b8",
+                    "on-tertiary-fixed-variant": "#4e453f",
+                    "outline": "#9b8f83",
+                    "surface-container-high": "#2c2927",
+                    "surface-container": "#221f1d",
+                    "tertiary-fixed": "#eee0d7",
+                    "on-primary-fixed-variant": "#5b4221",
+                    "on-surface": "#e8e1dd",
+                    "surface-container-low": "#1d1b19",
+                    "tertiary-fixed-dim": "#d1c4bc",
+                    "on-secondary": "#362f2b",
+                    "error": "#ffb4ab",
+                    "on-error-container": "#ffdad6",
+                    "on-background": "#e8e1dd",
+                    "tertiary": "#d1c4bc",
+                    "on-primary-container": "#462f10",
+                    "primary-fixed": "#ffddb7",
+                    "outline-variant": "#4e453c",
+                    "secondary-fixed-dim": "#cfc4be",
+                    "secondary-container": "#4d4541",
+                    "on-tertiary-container": "#3a322c",
+                    "secondary-fixed": "#ece0da",
+                    "primary-fixed-dim": "#e5c095",
+                    "on-secondary-fixed-variant": "#4d4541",
+                    "surface-tint": "#e5c095",
+                    "on-tertiary": "#362f29"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "max-width-content": "1200px",
+                    "margin-mobile": "20px",
+                    "unit": "8px",
+                    "gutter-desktop": "24px",
+                    "gutter-mobile": "16px",
+                    "margin-desktop": "auto"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Tajawal", "sans-serif"],
+                    "headline-lg": ["Tajawal", "sans-serif"],
+                    "headline-lg-mobile": ["Tajawal", "sans-serif"],
+                    "body-md": ["Tajawal", "sans-serif"],
+                    "label-sm": ["Tajawal", "sans-serif"]
+            },
+            "fontSize": {
+                    "headline-xl": ["Tajawal", "sans-serif"],
+                    "headline-lg": ["Tajawal", "sans-serif"],
+                    "headline-lg-mobile": ["Tajawal", "sans-serif"],
+                    "body-md": ["Tajawal", "sans-serif"],
+                    "label-sm": ["Tajawal", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .glass-card {
+            background: #221f1d;
+            border: 1px solid rgba(155, 143, 131, 0.15);
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden selection:bg-primary/30 selection:text-primary pb-24">
+
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-background/80 backdrop-blur-md border-b border-outline-variant/10">
+    <div class="flex items-center gap-4">
+        <button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant transition-colors" id="menuToggle">
+            <span class="material-symbols-outlined text-primary">menu</span>
+        </button>
+        <h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary tracking-tight">Cloud Coffee</h1>
+    </div>
+    <div class="flex items-center gap-2">
+        <a href="browse.html" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant transition-colors active:scale-95 duration-150">
+            <span class="material-symbols-outlined text-primary">search</span>
+        </a>
+    </div>
+</header>
+
+<!-- Main Container -->
+<main class="pt-24 px-margin-mobile max-w-lg mx-auto">
+    <!-- Profile Header Section -->
+    <section class="flex flex-col items-center mb-10 text-center">
+        <div class="relative group">
+            <div class="w-24 h-24 rounded-full border-2 border-primary p-1 mb-4 overflow-hidden shadow-[0_0_15px_rgba(229,192,149,0.2)] bg-surface-container">
+                <img alt="Profile" class="w-full h-full object-cover rounded-full profile-avatar animate-fadeIn" src=""/>
+            </div>
+            <a href="settings.html" class="absolute bottom-5 left-0 bg-primary text-on-primary w-8 h-8 rounded-lg flex items-center justify-center shadow-lg border-2 border-background active:scale-95 transition-transform">
+                <span class="material-symbols-outlined text-[18px]">edit</span>
+            </a>
+        </div>
+        <h2 class="font-headline-lg text-primary text-2xl font-bold profile-name">...</h2>
+        <p class="font-body-md text-on-surface-variant opacity-80 profile-status">...</p>
+    </section>
+
+    <!-- Stats Grid (Bento Style) -->
+    <section class="grid grid-cols-3 gap-3 mb-10">
+        <div class="glass-card rounded-lg p-4 flex flex-col items-center justify-center text-center">
+            <span class="text-primary font-headline-lg text-xl font-bold leading-tight profile-points">...</span>
+            <span class="font-label-sm text-on-surface-variant text-[10px] uppercase tracking-wider mt-1">النقاط</span>
+        </div>
+        <div class="glass-card rounded-lg p-4 flex flex-col items-center justify-center text-center border-b-2 border-b-primary shadow-lg shadow-primary/5">
+            <span class="text-primary font-headline-lg text-xl font-bold leading-tight profile-wallet">...</span>
+            <span class="font-label-sm text-on-surface-variant text-[10px] uppercase tracking-wider mt-1">المحفظة (ر.س)</span>
+        </div>
+        <div class="glass-card rounded-lg p-4 flex flex-col items-center justify-center text-center">
+            <span class="text-primary font-headline-lg text-xl font-bold leading-tight profile-orders">...</span>
+            <span class="font-label-sm text-on-surface-variant text-[10px] uppercase tracking-wider mt-1">الطلبات</span>
+        </div>
+    </section>
+
+    <!-- Profile Actions List -->
+    <section class="space-y-3">
+        <a class="flex items-center justify-between p-4 glass-card rounded-lg hover:bg-surface-container-high transition-all active:scale-[0.98] text-right" href="browse.html">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-primary-container/20 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary">favorite</span>
+                </div>
+                <span class="font-body-md font-medium text-on-surface text-sm">المفضلة</span>
+            </div>
+            <span class="material-symbols-outlined text-outline">chevron_left</span>
+        </a>
+        <button onclick="showToast('عرض سجل الزيارات الأخيرة ⏱️', 'history')" class="w-full flex items-center justify-between p-4 glass-card rounded-lg hover:bg-surface-container-high transition-all active:scale-[0.98] text-right">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-primary-container/20 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary">history</span>
+                </div>
+                <span class="font-body-md font-medium text-on-surface text-sm">آخر زياراتي</span>
+            </div>
+            <span class="material-symbols-outlined text-outline">chevron_left</span>
+        </button>
+        <button onclick="showToast('عرض إحصائيات الاستهلاك الشهري 📊', 'bar_chart')" class="w-full flex items-center justify-between p-4 glass-card rounded-lg hover:bg-surface-container-high transition-all active:scale-[0.98] text-right">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-primary-container/20 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary">bar_chart</span>
+                </div>
+                <span class="font-body-md font-medium text-on-surface text-sm">الإحصائيات</span>
+            </div>
+            <span class="material-symbols-outlined text-outline">chevron_left</span>
+        </button>
+        <a class="flex items-center justify-between p-4 glass-card rounded-lg hover:bg-surface-container-high transition-all active:scale-[0.98] text-right" href="settings.html">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-primary-container/20 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary">settings</span>
+                </div>
+                <span class="font-body-md font-medium text-on-surface text-sm">إعدادات الحساب</span>
+            </div>
+            <span class="material-symbols-outlined text-outline">chevron_left</span>
+        </a>
+        <button onclick="showToast('جاري تحويلك للدعم الفني المباشر 📞', 'support_agent')" class="w-full flex items-center justify-between p-4 glass-card rounded-lg hover:bg-surface-container-high transition-all active:scale-[0.98] text-right">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-primary-container/20 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary">support_agent</span>
+                </div>
+                <span class="font-body-md font-medium text-on-surface text-sm">الدعم والمساعدة</span>
+            </div>
+            <span class="material-symbols-outlined text-outline">chevron_left</span>
+        </button>
+        
+        <a class="flex items-center justify-between p-4 glass-card rounded-lg bg-error-container/10 border border-error-container/20 hover:bg-error-container/20 transition-all active:scale-[0.98] mt-8 text-right" href="index.html" onclick="localStorage.clear();">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-error-container/20 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-error">logout</span>
+                </div>
+                <span class="font-body-md font-semibold text-error text-sm">تسجيل الخروج</span>
+            </div>
+        </a>
+    </section>
+</main>
+
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container-high/90 backdrop-blur-md border-t border-outline-variant/30 rounded-t-xl shadow-lg">
+    <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="map.html">
+        <span class="material-symbols-outlined">home</span>
+        <span class="font-label-sm text-label-sm">الرئيسية</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="browse.html">
+        <span class="material-symbols-outlined">favorite</span>
+        <span class="font-label-sm text-label-sm">المفضلة</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors relative" href="featured.html">
+        <span class="material-symbols-outlined">notifications</span>
+        <span class="absolute top-1 right-2 w-2 h-2 bg-primary rounded-full"></span>
+        <span class="font-label-sm text-label-sm">التنبيهات</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-primary bg-primary-container/20 rounded-xl px-4 py-1.5 transition-all" href="profile.html">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+        <span class="font-bold text-[12px] mt-1">الحساب</span>
+    </a>
+</nav>
+
+<!-- Navigation Drawer (Right Side) -->
+<div class="fixed inset-0 bg-black/60 z-[60] hidden backdrop-blur-sm opacity-0 transition-opacity duration-300" id="drawerOverlay"></div>
+<aside class="fixed top-0 right-0 h-full w-80 bg-surface-container shadow-2xl z-[70] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col py-8 px-6" id="navDrawer">
+    <div class="flex flex-col h-full">
+        <!-- Drawer Header -->
+        <a href="profile.html" class="flex items-center gap-4 mb-8 border-b border-outline-variant/20 pb-6 hover:opacity-95 transition-opacity">
+            <div class="w-14 h-14 rounded-lg overflow-hidden border-2 border-primary">
+                <img alt="صورة المستخدم" class="w-full h-full object-cover profile-avatar" src=""/>
+            </div>
+            <div class="text-right">
+                <h2 class="text-xl font-bold text-primary profile-name">...</h2>
+                <p class="text-sm text-on-surface-variant profile-status">...</p>
+                <p class="text-[10px] text-outline profile-member-since">...</p>
+            </div>
+        </a>
+        
+        <!-- Drawer Links -->
+        <nav class="flex flex-col gap-2 flex-grow">
+            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface hover:bg-surface-variant transition-all" href="browse.html">
+                <span class="material-symbols-outlined">coffee_maker</span>
+                <span>تصفح الكافيهات</span>
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface hover:bg-surface-variant transition-all" href="featured.html">
+                <span class="material-symbols-outlined">stars</span>
+                <span>المنيو المميز</span>
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface hover:bg-surface-variant transition-all" href="settings.html">
+                <span class="material-symbols-outlined">settings</span>
+                <span>إعدادات الحساب</span>
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface hover:bg-surface-variant transition-all" href="index.html">
+                <span class="material-symbols-outlined">info</span>
+                <span>عن المنصة</span>
+            </a>
+            
+            <div class="mt-8 pt-8 border-t border-outline-variant/20">
+                <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-error hover:bg-error-container/20 transition-all" href="index.html" onclick="localStorage.clear(); location.reload();">
+                    <span class="material-symbols-outlined">logout</span>
+                    <span>تسجيل الخروج</span>
+                </a>
+            </div>
+        </nav>
+        
+        <footer class="text-center text-xs text-outline-variant mt-auto">
+            Cloud Coffee v2.4.0
+        </footer>
+    </div>
+</aside>
+
+<!-- Shared State Management Scripts -->
+<script src="shared.js"></script>
+
+</body>
+</html>

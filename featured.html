@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="dark" dir="rtl" lang="ar">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Cloud Coffee | القائمة المميزة</title>
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#beb3ad",
+                    "surface-bright": "#3c3936",
+                    "tertiary-container": "#a59a92",
+                    "surface-variant": "#373432",
+                    "surface": "#151311",
+                    "on-secondary-fixed": "#201a17",
+                    "primary-container": "#b8966e",
+                    "inverse-primary": "#755936",
+                    "surface-container-highest": "#373432",
+                    "on-tertiary-fixed": "#211a15",
+                    "surface-dim": "#151311",
+                    "surface-container-lowest": "#100e0c",
+                    "on-error": "#690005",
+                    "on-primary-fixed": "#2a1700",
+                    "secondary": "#cfc4be",
+                    "background": "#151311",
+                    "inverse-surface": "#e8e1dd",
+                    "primary": "#e5c095",
+                    "inverse-on-surface": "#33302d",
+                    "error-container": "#93000a",
+                    "on-primary": "#422c0d",
+                    "on-surface-variant": "#d2c4b8",
+                    "on-tertiary-fixed-variant": "#4e453f",
+                    "outline": "#9b8f83",
+                    "surface-container-high": "#2c2927",
+                    "surface-container": "#221f1d",
+                    "tertiary-fixed": "#eee0d7",
+                    "on-primary-fixed-variant": "#5b4221",
+                    "on-surface": "#e8e1dd",
+                    "surface-container-low": "#1d1b19",
+                    "tertiary-fixed-dim": "#d1c4bc",
+                    "on-secondary": "#362f2b",
+                    "error": "#ffb4ab",
+                    "on-error-container": "#ffdad6",
+                    "on-background": "#e8e1dd",
+                    "tertiary": "#d1c4bc",
+                    "on-primary-container": "#462f10",
+                    "primary-fixed": "#ffddb7",
+                    "outline-variant": "#4e453c",
+                    "secondary-fixed-dim": "#cfc4be",
+                    "secondary-container": "#4d4541",
+                    "on-tertiary-container": "#3a322c",
+                    "secondary-fixed": "#ece0da",
+                    "primary-fixed-dim": "#e5c095",
+                    "on-secondary-fixed-variant": "#4d4541",
+                    "surface-tint": "#e5c095",
+                    "on-tertiary": "#362f29"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "max-width-content": "1200px",
+                    "margin-mobile": "20px",
+                    "unit": "8px",
+                    "gutter-desktop": "24px",
+                    "gutter-mobile": "16px",
+                    "margin-desktop": "auto"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Tajawal", "sans-serif"],
+                    "headline-lg": ["Tajawal", "sans-serif"],
+                    "headline-lg-mobile": ["Tajawal", "sans-serif"],
+                    "body-md": ["Tajawal", "sans-serif"],
+                    "label-sm": ["Tajawal", "sans-serif"]
+            },
+            "fontSize": {
+                    "headline-xl": ["Tajawal", "sans-serif"],
+                    "headline-lg": ["Tajawal", "sans-serif"],
+                    "headline-lg-mobile": ["Tajawal", "sans-serif"],
+                    "body-md": ["Tajawal", "sans-serif"],
+                    "label-sm": ["Tajawal", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 2px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #b8966e;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden selection:bg-primary/30 selection:text-primary pb-24">
+
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-background/80 backdrop-blur-md border-b border-outline-variant/10">
+    <div class="flex items-center gap-4">
+        <button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant transition-colors" id="menuToggle">
+            <span class="material-symbols-outlined text-primary">menu</span>
+        </button>
+        <h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary tracking-tight">Cloud Coffee</h1>
+    </div>
+    <div class="flex items-center gap-2">
+        <a href="browse.html" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant transition-colors active:scale-95 duration-150">
+            <span class="material-symbols-outlined text-primary">search</span>
+        </a>
+    </div>
+</header>
+
+<main class="pt-20 pb-24 px-margin-mobile max-w-max-width-content mx-auto animate-fadeIn">
+    <!-- Hero Section -->
+    <section class="mb-8">
+        <h2 class="font-headline-xl text-headline-xl text-on-background mb-2">القائمة المميزة</h2>
+        <p class="text-on-surface-variant font-body-md">استمتع بأجود أنواع المنتجات والبن المحمص بعناية في أجواء هادئة.</p>
+    </section>
+
+    <!-- Category Selector -->
+    <div class="sticky top-16 z-35 bg-background/95 py-4 -mx-margin-mobile px-margin-mobile flex gap-3 overflow-x-auto no-scrollbar custom-scrollbar mb-8 border-b border-outline-variant/5">
+        <button onclick="showToast('عرض جميع المنتجات ☕', 'all_inbox')" class="whitespace-nowrap px-6 py-2 rounded-full bg-primary text-on-primary font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">الكل</button>
+        <button onclick="showToast('تصفية القهوة الساخنة ☕', 'coffee')" class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container-high border border-outline-variant/30 text-on-surface-variant hover:text-primary hover:border-primary transition-all active:scale-95">القهوة</button>
+        <button onclick="showToast('تصفية المشروبات الباردة 🍹', 'icecream')" class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container-high border border-outline-variant/30 text-on-surface-variant hover:text-primary hover:border-primary transition-all active:scale-95">مشروبات باردة</button>
+        <button onclick="showToast('تصفية الحلويات اللذيذة 🍰', 'cake')" class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container-high border border-outline-variant/30 text-on-surface-variant hover:text-primary hover:border-primary transition-all active:scale-95">حلويات</button>
+        <button onclick="showToast('تصفية الساندوتشات الطازجة 🥪', 'lunch_dining')" class="whitespace-nowrap px-6 py-2 rounded-full bg-surface-container-high border border-outline-variant/30 text-on-surface-variant hover:text-primary hover:border-primary transition-all active:scale-95">ساندوتشات</button>
+    </div>
+
+    <!-- Product Grid (Bento Style) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Product Card 1 -->
+        <div class="group bg-surface-container-low rounded-3xl overflow-hidden border border-outline-variant/20 hover:border-primary/50 transition-all duration-300">
+            <div class="h-64 overflow-hidden relative">
+                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="كورتادو" src="https://images.unsplash.com/photo-1510707577719-ee7c14d51633?q=80&w=600&auto=format&fit=crop"/>
+                <div class="absolute top-4 right-4 bg-primary/90 text-on-primary px-3 py-1 rounded-lg text-label-sm font-bold backdrop-blur-sm">الأكثر طلباً</div>
+            </div>
+            <div class="p-6 text-right">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-headline-lg-mobile text-primary font-bold text-xl">كورتادو</h3>
+                    <span class="text-primary font-bold text-lg">14 ريال</span>
+                </div>
+                <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">توازن مثالي بين الإسبريسو المركز والحليب المبخر بقوام كريمي ناعم.</p>
+                <button class="w-full py-4 bg-primary-container text-on-primary-container rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-primary hover:text-on-primary transition-colors active:scale-95" data-add-to-cart data-item-id="cortado" data-item-name="كورتادو" data-item-price="14">
+                    <span class="material-symbols-outlined">add</span>
+                    إضافة للطلب
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Card 2 -->
+        <div class="group bg-surface-container-low rounded-3xl overflow-hidden border border-outline-variant/20 hover:border-primary/50 transition-all duration-300">
+            <div class="h-64 overflow-hidden relative">
+                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="سبانش لاتيه بارد" src="https://images.unsplash.com/photo-1570968915860-54d5c301fc9f?q=80&w=600&auto=format&fit=crop"/>
+            </div>
+            <div class="p-6 text-right">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-headline-lg-mobile text-primary font-bold text-xl">سبانش لاتيه بارد</h3>
+                    <span class="text-primary font-bold text-lg">22 ريال</span>
+                </div>
+                <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">مزيجنا الخاص من الحليب المكثف المحلى مع لمسة من القرفة والقهوة المختصة.</p>
+                <button class="w-full py-4 bg-primary-container text-on-primary-container rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-primary hover:text-on-primary transition-colors active:scale-95" data-add-to-cart data-item-id="spanish_latte" data-item-name="سبانش لاتيه بارد" data-item-price="22">
+                    <span class="material-symbols-outlined">add</span>
+                    إضافة للطلب
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div class="group bg-surface-container-low rounded-3xl overflow-hidden border border-outline-variant/20 hover:border-primary/50 transition-all duration-300">
+            <div class="h-64 overflow-hidden relative">
+                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="براوني الشوكولاتة" src="https://images.unsplash.com/photo-1564355808539-22fda35bed7e?q=80&w=600&auto=format&fit=crop"/>
+            </div>
+            <div class="p-6 text-right">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-headline-lg-mobile text-primary font-bold text-xl">براوني الشوكولاتة</h3>
+                    <span class="text-primary font-bold text-lg">18 ريال</span>
+                </div>
+                <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">شوكولاتة بلجيكية فاخرة مخبوزة بعناية مع قطع الجوز المقرمشة.</p>
+                <button class="w-full py-4 bg-primary-container text-on-primary-container rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-primary hover:text-on-primary transition-colors active:scale-95" data-add-to-cart data-item-id="brownie" data-item-name="براوني الشوكولاتة" data-item-price="18">
+                    <span class="material-symbols-outlined">add</span>
+                    إضافة للطلب
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Card 4 -->
+        <div class="group bg-surface-container-low rounded-3xl overflow-hidden border border-outline-variant/20 hover:border-primary/50 transition-all duration-300">
+            <div class="h-64 overflow-hidden relative">
+                <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="V60 كولومبي" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=600&auto=format&fit=crop"/>
+            </div>
+            <div class="p-6 text-right">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-headline-lg-mobile text-primary font-bold text-xl">V60 كولومبي</h3>
+                    <span class="text-primary font-bold text-lg">24 ريال</span>
+                </div>
+                <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">قهوة مقطرة بوضوح نكهات الفاكهة والحمضية المتوازنة من مزارع كولومبيا.</p>
+                <button class="w-full py-4 bg-primary-container text-on-primary-container rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-primary hover:text-on-primary transition-colors active:scale-95" data-add-to-cart data-item-id="v60" data-item-name="V60 كولومبي" data-item-price="24">
+                    <span class="material-symbols-outlined">add</span>
+                    إضافة للطلب
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container-high/90 backdrop-blur-md border-t border-outline-variant/30 rounded-t-xl shadow-lg">
+    <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="map.html">
+        <span class="material-symbols-outlined">home</span>
+        <span class="font-label-sm text-label-sm">الرئيسية</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="browse.html">
+        <span class="material-symbols-outlined">favorite</span>
+        <span class="font-label-sm text-label-sm">المفضلة</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-primary bg-primary-container/20 rounded-xl px-4 py-1.5 transition-all" href="featured.html">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
+        <span class="font-bold text-[12px] mt-1">التنبيهات</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="profile.html">
+        <span class="material-symbols-outlined">person</span>
+        <span class="font-label-sm text-label-sm">الحساب</span>
+    </a>
+</nav>
+
+<!-- Navigation Drawer (Right Side) -->
+<div class="fixed inset-0 bg-black/60 z-[60] hidden backdrop-blur-sm opacity-0 transition-opacity duration-300" id="drawerOverlay"></div>
+<aside class="fixed top-0 right-0 h-full w-80 bg-surface-container shadow-2xl z-[70] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col py-8 px-6" id="navDrawer">
+    <div class="flex flex-col h-full">
+        <!-- Drawer Header -->
+        <a href="profile.html" class="flex items-center gap-4 mb-8 border-b border-outline-variant/20 pb-6 hover:opacity-95 transition-opacity">
+            <div class="w-14 h-14 rounded-lg overflow-hidden border-2 border-primary">
+                <img alt="صورة المستخدم" class="w-full h-full object-cover profile-avatar" src=""/>
+            </div>
+            <div class="text-right">
+                <h2 class="text-xl font-bold text-primary profile-name">...</h2>
+                <p class="text-sm text-on-surface-variant profile-status">...</p>
+                <p class="text-[10px] text-outline profile-member-since">...</p>
+            </div>
+        </a>
+        
+        <!-- Drawer Links -->
+        <nav class="flex flex-col gap-2 flex-grow">
+            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface hover:bg-surface-variant transition-all" href="browse.html">
+                <span class="material-symbols-outlined">coffee_maker</span>
+                <span>تصفح الكافيهات</span>
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface hover:bg-surface-variant transition-all" href="featured.html">
+                <span class="material-symbols-outlined">stars</span>
+                <span>المنيو المميز</span>
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface hover:bg-surface-variant transition-all" href="settings.html">
+                <span class="material-symbols-outlined">settings</span>
+                <span>إعدادات الحساب</span>
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface hover:bg-surface-variant transition-all" href="index.html">
+                <span class="material-symbols-outlined">info</span>
+                <span>عن المنصة</span>
+            </a>
+            
+            <div class="mt-8 pt-8 border-t border-outline-variant/20">
+                <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-error hover:bg-error-container/20 transition-all" href="index.html" onclick="localStorage.clear(); location.reload();">
+                    <span class="material-symbols-outlined">logout</span>
+                    <span>تسجيل الخروج</span>
+                </a>
+            </div>
+        </nav>
+        
+        <footer class="text-center text-xs text-outline-variant mt-auto">
+            Cloud Coffee v2.4.0
+        </footer>
+    </div>
+</aside>
+
+<!-- Cart Floating Action Button -->
+<button onclick="showToast('سلة المشتريات تحتوي على عناصرك المميزة ☕', 'shopping_basket')" class="fixed bottom-24 left-6 w-16 h-16 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center z-50 group hover:scale-110 transition-transform active:scale-90">
+    <span class="material-symbols-outlined text-3xl">shopping_basket</span>
+    <span class="absolute -top-1 -right-1 bg-white text-primary text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shadow-md cart-badge">0</span>
+</button>
+
+<!-- Shared State Management Scripts -->
+<script src="shared.js"></script>
+
+</body>
+</html>
