@@ -603,6 +603,22 @@
             if (document.getElementById('route-meta')) {
                 document.getElementById('route-meta').innerText = "وصلت بالسلامة 🎉";
             }
+            
+            const navBtn = document.getElementById('start-nav-btn');
+            if (navBtn) {
+                let targetId = 'hodoo';
+                if (typeof matchedCafe !== 'undefined' && matchedCafe) {
+                    if (matchedCafe.id === 'hadou') targetId = 'hodoo';
+                    else if (matchedCafe.id === 'zawiya') targetId = 'corner';
+                    else if (matchedCafe.id === 'sahab') targetId = 'artisan';
+                    else targetId = matchedCafe.id;
+                }
+                navBtn.innerHTML = '<span class="material-symbols-outlined">coffee_maker</span><span>تصفح منيو الكافيه ☕</span>';
+                navBtn.className = "w-full bg-[#e5c095] text-[#100e0c] h-14 rounded-full font-bold flex items-center justify-center gap-2 spring-animate-bounce shadow-lg shadow-amber-500/10 hover:bg-[#d8baa3] transition-all duration-300 cursor-pointer text-lg";
+                navBtn.onclick = () => {
+                    window.location.href = `menu.html?id=${targetId}`;
+                };
+            }
             map.setView([cafeLat, cafeLng], 16, { animate: true, duration: 1.2 });
             return;
         }

@@ -133,7 +133,7 @@
 <!-- Main Container -->
 <main class="pt-20 px-margin-mobile max-w-max-width-content mx-auto">
     <!-- Search & Filter Bar -->
-    <div class="sticky top-16 z-35 bg-background/95 backdrop-blur-md pb-4 pt-4 border-b border-outline-variant/5">
+    <div class="sticky top-16 z-40 bg-background/95 backdrop-blur-md pb-4 pt-4 border-b border-outline-variant/5">
         <div class="relative group">
             <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline">search</span>
             <input id="search-input" class="w-full bg-surface-container-low border border-outline-variant/30 rounded-2xl py-4 pr-12 pl-4 text-on-surface focus:outline-none focus:border-primary transition-all font-body-md placeholder:text-outline-variant/70" placeholder="ابحث عن كوفيهك المفضل..." type="text"/>
@@ -141,6 +141,10 @@
         <!-- Quick Chips Filters -->
         <div id="filter-chips-container" class="flex gap-3 mt-4 overflow-x-auto scrollbar-hide py-1">
             <button data-filter="all" class="filter-chip shrink-0 px-6 py-2 rounded-full bg-primary text-on-primary font-semibold font-label-sm text-sm shadow-md active:scale-95 transition-all">الكل</button>
+            <button data-filter="favorites" class="filter-chip shrink-0 px-6 py-2 rounded-full bg-surface-container-high border border-outline-variant/30 text-secondary font-label-sm text-sm hover:border-primary active:scale-95 transition-all flex items-center gap-1.5">
+                <span>المفضلة</span>
+                <span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+            </button>
             <button data-filter="top-rated" class="filter-chip shrink-0 px-6 py-2 rounded-full bg-surface-container-high border border-outline-variant/30 text-secondary font-label-sm text-sm hover:border-primary active:scale-95 transition-all">الأكثر تقييماً</button>
             <button data-filter="nearby" class="filter-chip shrink-0 px-6 py-2 rounded-full bg-surface-container-high border border-outline-variant/30 text-secondary font-label-sm text-sm hover:border-primary active:scale-95 transition-all">الأقرب إليك</button>
             <button data-filter="open-now" class="filter-chip shrink-0 px-6 py-2 rounded-full bg-surface-container-high border border-outline-variant/30 text-secondary font-label-sm text-sm hover:border-primary active:scale-95 transition-all">مفتوح الآن</button>
@@ -149,10 +153,21 @@
 
     <!-- Coffee Shop List - Asymmetric/Bento Style items -->
     <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Empty Favorites Placeholder -->
+        <div id="empty-favorites-placeholder" class="hidden text-center py-16 text-on-surface-variant/60 flex flex-col items-center col-span-full justify-center">
+            <span class="material-symbols-outlined text-[64px] text-primary/40 mb-4">heart_broken</span>
+            <h3 class="font-headline-lg-mobile text-xl text-primary font-bold mb-2">لم تقم بإضافة أي كافيه للمفضلة بعد ☕❤️</h3>
+            <p class="text-sm px-6 max-w-md">تصفح الكافيهات واضغط على رمز القلب لإضافتها إلى مفضلتك للوصول السريع إليها!</p>
+        </div>
+
         <!-- Shop Item 1 -->
-        <a href="menu.html?id=hodoo" class="shop-card group relative bg-surface-container-low rounded-[2rem] overflow-hidden border border-outline-variant/20 hover:border-primary/50 transition-all duration-300 shadow-xl block text-right" data-name="كوفي هدوء" data-rating="4.8" data-distance="250" data-status="open" data-description="تجربة قهوة مختصة فريدة في أجواء هادئة وتصميم عصري يبعث على الراحة.">
+        <a href="menu.html?id=hodoo" class="shop-card group relative bg-surface-container-low rounded-[2rem] overflow-hidden border border-outline-variant/20 hover:border-primary/50 transition-all duration-300 shadow-xl block text-right" data-cafe-id="hodoo" data-name="كوفي هدوء" data-rating="4.8" data-distance="250" data-status="open" data-description="تجربة قهوة مختصة فريدة في أجواء هادئة وتصميم عصري يبعث على الراحة.">
             <div class="relative h-48 overflow-hidden">
                 <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="كوفي هدوء" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop"/>
+                <!-- Favorite Button -->
+                <button class="absolute top-4 left-4 z-20 bg-background/60 backdrop-blur-md w-10 h-10 rounded-full flex items-center justify-center border border-white/10 text-primary hover:scale-110 active:scale-95 transition-transform fav-btn" data-cafe-id="hodoo">
+                    <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">favorite</span>
+                </button>
                 <div class="absolute top-4 right-4 bg-background/60 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1 border border-white/10">
                     <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
                     <span class="text-on-surface text-xs font-bold">4.8</span>
@@ -180,9 +195,13 @@
         </a>
 
         <!-- Shop Item 2 -->
-        <a href="menu.html?id=artisan" class="shop-card group relative bg-surface-container-low rounded-[2rem] overflow-hidden border border-outline-variant/20 hover:border-primary/50 transition-all duration-300 shadow-xl block text-right" data-name="كوفي أرتيزان" data-rating="4.9" data-distance="800" data-status="open" data-description="لعشاق القهوة المختصة، نقدم لكم أفضل أنواع البن المحمص يدوياً بكل حب.">
+        <a href="menu.html?id=artisan" class="shop-card group relative bg-surface-container-low rounded-[2rem] overflow-hidden border border-outline-variant/20 hover:border-primary/50 transition-all duration-300 shadow-xl block text-right" data-cafe-id="artisan" data-name="كوفي أرتيزان" data-rating="4.9" data-distance="800" data-status="open" data-description="لعشاق القهوة المختصة، نقدم لكم أفضل أنواع البن المحمص يدوياً بكل حب.">
             <div class="relative h-48 overflow-hidden">
                 <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="كوفي أرتيزان" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop"/>
+                <!-- Favorite Button -->
+                <button class="absolute top-4 left-4 z-20 bg-background/60 backdrop-blur-md w-10 h-10 rounded-full flex items-center justify-center border border-white/10 text-primary hover:scale-110 active:scale-95 transition-transform fav-btn" data-cafe-id="artisan">
+                    <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">favorite</span>
+                </button>
                 <div class="absolute top-4 right-4 bg-background/60 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1 border border-white/10">
                     <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
                     <span class="text-on-surface text-xs font-bold">4.9</span>
@@ -207,9 +226,13 @@
         </a>
 
         <!-- Shop Item 3 -->
-        <a href="menu.html?id=night" class="shop-card group relative bg-surface-container-low rounded-[2rem] overflow-hidden border border-outline-variant/20 hover:border-primary/50 transition-all duration-300 shadow-xl block text-right" data-name="كوفي نايت" data-rating="4.6" data-distance="1200" data-status="closes-soon" data-description="وجهتك المثالية للعمل أو الدراسة في ساعات المساء المتأخرة مع كوب من القهوة الدافئة.">
+        <a href="menu.html?id=night" class="shop-card group relative bg-surface-container-low rounded-[2rem] overflow-hidden border border-outline-variant/20 hover:border-primary/50 transition-all duration-300 shadow-xl block text-right" data-cafe-id="night" data-name="كوفي نايت" data-rating="4.6" data-distance="1200" data-status="closes-soon" data-description="وجهتك المثالية للعمل أو الدراسة في ساعات المساء المتأخرة مع كوب من القهوة الدافئة.">
             <div class="relative h-48 overflow-hidden">
                 <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="كوفي نايت" src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop"/>
+                <!-- Favorite Button -->
+                <button class="absolute top-4 left-4 z-20 bg-background/60 backdrop-blur-md w-10 h-10 rounded-full flex items-center justify-center border border-white/10 text-primary hover:scale-110 active:scale-95 transition-transform fav-btn" data-cafe-id="night">
+                    <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">favorite</span>
+                </button>
                 <div class="absolute top-4 right-4 bg-background/60 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1 border border-white/10">
                     <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
                     <span class="text-on-surface text-xs font-bold">4.6</span>
@@ -234,9 +257,13 @@
         </a>
 
         <!-- Shop Item 4 -->
-        <a href="menu.html?id=corner" class="shop-card group relative bg-surface-container-low rounded-[2rem] overflow-hidden border border-outline-variant/20 hover:border-primary/50 transition-all duration-300 shadow-xl block text-right" data-name="ركن القهوة" data-rating="4.7" data-distance="2500" data-status="open" data-description="تصاميم خشبية دافئة وتشكيلة واسعة من الحلويات الطازجة التي تناسب قهوتك.">
+        <a href="menu.html?id=corner" class="shop-card group relative bg-surface-container-low rounded-[2rem] overflow-hidden border border-outline-variant/20 hover:border-primary/50 transition-all duration-300 shadow-xl block text-right" data-cafe-id="corner" data-name="ركن القهوة" data-rating="4.7" data-distance="2500" data-status="open" data-description="تصاميم خشبية دافئة وتشكيلة واسعة من الحلويات الطازجة التي تناسب قهوتك.">
             <div class="relative h-48 overflow-hidden">
                 <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="ركن القهوة" src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?q=80&w=800&auto=format&fit=crop"/>
+                <!-- Favorite Button -->
+                <button class="absolute top-4 left-4 z-20 bg-background/60 backdrop-blur-md w-10 h-10 rounded-full flex items-center justify-center border border-white/10 text-primary hover:scale-110 active:scale-95 transition-transform fav-btn" data-cafe-id="corner">
+                    <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">favorite</span>
+                </button>
                 <div class="absolute top-4 right-4 bg-background/60 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1 border border-white/10">
                     <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
                     <span class="text-on-surface text-xs font-bold">4.7</span>
@@ -273,9 +300,8 @@
         <span class="font-bold text-[12px] mt-1">المفضلة</span>
     </a>
     <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors relative" href="featured.html">
-        <span class="material-symbols-outlined">notifications</span>
-        <span class="absolute top-1 right-2 w-2 h-2 bg-primary rounded-full"></span>
-        <span class="font-label-sm text-label-sm">التنبيهات</span>
+        <span class="material-symbols-outlined">stars</span>
+        <span class="font-label-sm text-label-sm">المميز</span>
     </a>
     <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="profile.html">
         <span class="material-symbols-outlined">person</span>
@@ -366,9 +392,49 @@
             observer.observe(card);
         });
 
+        // Update all favorite icon fills based on localStorage
+        const updateFavoriteIcons = () => {
+            document.querySelectorAll('.fav-btn').forEach(btn => {
+                const cafeId = btn.getAttribute('data-cafe-id');
+                const icon = btn.querySelector('span');
+                if (isCafeFavorite(cafeId)) {
+                    icon.style.fontVariationSettings = "'FILL' 1";
+                    icon.classList.add('text-primary');
+                } else {
+                    icon.style.fontVariationSettings = "'FILL' 0";
+                    icon.classList.remove('text-primary');
+                }
+            });
+        };
+        updateFavoriteIcons();
+
+        // Bind click listener for Favorite Buttons
+        document.querySelectorAll('.fav-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                const cafeId = btn.getAttribute('data-cafe-id');
+                const cafeName = btn.closest('.shop-card').getAttribute('data-name');
+                const isFav = toggleFavoriteCafe(cafeId);
+                updateFavoriteIcons();
+                
+                if (isFav) {
+                    showToast(`تمت إضافة ${cafeName} إلى المفضلة ❤️`, 'favorite');
+                } else {
+                    showToast(`تمت إزالة ${cafeName} من المفضلة 🤍`, 'favorite');
+                }
+
+                // Re-filter if we are currently looking at the favorites tab
+                if (activeFilter === 'favorites') {
+                    filterShopCards();
+                }
+            });
+        });
+
         // High-end dynamic filter and text search handler
         function filterShopCards() {
             const query = searchInput.value.trim().toLowerCase();
+            let visibleCount = 0;
 
             shopCards.forEach(card => {
                 const name = card.getAttribute('data-name').toLowerCase();
@@ -376,6 +442,7 @@
                 const rating = parseFloat(card.getAttribute('data-rating'));
                 const distance = parseInt(card.getAttribute('data-distance'));
                 const status = card.getAttribute('data-status');
+                const cafeId = card.getAttribute('data-cafe-id');
 
                 // Match query
                 const matchesSearch = name.includes(query) || desc.includes(query);
@@ -384,6 +451,8 @@
                 let matchesFilter = false;
                 if (activeFilter === 'all') {
                     matchesFilter = true;
+                } else if (activeFilter === 'favorites') {
+                    matchesFilter = isCafeFavorite(cafeId);
                 } else if (activeFilter === 'top-rated') {
                     matchesFilter = rating >= 4.7;
                 } else if (activeFilter === 'nearby') {
@@ -394,6 +463,7 @@
 
                 // Smooth fade/scale visual animations
                 if (matchesSearch && matchesFilter) {
+                    visibleCount++;
                     // Unhide and animate in
                     card.style.display = 'block';
                     setTimeout(() => {
@@ -411,6 +481,16 @@
                     }, 300);
                 }
             });
+
+            // Show/hide empty placeholder for favorites
+            const placeholder = document.getElementById('empty-favorites-placeholder');
+            if (activeFilter === 'favorites' && visibleCount === 0) {
+                placeholder.classList.remove('hidden');
+                placeholder.classList.add('flex');
+            } else {
+                placeholder.classList.add('hidden');
+                placeholder.classList.remove('flex');
+            }
         }
 
         // Add event listeners to filter chips
@@ -427,29 +507,23 @@
                 // Get filter type
                 activeFilter = btn.getAttribute('data-filter');
 
-                // Show premium Toast notification in bottom right
-                const filterLabels = {
-                    'all': 'عرض جميع الكوفيهات ☕',
-                    'top-rated': 'عرض الكوفيهات الأعلى تقييماً ⭐',
-                    'nearby': 'عرض الكوفيهات الأقرب إليك 📍',
-                    'open-now': 'عرض الكوفيهات المفتوحة الآن 🕒'
-                };
-                const filterIcons = {
-                    'all': 'coffee_maker',
-                    'top-rated': 'star',
-                    'nearby': 'near_me',
-                    'open-now': 'schedule'
-                };
-                if (typeof showToast === 'function') {
-                    showToast(filterLabels[activeFilter], filterIcons[activeFilter]);
-                }
-
                 filterShopCards();
             });
         });
 
         // Trigger filter on keyup/typing
         searchInput.addEventListener('input', filterShopCards);
+
+        // Check URL parameters to auto-activate favorites
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('tab') === 'favorites') {
+            const favChip = document.querySelector('[data-filter="favorites"]');
+            if (favChip) {
+                favChip.click();
+            }
+        } else {
+            filterShopCards();
+        }
     });
 </script>
 </body>

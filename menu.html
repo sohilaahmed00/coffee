@@ -139,6 +139,10 @@
         <a href="browse.html" class="absolute top-4 right-4 z-10 bg-surface-container/60 backdrop-blur-md p-2 rounded-lg text-on-surface hover:bg-surface-container transition-colors active:scale-95">
             <span class="material-symbols-outlined">arrow_forward</span>
         </a>
+        <!-- Floating Favorite Button -->
+        <button id="favorite-cafe-btn" class="absolute top-4 left-4 z-10 bg-surface-container/60 backdrop-blur-md p-2 rounded-lg text-on-surface hover:bg-surface-container transition-colors active:scale-95 border border-white/10 flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary" id="fav-heart-icon" style="font-variation-settings: 'FILL' 0;">favorite</span>
+        </button>
     </section>
 
     <!-- Shop Info Section -->
@@ -207,9 +211,8 @@
         <span class="font-bold text-[12px] mt-1">المفضلة</span>
     </a>
     <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors relative" href="featured.html">
-        <span class="material-symbols-outlined">notifications</span>
-        <span class="absolute top-1 right-2 w-2 h-2 bg-primary rounded-full"></span>
-        <span class="font-label-sm text-label-sm">التنبيهات</span>
+        <span class="material-symbols-outlined">stars</span>
+        <span class="font-label-sm text-label-sm">المميز</span>
     </a>
     <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="profile.html">
         <span class="material-symbols-outlined">person</span>
@@ -281,6 +284,32 @@
         
         // Fetch cafe data from shared.js getCafeById
         const cafe = getCafeById(cafeId);
+
+        // Setup Favorite button click and state initialization
+        const favBtn = document.getElementById('favorite-cafe-btn');
+        const favIcon = document.getElementById('fav-heart-icon');
+        
+        const updateFavBtnState = () => {
+            if (isCafeFavorite(cafeId)) {
+                favIcon.style.fontVariationSettings = "'FILL' 1";
+                favIcon.classList.add('text-primary');
+            } else {
+                favIcon.style.fontVariationSettings = "'FILL' 0";
+                favIcon.classList.remove('text-primary');
+            }
+        };
+        
+        updateFavBtnState();
+        
+        favBtn.addEventListener('click', () => {
+            const isFav = toggleFavoriteCafe(cafeId);
+            updateFavBtnState();
+            if (isFav) {
+                showToast(`تمت إضافة ${cafe.name} إلى المفضلة ❤️`, 'favorite');
+            } else {
+                showToast(`تمت إزالة ${cafe.name} من المفضلة 🤍`, 'favorite');
+            }
+        });
         
         // 2. Populate shop header details
         document.getElementById('cafe-hero-image').src = cafe.image;
@@ -433,23 +462,6 @@
                 btn.classList.remove('bg-surface-container', 'text-on-surface-variant', 'border', 'border-outline-variant/30');
                 
                 const selectedCat = btn.getAttribute('data-category');
-                
-                // Show dynamic category toast
-                const toastLabels = {
-                    'all': 'عرض كافة المنتجات ☕',
-                    'coffee': 'عرض مشروبات القهوة الساخنة ☕',
-                    'cold': 'عرض المشروبات الباردة والمنعشة 🍹',
-                    'sweet': 'عرض الحلويات اللذيذة 🍰',
-                    'sandwich': 'عرض الساندوتشات الطازجة 🥪'
-                };
-                const toastIcons = {
-                    'all': 'menu_book',
-                    'coffee': 'coffee',
-                    'cold': 'icecream',
-                    'sweet': 'cake',
-                    'sandwich': 'lunch_dining'
-                };
-                showToast(toastLabels[selectedCat], toastIcons[selectedCat]);
                 
                 // Trigger dynamic filtering
                 renderMenuItems(selectedCat);
