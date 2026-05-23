@@ -17,6 +17,125 @@ const DEFAULT_CART = [
     { id: "brownie", name: "براوني الشوكولاتة", price: 18, quantity: 1 }
 ];
 
+const DEFAULT_CAFES = {
+    "hodoo": {
+        id: "hodoo",
+        name: "كوفي هدوء",
+        description: "تجربة قهوة مختصة فريدة في أجواء هادئة وتصميم عصري يبعث على الراحة.",
+        rating: 4.8,
+        reviews: "250+",
+        image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+        phone: "+966 50 123 4567",
+        whatsapp: "+966501234567",
+        isOpen: true,
+        latOffset: 0.0025,
+        lngOffset: -0.0020,
+        menuItems: [
+            { id: "espresso", name: "اسبريسو", description: "طعم غني ومركز من حبوب البن الفاخرة", price: 10, category: "coffee", image: "https://images.unsplash.com/photo-1510707577719-ee7c14d51633?q=80&w=200&auto=format&fit=crop" },
+            { id: "latte", name: "لاتيه", description: "مزيج متوازن من الاسبريسو والحليب المبخر السلس", price: 14, category: "coffee", image: "https://images.unsplash.com/photo-1570968915860-54d5c301fc9f?q=80&w=200&auto=format&fit=crop" },
+            { id: "cappuccino", name: "كابتشينو", description: "اسبريسو غني مع رغوة حليب كثيفة مخملية وبودرة الكاكاو", price: 14, category: "coffee", image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=200&auto=format&fit=crop" },
+            { id: "filter", name: "فلتر", description: "قهوة مقطرة كلاسيكية مستخلصة من أفضل محاصيل كولومبيا", price: 12, category: "coffee", image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=200&auto=format&fit=crop" },
+            { id: "ice-latte", name: "سبيشال آيس لاتيه", description: "لاتيه بارد ومنعش مع لمسة شراب الفانيليا الخاصة بنا", price: 16, category: "cold", image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=200&auto=format&fit=crop" },
+            { id: "brownie", name: "براوني الشوكولاتة", description: "قطعة براوني دافئة وغنية بقطع الشوكولاتة البلجيكية", price: 18, category: "sweet", image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=200&auto=format&fit=crop" },
+            { id: "turkey-sandwich", name: "كلوب الديك الرومي", description: "شرائح الديك الرومي المدخن مع الجبن والخضار في خبز التوست المقرمش", price: 22, category: "sandwich", image: "https://images.unsplash.com/photo-1524351199679-46cddf530c04?q=80&w=200&auto=format&fit=crop" }
+        ]
+    },
+    "artisan": {
+        id: "artisan",
+        name: "كوفي أرتيزان",
+        description: "لعشاق القهوة المختصة، نقدم لكم أفضل أنواع البن المحمص يدوياً بكل حب وشغف.",
+        rating: 4.9,
+        reviews: "320+",
+        image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop",
+        phone: "+966 54 987 6543",
+        whatsapp: "+966549876543",
+        isOpen: true,
+        latOffset: -0.0035,
+        lngOffset: 0.0045,
+        menuItems: [
+            { id: "cortado", name: "كورتادو", description: "نسبة متساوية من الاسبريسو القوي والحليب الدافئ", price: 14, category: "coffee", image: "https://images.unsplash.com/photo-1534778101976-62847782c213?q=80&w=200&auto=format&fit=crop" },
+            { id: "flat-white", name: "فلات وايت", description: "اسبريسو ثنائي مع رغوة حليب خفيفة وناعمة جداً", price: 15, category: "coffee", image: "https://images.unsplash.com/photo-1577968897966-3d4325b36b61?q=80&w=200&auto=format&fit=crop" },
+            { id: "chemex", name: "قهوة كيمكس", description: "قهوة مقطرة نقية متوازنة ومستخلصة بأداة الكيمكس", price: 18, category: "coffee", image: "https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=200&auto=format&fit=crop" },
+            { id: "cold-brew", name: "كولد برو مختصة", description: "قهوة منقوعة بالماء البارد لمدة 18 ساعة لنكهة غنية خالية من المرارة", price: 17, category: "cold", image: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=200&auto=format&fit=crop" },
+            { id: "pistachio-shake", name: "ميلك شيك الفستق", description: "حليب مثلج مخلوط مع آيسكريم الفانيليا وكريمة الفستق الطبيعي الفاخرة", price: 20, category: "cold", image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=200&auto=format&fit=crop" },
+            { id: "croissant", name: "كرواسون الجبنة الفرنسي", description: "كرواسون فرنسي هش ومورق محشو بجبنة الشيدر الذائبة", price: 12, category: "sandwich", image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=200&auto=format&fit=crop" },
+            { id: "saffron-cake", name: "كيكة الزعفران", description: "كيكة إسفنجية ناعمة مشربة بحليب الزعفران اللذيذ ومغطاة بالكريمة", price: 24, category: "sweet", image: "https://images.unsplash.com/photo-1587314168485-3236d6710814?q=80&w=200&auto=format&fit=crop" }
+        ]
+    },
+    "night": {
+        id: "night",
+        name: "كوفي نايت",
+        description: "وجهتك المثالية للعمل أو الدراسة في ساعات المساء المتأخرة مع كوب من القهوة الدافئة والهدوء.",
+        rating: 4.6,
+        reviews: "180+",
+        image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+        phone: "+966 56 345 6789",
+        whatsapp: "+966563456789",
+        isOpen: true,
+        latOffset: 0.0050,
+        lngOffset: 0.0060,
+        menuItems: [
+            { id: "macchiato", name: "ماكياتو كراميل دافئ", description: "إسبريسو غني مع حليب دافئ وصلصة الكراميل الفاخرة الموزعة بفن", price: 15, category: "coffee", image: "https://images.unsplash.com/photo-1485808191679-5f86510681a2?q=80&w=200&auto=format&fit=crop" },
+            { id: "turkish-coffee", name: "قهوة تركية بالرمل", description: "محضرة على الطريقة التقليدية فوق الرمل الساخن لوش كثيف وطعم أصيل", price: 11, category: "coffee", image: "https://images.unsplash.com/photo-1541332246502-2e99eaa96cc1?q=80&w=200&auto=format&fit=crop" },
+            { id: "spanish-latte", name: "سبانش لاتيه بارد", description: "مزيج مثالي من الاسبريسو والحليب البارد المكثف المحلى مع مكعبات الثلج", price: 18, category: "cold", image: "https://images.unsplash.com/photo-1546272989-40c929bad9e5?q=80&w=200&auto=format&fit=crop" },
+            { id: "mochaccino", name: "موكاشينو مثلج", description: "إسبريسو ممزوج بصلصة الشوكولاتة الداكنة والحليب البارد مع الثلج وكريمة الخفق", price: 17, category: "cold", image: "https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?q=80&w=200&auto=format&fit=crop" },
+            { id: "cheesecake", name: "تشيز كيك التوت الأزرق", description: "طبقة غنية من جبنة الكريم المخفوقة الفاخرة على قاعدة بسكويت مقرمشة مغطاة بالتوت الأزرق", price: 22, category: "sweet", image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=200&auto=format&fit=crop" },
+            { id: "cookies", name: "كوكيز الشوكولاتة العملاق", description: "كوكيز طري ودافئ يخبز يومياً محشو بقطع الشوكولاتة الذائبة الوفيرة", price: 9, category: "sweet", image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=200&auto=format&fit=crop" },
+            { id: "halloumi-sandwich", name: "ساندوتش حلومي مشوي", description: "جبن الحلومي المشوي مع الزيتون الأسود، الطماطم وجرجير طازج في خبز الصابولي", price: 18, category: "sandwich", image: "https://images.unsplash.com/photo-1539252554453-80ab65ce3586?q=80&w=200&auto=format&fit=crop" }
+        ]
+    },
+    "corner": {
+        id: "corner",
+        name: "ركن القهوة",
+        description: "تصاميم خشبية دافئة وتشكيلة واسعة من الحلويات الطازجة التي تناسب قهوتك العربية والمستوحاة من تراثنا.",
+        rating: 4.7,
+        reviews: "140+",
+        image: "https://images.unsplash.com/photo-1453614512568-c4024d13c247?q=80&w=800&auto=format&fit=crop",
+        phone: "+966 52 456 7890",
+        whatsapp: "+966524567890",
+        isOpen: true,
+        latOffset: -0.0040,
+        lngOffset: -0.0035,
+        menuItems: [
+            { id: "arabic-coffee", name: "دلة قهوة عربية صغيرة", description: "قهوة شقراء ممتازة مهيلة ومبهرة تقدم مع التمر والتحية", price: 25, category: "coffee", image: "https://images.unsplash.com/photo-1580933073474-c8c110457651?q=80&w=200&auto=format&fit=crop" },
+            { id: "affogato", name: "أفوغاتو إسبريسو بالآيسكريم", description: "كرة آيسكريم فانيليا غنية يسكب عليها جرعة إسبريسو ساخنة مركزة", price: 16, category: "cold", image: "https://images.unsplash.com/photo-1594911774802-8822a707cff3?q=80&w=200&auto=format&fit=crop" },
+            { id: "ice-mocha", name: "آيس موكا شوكولاتة", description: "حليب بارد، إسبريسو وصلصة شوكولاتة داكنة مثلجة", price: 18, category: "cold", image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=200&auto=format&fit=crop" },
+            { id: "honey-cake", name: "كيكة العسل الروسية", description: "طبقات متناوبة من كيك العسل الهش وكريمة الكراميل الناعمة اللذيذة", price: 22, category: "sweet", image: "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?q=80&w=200&auto=format&fit=crop" },
+            { id: "tiramisu", name: "تيراميسو إيطالي فاخر", description: "حلوى إيطالية كلاسيكية معدة ببسكويت مغمور بالقهوة وكريمة الماسكاربوني المخملية", price: 20, category: "sweet", image: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?q=80&w=200&auto=format&fit=crop" },
+            { id: "tuna-sandwich", name: "ساندوتش خلطة التونة الشهية", description: "ساندوتش تونة بخلطتنا الخاصة من المايونيز، الشبت والذرة الحلوة في خبز حبوب كاملة مغذٍّ", price: 16, category: "sandwich", image: "https://images.unsplash.com/photo-1509722747041-616f39b57569?q=80&w=200&auto=format&fit=crop" },
+            { id: "croque-monsieur", name: "كروك موسيو كلاسيكي", description: "توست فرنسي مقلي محشو بجبن الموزاريلا والبيشاميل الغني المشوي بالفرن", price: 20, category: "sandwich", image: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=200&auto=format&fit=crop" }
+        ]
+    }
+};
+
+function getCafes() {
+    let cafes = localStorage.getItem('cloud_coffee_cafes');
+    if (!cafes) {
+        localStorage.setItem('cloud_coffee_cafes', JSON.stringify(DEFAULT_CAFES));
+        return DEFAULT_CAFES;
+    }
+    return JSON.parse(cafes);
+}
+
+function saveCafes(cafesData) {
+    localStorage.setItem('cloud_coffee_cafes', JSON.stringify(cafesData));
+}
+
+function getCafeById(id) {
+    const cafes = getCafes();
+    return cafes[id] || cafes['hodoo'];
+}
+
+function updateCafe(id, updatedCafeData) {
+    const cafes = getCafes();
+    if (cafes[id]) {
+        cafes[id] = { ...cafes[id], ...updatedCafeData };
+        saveCafes(cafes);
+        return cafes[id];
+    }
+    return null;
+}
+
 // --- 2. PROFILE STATE MANAGEMENT ---
 function getProfile() {
     let profile = localStorage.getItem('cloud_coffee_profile');

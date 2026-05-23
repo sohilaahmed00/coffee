@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html class="dark" dir="rtl" lang="ar">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Cloud Coffee | لوحة الملاك وإدارة المحل</title>
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#beb3ad",
+                    "surface-bright": "#3c3936",
+                    "tertiary-container": "#a59a92",
+                    "surface-variant": "#373432",
+                    "surface": "#151311",
+                    "on-secondary-fixed": "#201a17",
+                    "primary-container": "#b8966e",
+                    "inverse-primary": "#755936",
+                    "surface-container-highest": "#373432",
+                    "on-tertiary-fixed": "#211a15",
+                    "surface-dim": "#151311",
+                    "surface-container-lowest": "#100e0c",
+                    "on-error": "#690005",
+                    "on-primary-fixed": "#2a1700",
+                    "secondary": "#cfc4be",
+                    "background": "#151311",
+                    "inverse-surface": "#e8e1dd",
+                    "primary": "#e5c095",
+                    "inverse-on-surface": "#33302d",
+                    "error-container": "#93000a",
+                    "on-primary": "#422c0d",
+                    "on-surface-variant": "#d2c4b8",
+                    "on-tertiary-fixed-variant": "#4e453f",
+                    "outline": "#9b8f83",
+                    "surface-container-high": "#2c2927",
+                    "surface-container": "#221f1d",
+                    "tertiary-fixed": "#eee0d7",
+                    "on-primary-fixed-variant": "#5b4221",
+                    "on-surface": "#e8e1dd",
+                    "surface-container-low": "#1d1b19",
+                    "tertiary-fixed-dim": "#d1c4bc",
+                    "on-secondary": "#362f2b",
+                    "error": "#ffb4ab",
+                    "on-error-container": "#ffdad6",
+                    "on-background": "#e8e1dd",
+                    "tertiary": "#d1c4bc",
+                    "on-primary-container": "#462f10",
+                    "primary-fixed": "#ffddb7",
+                    "outline-variant": "#4e453c",
+                    "secondary-fixed-dim": "#cfc4be",
+                    "secondary-container": "#4d4541",
+                    "on-tertiary-container": "#3a322c",
+                    "secondary-fixed": "#ece0da",
+                    "primary-fixed-dim": "#e5c095",
+                    "on-secondary-fixed-variant": "#4d4541",
+                    "surface-tint": "#e5c095",
+                    "on-tertiary": "#362f29"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "max-width-content": "1200px",
+                    "margin-mobile": "20px",
+                    "unit": "8px",
+                    "gutter-desktop": "24px",
+                    "gutter-mobile": "16px",
+                    "margin-desktop": "auto"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Tajawal", "sans-serif"],
+                    "headline-lg": ["Tajawal", "sans-serif"],
+                    "headline-lg-mobile": ["Tajawal", "sans-serif"],
+                    "body-md": ["Tajawal", "sans-serif"],
+                    "label-sm": ["Tajawal", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .glass-card {
+            background: #221f1d;
+            border: 1px solid rgba(155, 143, 131, 0.15);
+        }
+        body {
+            min-height: 100dvh;
+        }
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scroll-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden pb-24 select-none">
+
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-background/80 backdrop-blur-md border-b border-outline-variant/10">
+    <div class="flex items-center gap-3">
+        <!-- Back Button -->
+        <a href="profile.html" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant transition-colors">
+            <span class="material-symbols-outlined text-primary">arrow_forward</span>
+        </a>
+        <h1 class="font-headline-lg-mobile text-lg font-bold text-on-surface tracking-tight" id="admin-title">إدارة المحل</h1>
+    </div>
+    
+    <!-- Cafe Selector Dropdown button -->
+    <div class="relative">
+        <button id="btn-cafe-selector" class="flex items-center gap-1 bg-surface-container border border-outline-variant/30 px-3 py-1.5 rounded-xl hover:bg-surface-variant transition-all text-xs text-primary font-bold">
+            <span id="selected-cafe-lbl">كوفي هدوء</span>
+            <span class="material-symbols-outlined text-[16px]">expand_more</span>
+        </button>
+        <!-- Dropdown Menu -->
+        <div id="cafe-dropdown" class="absolute left-0 mt-2 w-48 bg-surface-container border border-outline-variant/40 rounded-xl shadow-2xl hidden z-50 overflow-hidden">
+            <button data-cafe="hodoo" class="dropdown-item w-full text-right px-4 py-2.5 hover:bg-primary/20 text-on-surface text-sm transition-all">كوفي هدوء</button>
+            <button data-cafe="artisan" class="dropdown-item w-full text-right px-4 py-2.5 hover:bg-primary/20 text-on-surface text-sm transition-all">كوفي أرتيزان</button>
+            <button data-cafe="night" class="dropdown-item w-full text-right px-4 py-2.5 hover:bg-primary/20 text-on-surface text-sm transition-all">كوفي نايت</button>
+            <button data-cafe="corner" class="dropdown-item w-full text-right px-4 py-2.5 hover:bg-primary/20 text-on-surface text-sm transition-all">ركن القهوة</button>
+        </div>
+    </div>
+</header>
+
+<!-- Main Container -->
+<main class="pt-20 px-margin-mobile max-w-lg mx-auto">
+
+    <!-- Cafe Identity Header -->
+    <section class="flex flex-col items-center mb-6 text-center mt-4">
+        <div class="relative w-20 h-20 rounded-full border-2 border-primary p-0.5 overflow-hidden shadow-lg bg-surface-container mb-3">
+            <img id="cafe-logo" alt="Logo" class="w-full h-full object-cover rounded-full" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=200&auto=format&fit=crop"/>
+        </div>
+        <h2 id="cafe-header-name" class="font-headline-lg text-primary text-xl font-bold">كوفي هدوء</h2>
+        <p class="text-xs text-on-surface-variant/80">لوحة تحكم الملاك والشركاء</p>
+    </section>
+
+    <!-- Stat Bento Box (White Premium Style exactly like user mockup) -->
+    <section class="bg-white/95 text-slate-900 rounded-3xl p-6 shadow-2xl mb-8 border border-white/20 transform transition-all duration-300">
+        <div class="grid grid-cols-3 divide-x divide-x-reverse divide-slate-200 text-center">
+            <!-- المشاهدات (Views) -->
+            <div class="flex flex-col items-center justify-center">
+                <span class="text-slate-900 font-headline-lg text-2xl font-black tracking-tight" id="stat-views">2,450</span>
+                <span class="text-slate-500 font-medium text-[11px] mt-1">المشاهدات</span>
+            </div>
+            <!-- المبيعات (Sales) -->
+            <div class="flex flex-col items-center justify-center">
+                <span class="text-slate-900 font-headline-lg text-2xl font-black tracking-tight" id="stat-sales">1,230</span>
+                <span class="text-slate-500 font-medium text-[11px] mt-1">المبيعات (ر.س)</span>
+            </div>
+            <!-- الطلبات (Orders) -->
+            <div class="flex flex-col items-center justify-center">
+                <span class="text-slate-900 font-headline-lg text-2xl font-black tracking-tight" id="stat-orders">860</span>
+                <span class="text-slate-500 font-medium text-[11px] mt-1">الطلبات</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Owner Option Actions -->
+    <section class="space-y-3.5">
+        <!-- Option 1: Manage Menu -->
+        <button id="opt-manage-menu" class="w-full flex items-center justify-between p-4.5 bg-surface-container hover:bg-surface-container-high border border-outline-variant/20 rounded-2xl transition-all active:scale-[0.98] text-right">
+            <div class="flex items-center gap-4">
+                <div class="w-11 h-11 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary border border-primary/20">
+                    <span class="material-symbols-outlined text-[22px]">edit_note</span>
+                </div>
+                <div class="text-right">
+                    <span class="block font-semibold text-on-surface text-sm">إدارة المنيو</span>
+                    <span class="block text-[11px] text-on-surface-variant/70 mt-0.5">إضافة، تعديل وحذف منتجات الكافيه</span>
+                </div>
+            </div>
+            <span class="material-symbols-outlined text-outline text-[20px]">chevron_left</span>
+        </button>
+
+        <!-- Option 2: Offers & Discounts -->
+        <button id="opt-manage-offers" class="w-full flex items-center justify-between p-4.5 bg-surface-container hover:bg-surface-container-high border border-outline-variant/20 rounded-2xl transition-all active:scale-[0.98] text-right">
+            <div class="flex items-center gap-4">
+                <div class="w-11 h-11 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary border border-primary/20">
+                    <span class="material-symbols-outlined text-[22px]">sell</span>
+                </div>
+                <div class="text-right">
+                    <span class="block font-semibold text-on-surface text-sm">العروض والخصومات</span>
+                    <span class="block text-[11px] text-on-surface-variant/70 mt-0.5">أكواد الترويح والتنزيلات النشطة</span>
+                </div>
+            </div>
+            <span class="material-symbols-outlined text-outline text-[20px]">chevron_left</span>
+        </button>
+
+        <!-- Option 3: Statistics -->
+        <button id="opt-manage-stats" class="w-full flex items-center justify-between p-4.5 bg-surface-container hover:bg-surface-container-high border border-outline-variant/20 rounded-2xl transition-all active:scale-[0.98] text-right">
+            <div class="flex items-center gap-4">
+                <div class="w-11 h-11 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary border border-primary/20">
+                    <span class="material-symbols-outlined text-[22px]">bar_chart</span>
+                </div>
+                <div class="text-right">
+                    <span class="block font-semibold text-on-surface text-sm">الإحصائيات البيانية</span>
+                    <span class="block text-[11px] text-on-surface-variant/70 mt-0.5">شارت نمو المبيعات والزيارات الشهرية</span>
+                </div>
+            </div>
+            <span class="material-symbols-outlined text-outline text-[20px]">chevron_left</span>
+        </button>
+
+        <!-- Option 4: Shop Settings -->
+        <button id="opt-manage-settings" class="w-full flex items-center justify-between p-4.5 bg-surface-container hover:bg-surface-container-high border border-outline-variant/20 rounded-2xl transition-all active:scale-[0.98] text-right">
+            <div class="flex items-center gap-4">
+                <div class="w-11 h-11 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary border border-primary/20">
+                    <span class="material-symbols-outlined text-[22px]">storefront</span>
+                </div>
+                <div class="text-right">
+                    <span class="block font-semibold text-on-surface text-sm">إعدادات المحل</span>
+                    <span class="block text-[11px] text-on-surface-variant/70 mt-0.5">تحديث مواعيد العمل، أرقام الاتصال والحالة</span>
+                </div>
+            </div>
+            <span class="material-symbols-outlined text-outline text-[20px]">chevron_left</span>
+        </button>
+    </section>
+
+    <!-- Dynamic Overlay Bottom Sheet/Modal -->
+    <div id="modal-overlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden opacity-0 transition-all duration-300 flex items-end justify-center">
+        <!-- Sheet Container -->
+        <div id="sheet-container" class="bg-surface-container w-full max-w-lg rounded-t-[2.5rem] border-t border-outline-variant/30 p-6 flex flex-col max-h-[85vh] overflow-y-auto transform translate-y-full transition-all duration-300">
+            <!-- Header bar drag notch -->
+            <div class="w-12 h-1.5 bg-outline-variant/40 rounded-full mx-auto mb-4 pointer-events-none"></div>
+            
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="sheet-title" class="font-headline-lg text-lg font-bold text-primary">عنوان اللوحة</h3>
+                <button id="btn-close-sheet" class="w-8 h-8 rounded-full bg-surface-variant hover:bg-outline-variant/30 flex items-center justify-center transition-colors">
+                    <span class="material-symbols-outlined text-xs">close</span>
+                </button>
+            </div>
+
+            <!-- Dynamic Sheet Content Wrapper -->
+            <div id="sheet-content" class="flex-grow">
+                <!-- Content injected dynamically -->
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<!-- Shared State scripts -->
+<script src="shared.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let activeCafeId = 'hodoo';
+        
+        // Stats mapping for premium feel
+        const CAFE_STATS = {
+            "hodoo": { views: "2,450", sales: "1,230", orders: "860" },
+            "artisan": { views: "3,890", sales: "2,540", orders: "1,420" },
+            "night": { views: "1,870", sales: "950", orders: "430" },
+            "corner": { views: "1,240", sales: "720", orders: "310" }
+        };
+
+        // UI references
+        const dropdownBtn = document.getElementById('btn-cafe-selector');
+        const dropdownMenu = document.getElementById('cafe-dropdown');
+        const selectedCafeLbl = document.getElementById('selected-cafe-lbl');
+        const cafeLogo = document.getElementById('cafe-logo');
+        const cafeHeaderName = document.getElementById('cafe-header-name');
+        
+        const statViews = document.getElementById('stat-views');
+        const statSales = document.getElementById('stat-sales');
+        const statOrders = document.getElementById('stat-orders');
+
+        const modalOverlay = document.getElementById('modal-overlay');
+        const sheetContainer = document.getElementById('sheet-container');
+        const sheetTitle = document.getElementById('sheet-title');
+        const sheetContent = document.getElementById('sheet-content');
+        const btnCloseSheet = document.getElementById('btn-close-sheet');
+
+        // Dropdown Toggle
+        dropdownBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('hidden');
+        });
+        document.addEventListener('click', () => dropdownMenu.classList.add('hidden'));
+
+        // Handle Cafe Switching
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const id = this.getAttribute('data-cafe');
+                switchCafe(id);
+            });
+        });
+
+        function switchCafe(id) {
+            activeCafeId = id;
+            const cafe = getCafeById(id);
+            
+            // Update labels
+            selectedCafeLbl.innerText = cafe.name;
+            cafeHeaderName.innerText = cafe.name;
+            cafeLogo.src = cafe.image;
+            cafeLogo.alt = cafe.name;
+
+            // Update stats
+            const stats = CAFE_STATS[id] || CAFE_STATS['hodoo'];
+            statViews.innerText = stats.views;
+            statSales.innerText = stats.sales;
+            statOrders.innerText = stats.orders;
+            
+            showToast(`تم تحويل لوحة التحكم لـ ${cafe.name} 💼`, "dashboard");
+        }
+
+        // Initialize values
+        switchCafe('hodoo');
+
+        // Sheet Control
+        function openSheet(title, renderFn) {
+            sheetTitle.innerText = title;
+            sheetContent.innerHTML = '';
+            renderFn(sheetContent);
+
+            modalOverlay.classList.remove('hidden');
+            setTimeout(() => {
+                modalOverlay.classList.remove('opacity-0');
+                sheetContainer.classList.remove('translate-y-full');
+            }, 50);
+        }
+
+        function closeSheet() {
+            sheetContainer.classList.add('translate-y-full');
+            modalOverlay.classList.add('opacity-0');
+            setTimeout(() => {
+                modalOverlay.classList.add('hidden');
+            }, 300);
+        }
+
+        btnCloseSheet.addEventListener('click', closeSheet);
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeSheet();
+        });
+
+        // OPTION 1: Manage Menu Content Injection
+        document.getElementById('opt-manage-menu').addEventListener('click', () => {
+            openSheet('إدارة المنيو والمنتجات 📋', (container) => {
+                const cafe = getCafeById(activeCafeId);
+                
+                let html = `
+                    <!-- Add Item Button -->
+                    <button id="btn-toggle-add" class="w-full py-3 mb-6 bg-primary text-on-primary font-bold rounded-xl flex items-center justify-center gap-2 hover:brightness-110 active:scale-95 transition-all">
+                        <span class="material-symbols-outlined text-[18px]">add_circle</span>
+                        إضافة منتج جديد للمنيو
+                    </button>
+
+                    <!-- Add Item Form (Collapsible) -->
+                    <div id="add-item-form" class="hidden bg-surface-container-high border border-outline-variant/30 rounded-2xl p-4 mb-6 space-y-4">
+                        <h4 class="font-bold text-xs text-primary mb-2">معلومات المنتج الجديد</h4>
+                        <div>
+                            <label class="block text-[11px] text-on-surface-variant mb-1">اسم المنتج *</label>
+                            <input type="text" id="new-item-name" class="w-full bg-background border border-outline-variant/40 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-primary text-on-surface" placeholder="مثال: آيس سبانش لاتيه"/>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-[11px] text-on-surface-variant mb-1">السعر (ر.س) *</label>
+                                <input type="number" id="new-item-price" class="w-full bg-background border border-outline-variant/40 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-primary text-on-surface" placeholder="18"/>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] text-on-surface-variant mb-1">القسم *</label>
+                                <select id="new-item-cat" class="w-full bg-background border border-outline-variant/40 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-primary text-on-surface">
+                                    <option value="coffee">قهوة ساخنة</option>
+                                    <option value="cold">مشروبات باردة</option>
+                                    <option value="sweet">حلويات</option>
+                                    <option value="sandwich">ساندوتشات</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-on-surface-variant mb-1">الوصف المختصر</label>
+                            <input type="text" id="new-item-desc" class="w-full bg-background border border-outline-variant/40 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-primary text-on-surface" placeholder="حليب بارد، اسبريسو وحليب محلى مكثف"/>
+                        </div>
+                        <button id="btn-save-new-item" class="w-full py-2.5 bg-emerald-600 text-white font-bold rounded-xl text-sm hover:bg-emerald-500 transition-colors">حفظ المنتج</button>
+                    </div>
+
+                    <!-- Menu list -->
+                    <h4 class="font-bold text-xs text-on-surface-variant mb-3">المنتجات الحالية (${cafe.menuItems.length})</h4>
+                    <div class="space-y-3 scroll-hide" style="max-height: 40vh; overflow-y: auto;">
+                `;
+
+                cafe.menuItems.forEach(item => {
+                    const catLabels = {
+                        'coffee': 'قهوة ساخنة',
+                        'cold': 'بارد',
+                        'sweet': 'حلوى',
+                        'sandwich': 'ساندوتش'
+                    };
+                    html += `
+                        <div class="flex items-center gap-3 bg-surface-container-low p-2.5 rounded-xl border border-outline-variant/10">
+                            <img class="w-12 h-12 rounded-lg object-cover" src="${item.image}"/>
+                            <div class="flex-grow text-right">
+                                <h5 class="font-bold text-sm text-on-surface">${item.name}</h5>
+                                <p class="text-[10px] text-primary mt-0.5">${item.price} ر.س • ${catLabels[item.category]}</p>
+                            </div>
+                            <button data-delete-id="${item.id}" class="btn-delete-item w-8 h-8 rounded-lg bg-error-container/10 border border-error-container/20 text-error flex items-center justify-center hover:bg-error-container/20 active:scale-90 transition-all">
+                                <span class="material-symbols-outlined text-[18px]">delete</span>
+                            </button>
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+                container.innerHTML = html;
+
+                // Wire up Add Collapsible form toggle
+                const btnToggleAdd = container.querySelector('#btn-toggle-add');
+                const addForm = container.querySelector('#add-item-form');
+                btnToggleAdd.addEventListener('click', () => {
+                    addForm.classList.toggle('hidden');
+                });
+
+                // Wire up Save Button
+                const btnSave = container.querySelector('#btn-save-new-item');
+                btnSave.addEventListener('click', () => {
+                    const name = container.querySelector('#new-item-name').value.trim();
+                    const price = parseFloat(container.querySelector('#new-item-price').value);
+                    const category = container.querySelector('#new-item-cat').value;
+                    const desc = container.querySelector('#new-item-desc').value.trim() || 'منتج كافيه مميز ومحضر بحب';
+                    
+                    if (!name || isNaN(price)) {
+                        showToast('الرجاء تعبئة الحقول المطلوبة ⚠️', 'warning');
+                        return;
+                    }
+
+                    // Default beautiful dynamic images matching categories
+                    const catImages = {
+                        'coffee': 'https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=200',
+                        'cold': 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=200',
+                        'sweet': 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=200',
+                        'sandwich': 'https://images.unsplash.com/photo-1539252554453-80ab65ce3586?q=80&w=200'
+                    };
+
+                    const newItem = {
+                        id: `item-${Date.now()}`,
+                        name: name,
+                        price: price,
+                        category: category,
+                        description: desc,
+                        image: catImages[category]
+                    };
+
+                    const cafes = getCafes();
+                    cafes[activeCafeId].menuItems.unshift(newItem);
+                    saveCafes(cafes);
+
+                    showToast(`تمت إضافة ${name} للمنيو بنجاح! 🎉`, 'done');
+                    closeSheet();
+                });
+
+                // Wire up Delete Buttons
+                container.querySelectorAll('.btn-delete-item').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const itemId = this.getAttribute('data-delete-id');
+                        const cafes = getCafes();
+                        const targetItem = cafes[activeCafeId].menuItems.find(i => i.id === itemId);
+                        
+                        if (targetItem) {
+                            cafes[activeCafeId].menuItems = cafes[activeCafeId].menuItems.filter(i => i.id !== itemId);
+                            saveCafes(cafes);
+                            showToast(`تم حذف ${targetItem.name} 🗑️`, 'delete');
+                            closeSheet();
+                        }
+                    });
+                });
+            });
+        });
+
+        // OPTION 2: Manage Offers
+        document.getElementById('opt-manage-offers').addEventListener('click', () => {
+            openSheet('العروض وأكواد الخصم 🎫', (container) => {
+                let offers = JSON.parse(localStorage.getItem('cloud_coffee_offers')) || [
+                    { code: 'COFFEE20', discount: 20, desc: 'خصم 20% على القهوة الساخنة' },
+                    { code: 'HODOO50', discount: 50, desc: 'خصم 50% للعملاء المتميزين' }
+                ];
+
+                let html = `
+                    <div class="space-y-4">
+                        <!-- Add Promo Coupon Form -->
+                        <div class="bg-surface-container-high border border-outline-variant/30 rounded-2xl p-4 space-y-3">
+                            <h4 class="font-bold text-xs text-primary mb-1">إنشاء كود ترويجي جديد</h4>
+                            <div class="grid grid-cols-2 gap-3">
+                                <input type="text" id="promo-code" class="w-full bg-background border border-outline-variant/40 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-primary text-on-surface" placeholder="كود الخصم (مثال: CC30)"/>
+                                <input type="number" id="promo-disc" class="w-full bg-background border border-outline-variant/40 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-primary text-on-surface" placeholder="الخصم %"/>
+                            </div>
+                            <input type="text" id="promo-desc" class="w-full bg-background border border-outline-variant/40 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-primary text-on-surface" placeholder="الوصف (مثال: خصم 30% على كل الفاتورة)"/>
+                            <button id="btn-save-promo" class="w-full py-2.5 bg-primary text-on-primary font-bold rounded-xl text-sm hover:brightness-115 transition-all">تفعيل الكود</button>
+                        </div>
+
+                        <!-- Active Promo list -->
+                        <h4 class="font-bold text-xs text-on-surface-variant mb-2 mt-4">الكوبونات النشطة (${offers.length})</h4>
+                        <div class="space-y-3">
+                `;
+
+                offers.forEach((off, idx) => {
+                    html += `
+                        <div class="flex items-center justify-between p-3 bg-surface-container-low rounded-xl border border-outline-variant/10">
+                            <div class="text-right">
+                                <span class="bg-primary/20 text-primary border border-primary/20 px-2 py-0.5 rounded-lg text-xs font-bold font-mono">${off.code}</span>
+                                <span class="block text-xs text-on-surface-variant/80 mt-1">${off.desc}</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-emerald-500 text-xs font-bold font-mono">${off.discount}% off</span>
+                                <button data-promo-idx="${idx}" class="btn-delete-promo w-8 h-8 rounded-lg bg-error-container/10 text-error flex items-center justify-center hover:bg-error-container/20 transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]">close</span>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div></div>`;
+                container.innerHTML = html;
+
+                // Wire up Save Promo
+                const btnSave = container.querySelector('#btn-save-promo');
+                btnSave.addEventListener('click', () => {
+                    const code = container.querySelector('#promo-code').value.trim().toUpperCase();
+                    const discount = parseInt(container.querySelector('#promo-disc').value);
+                    const desc = container.querySelector('#promo-desc').value.trim() || `خصم ${discount}% على الطلبات`;
+
+                    if (!code || isNaN(discount)) {
+                        showToast('الرجاء تعبئة حقول الكود والنسبة ⚠️', 'warning');
+                        return;
+                    }
+
+                    offers.unshift({ code, discount, desc });
+                    localStorage.setItem('cloud_coffee_offers', JSON.stringify(offers));
+                    showToast(`تم تفعيل كود الخصم ${code} بنجاح! 🎫`, 'done');
+                    closeSheet();
+                });
+
+                // Wire up Delete Promo
+                container.querySelectorAll('.btn-delete-promo').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const idx = parseInt(this.getAttribute('data-promo-idx'));
+                        const deletedCode = offers[idx].code;
+                        offers.splice(idx, 1);
+                        localStorage.setItem('cloud_coffee_offers', JSON.stringify(offers));
+                        showToast(`تم تعطيل الكود ${deletedCode} 🗑️`, 'delete');
+                        closeSheet();
+                    });
+                });
+            });
+        });
+
+        // OPTION 3: Statistics Chart Content Injection
+        document.getElementById('opt-manage-stats').addEventListener('click', () => {
+            openSheet('الإحصائيات البيانية للكافيه 📈', (container) => {
+                const cafe = getCafeById(activeCafeId);
+                const stats = CAFE_STATS[activeCafeId] || CAFE_STATS['hodoo'];
+                
+                container.innerHTML = `
+                    <div class="space-y-6">
+                        <!-- Stat Summary Grid -->
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-surface-container-high border border-outline-variant/20 rounded-xl p-3.5 text-right">
+                                <span class="text-[10px] text-on-surface-variant/80 uppercase">متوسط حجم الفاتورة</span>
+                                <span class="block text-lg font-bold text-primary mt-1">16.4 ر.س</span>
+                            </div>
+                            <div class="bg-surface-container-high border border-outline-variant/20 rounded-xl p-3.5 text-right">
+                                <span class="text-[10px] text-on-surface-variant/80 uppercase">معدل التحويل للزبائن</span>
+                                <span class="block text-lg font-bold text-emerald-500 mt-1">34.6%</span>
+                            </div>
+                        </div>
+
+                        <!-- Graphical Progress Chart Bento -->
+                        <div class="bg-surface-container-high border border-outline-variant/30 rounded-2xl p-4.5">
+                            <h4 class="font-bold text-xs text-on-surface mb-4">توزيع المبيعات الأسبوعية</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between text-[11px] font-semibold mb-1">
+                                        <span>الأحد • القهوة الساخنة</span>
+                                        <span class="text-primary">45%</span>
+                                    </div>
+                                    <div class="w-full bg-background rounded-full h-2">
+                                        <div class="bg-primary h-2 rounded-full transition-all duration-1000" style="width: 45%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[11px] font-semibold mb-1">
+                                        <span>الاثنين • المشروبات الباردة</span>
+                                        <span class="text-primary">30%</span>
+                                    </div>
+                                    <div class="w-full bg-background rounded-full h-2">
+                                        <div class="bg-primary h-2 rounded-full transition-all duration-1000" style="width: 30%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[11px] font-semibold mb-1">
+                                        <span>الثلاثاء • الحلويات والسويتس</span>
+                                        <span class="text-primary">15%</span>
+                                    </div>
+                                    <div class="w-full bg-background rounded-full h-2">
+                                        <div class="bg-primary h-2 rounded-full transition-all duration-1000" style="width: 15%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[11px] font-semibold mb-1">
+                                        <span>الأربعاء • الساندوتشات والوجبات</span>
+                                        <span class="text-primary">10%</span>
+                                    </div>
+                                    <div class="w-full bg-background rounded-full h-2">
+                                        <div class="bg-primary h-2 rounded-full transition-all duration-1000" style="width: 10%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Info Alerts -->
+                        <div class="bg-primary/10 border border-primary/20 p-4 rounded-xl flex gap-3 text-right">
+                            <span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">insights</span>
+                            <p class="text-[11px] text-on-surface-variant leading-relaxed">
+                                <strong class="text-primary">نصيحة نمو ذكية:</strong> نلاحظ زيادة ممتازة في مبيعات المشروبات الباردة يوم الاثنين! نوصي بتفعيل عرض ترويجي مخصص للحلويات في هذا اليوم لزيادة متوسط الفاتورة بنسبة تصل لـ 15%.
+                            </p>
+                        </div>
+                    </div>
+                `;
+            });
+        });
+
+        // OPTION 4: Shop Settings Injection
+        document.getElementById('opt-manage-settings').addEventListener('click', () => {
+            openSheet('إعدادات وبيانات المحل ⚙️', (container) => {
+                const cafe = getCafeById(activeCafeId);
+                
+                container.innerHTML = `
+                    <div class="space-y-4">
+                        <!-- Toggle Status (Open/Closed) -->
+                        <div class="flex items-center justify-between p-4 bg-surface-container-high border border-outline-variant/30 rounded-2xl">
+                            <div class="text-right">
+                                <span class="block font-semibold text-sm text-on-surface">حالة العمل الحالية</span>
+                                <span class="block text-[10px] text-on-surface-variant mt-0.5">عند تعطيل هذا الخيار، سيظهر الكافيه للعملاء كمغلق مؤقتاً</span>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="chk-shop-status" class="sr-only peer" ${cafe.isOpen ? 'checked' : ''}>
+                                <div class="w-11 h-6 bg-outline-variant/50 rounded-full peer peer-checked:after:-translate-x-full after:content-[''] after:absolute after:top-0.5 after:right-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
+                            </label>
+                        </div>
+
+                        <!-- Fields updating phone & descriptions -->
+                        <div class="space-y-3 bg-surface-container-high border border-outline-variant/30 rounded-2xl p-4">
+                            <div>
+                                <label class="block text-[11px] text-on-surface-variant mb-1">رقم الاتصال المباشر</label>
+                                <input type="text" id="shop-phone" class="w-full bg-background border border-outline-variant/40 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-primary text-on-surface" value="${cafe.phone}"/>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] text-on-surface-variant mb-1">رقم الواتساب (بالصيغة الدولية)</label>
+                                <input type="text" id="shop-whatsapp" class="w-full bg-background border border-outline-variant/40 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-primary text-on-surface" value="${cafe.whatsapp}"/>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] text-on-surface-variant mb-1">وصف الكافيه التعريفي</label>
+                                <textarea id="shop-desc" rows="3" class="w-full bg-background border border-outline-variant/40 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-primary text-on-surface">${cafe.description}</textarea>
+                            </div>
+                        </div>
+
+                        <button id="btn-save-settings" class="w-full py-3 bg-emerald-600 text-white font-bold rounded-xl text-sm hover:bg-emerald-500 active:scale-98 transition-all">حفظ وتحديث الإعدادات</button>
+                    </div>
+                `;
+
+                // Wire up Settings Save Button
+                const btnSave = container.querySelector('#btn-save-settings');
+                btnSave.addEventListener('click', () => {
+                    const isOpen = container.querySelector('#chk-shop-status').checked;
+                    const phone = container.querySelector('#shop-phone').value.trim();
+                    const whatsapp = container.querySelector('#shop-whatsapp').value.trim();
+                    const desc = container.querySelector('#shop-desc').value.trim();
+
+                    if (!phone || !whatsapp) {
+                        showToast('الرجاء توفير رقم الاتصال والواتساب ⚠️', 'warning');
+                        return;
+                    }
+
+                    // Save back
+                    updateCafe(activeCafeId, {
+                        isOpen: isOpen,
+                        phone: phone,
+                        whatsapp: whatsapp,
+                        description: desc
+                    });
+
+                    // Update UI in current page
+                    if (activeCafeId === activeCafeId) {
+                        switchCafe(activeCafeId);
+                    }
+
+                    showToast('تم حفظ وتعميم إعدادات المحل بنجاح! 🌍⚙️', 'done');
+                    closeSheet();
+                });
+            });
+        });
+    });
+</script>
+</body>
+</html>

@@ -133,7 +133,7 @@
 <main class="mt-16">
     <!-- Shop Hero Section -->
     <section class="relative h-64 w-full">
-        <img alt="كوفي هدوء" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1200&auto=format&fit=crop"/>
+        <img id="cafe-hero-image" alt="كوفي" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1200&auto=format&fit=crop"/>
         <div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent"></div>
         <!-- Floating Back Button -->
         <a href="browse.html" class="absolute top-4 right-4 z-10 bg-surface-container/60 backdrop-blur-md p-2 rounded-lg text-on-surface hover:bg-surface-container transition-colors active:scale-95">
@@ -146,26 +146,26 @@
         <div class="bg-surface-container rounded-xl p-6 shadow-2xl border border-outline-variant/20">
             <div class="flex justify-between items-start mb-2">
                 <div>
-                    <h1 class="font-headline-xl text-headline-xl text-primary mb-1">كوفي هدوء</h1>
-                    <p class="font-body-md text-body-md text-on-surface-variant">قهوة مختصة • ساندوتشات • حلويات</p>
+                    <h1 id="cafe-name" class="font-headline-xl text-headline-xl text-primary mb-1">...</h1>
+                    <p id="cafe-description" class="font-body-md text-body-md text-on-surface-variant">...</p>
                 </div>
                 <div class="flex items-center gap-1 bg-primary/10 px-3 py-1 rounded-lg">
                     <span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                    <span class="font-label-sm text-label-sm text-primary">4.8 (250+)</span>
+                    <span id="cafe-rating" class="font-label-sm text-label-sm text-primary">...</span>
                 </div>
             </div>
             <div class="flex items-center gap-2 mb-6">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span class="font-label-sm text-label-sm text-emerald-500">مفتوح الآن</span>
+                <span id="cafe-status-dot" class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span id="cafe-status" class="font-label-sm text-label-sm text-emerald-500">...</span>
             </div>
             
             <!-- Action Buttons -->
             <div class="grid grid-cols-3 gap-3">
-                <button onclick="showToast('جاري الاتصال بكوفي هدوء 📞', 'call')" class="flex flex-col items-center justify-center gap-2 py-4 rounded-lg bg-surface-container-high border border-outline-variant/30 hover:bg-surface-variant transition-colors active:scale-95 duration-100">
+                <button id="btn-call" class="flex flex-col items-center justify-center gap-2 py-4 rounded-lg bg-surface-container-high border border-outline-variant/30 hover:bg-surface-variant transition-colors active:scale-95 duration-100">
                     <span class="material-symbols-outlined text-primary">call</span>
                     <span class="font-label-sm text-label-sm">اتصال</span>
                 </button>
-                <button onclick="showToast('جاري فتح محادثة الواتساب 💬', 'chat')" class="flex flex-col items-center justify-center gap-2 py-4 rounded-lg bg-surface-container-high border border-outline-variant/30 hover:bg-surface-variant transition-colors active:scale-95 duration-100">
+                <button id="btn-whatsapp" class="flex flex-col items-center justify-center gap-2 py-4 rounded-lg bg-surface-container-high border border-outline-variant/30 hover:bg-surface-variant transition-colors active:scale-95 duration-100">
                     <span class="material-symbols-outlined text-primary">chat</span>
                     <span class="font-label-sm text-label-sm">واتساب</span>
                 </button>
@@ -180,84 +180,20 @@
     <!-- Menu Categories -->
     <section class="mt-8 px-margin-mobile">
         <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">المنيو</h2>
-        <div class="flex gap-3 overflow-x-auto scroll-hide pb-2">
-            <button class="category-btn px-6 py-2 bg-primary text-on-primary rounded-lg font-label-sm text-label-sm whitespace-nowrap">القهوة</button>
-            <button onclick="showToast('عرض المشروبات الباردة 🍹', 'icecream')" class="category-btn px-6 py-2 bg-surface-container text-on-surface-variant rounded-lg font-label-sm text-label-sm border border-outline-variant/30 whitespace-nowrap">مشروبات باردة</button>
-            <button onclick="showToast('عرض الحلويات اللذيذة 🍰', 'cake')" class="category-btn px-6 py-2 bg-surface-container text-on-surface-variant rounded-lg font-label-sm text-label-sm border border-outline-variant/30 whitespace-nowrap">حلويات</button>
-            <button onclick="showToast('عرض الساندوتشات الطازجة 🥪', 'lunch_dining')" class="category-btn px-6 py-2 bg-surface-container text-on-surface-variant rounded-lg font-label-sm text-label-sm border border-outline-variant/30 whitespace-nowrap">ساندوتشات</button>
+        <div id="categories-container" class="flex gap-3 overflow-x-auto scroll-hide pb-2">
+            <button data-category="all" class="category-btn px-6 py-2 bg-primary text-on-primary rounded-lg font-label-sm text-label-sm whitespace-nowrap">الكل</button>
+            <button data-category="coffee" class="category-btn px-6 py-2 bg-surface-container text-on-surface-variant rounded-lg font-label-sm text-label-sm border border-outline-variant/30 whitespace-nowrap">القهوة</button>
+            <button data-category="cold" class="category-btn px-6 py-2 bg-surface-container text-on-surface-variant rounded-lg font-label-sm text-label-sm border border-outline-variant/30 whitespace-nowrap">مشروبات باردة</button>
+            <button data-category="sweet" class="category-btn px-6 py-2 bg-surface-container text-on-surface-variant rounded-lg font-label-sm text-label-sm border border-outline-variant/30 whitespace-nowrap">حلويات</button>
+            <button data-category="sandwich" class="category-btn px-6 py-2 bg-surface-container text-on-surface-variant rounded-lg font-label-sm text-label-sm border border-outline-variant/30 whitespace-nowrap">ساندوتشات</button>
         </div>
     </section>
 
     <!-- Menu Items Grid -->
-    <section class="mt-6 px-margin-mobile space-y-4">
-        <!-- Item 1 -->
-        <div class="flex items-center gap-4 bg-surface-container p-3 rounded-lg border border-outline-variant/10 hover:border-primary/40 transition-all group">
-            <div class="relative w-24 h-24 flex-shrink-0 overflow-hidden rounded-lg">
-                <img alt="اسبريسو" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" src="https://images.unsplash.com/photo-1510707577719-ee7c14d51633?q=80&w=200&auto=format&fit=crop"/>
-            </div>
-            <div class="flex-grow">
-                <h3 class="font-headline-lg text-[20px] text-on-surface">اسبريسو</h3>
-                <p class="font-body-md text-body-md text-on-surface-variant">طعم غني ومركز</p>
-                <div class="mt-2 flex justify-between items-center">
-                    <span class="font-headline-lg text-[20px] text-primary">10 ريال</span>
-                    <button class="w-8 h-8 rounded-lg bg-primary/20 text-primary flex items-center justify-center hover:bg-primary/30 transition-colors active:scale-90" data-add-to-cart data-item-id="espresso" data-item-name="اسبريسو" data-item-price="10">
-                        <span class="material-symbols-outlined text-[18px]">add</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Item 2 -->
-        <div class="flex items-center gap-4 bg-surface-container p-3 rounded-lg border border-outline-variant/10 hover:border-primary/40 transition-all group">
-            <div class="relative w-24 h-24 flex-shrink-0 overflow-hidden rounded-lg">
-                <img alt="لاتيه" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" src="https://images.unsplash.com/photo-1570968915860-54d5c301fc9f?q=80&w=200&auto=format&fit=crop"/>
-            </div>
-            <div class="flex-grow">
-                <h3 class="font-headline-lg text-[20px] text-on-surface">لاتيه</h3>
-                <p class="font-body-md text-body-md text-on-surface-variant">مزيج الحليب والقهوة</p>
-                <div class="mt-2 flex justify-between items-center">
-                    <span class="font-headline-lg text-[20px] text-primary">14 ريال</span>
-                    <button class="w-8 h-8 rounded-lg bg-primary/20 text-primary flex items-center justify-center hover:bg-primary/30 transition-colors active:scale-90" data-add-to-cart data-item-id="latte" data-item-name="لاتيه" data-item-price="14">
-                        <span class="material-symbols-outlined text-[18px]">add</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Item 3 -->
-        <div class="flex items-center gap-4 bg-surface-container p-3 rounded-lg border border-outline-variant/10 hover:border-primary/40 transition-all group">
-            <div class="relative w-24 h-24 flex-shrink-0 overflow-hidden rounded-lg">
-                <img alt="كابتشينو" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=200&auto=format&fit=crop"/>
-            </div>
-            <div class="flex-grow">
-                <h3 class="font-headline-lg text-[20px] text-on-surface">كابتشينو</h3>
-                <p class="font-body-md text-body-md text-on-surface-variant">رغوة كثيفة وحليب مبخر</p>
-                <div class="mt-2 flex justify-between items-center">
-                    <span class="font-headline-lg text-[20px] text-primary">14 ريال</span>
-                    <button class="w-8 h-8 rounded-lg bg-primary/20 text-primary flex items-center justify-center hover:bg-primary/30 transition-colors active:scale-90" data-add-to-cart data-item-id="cappuccino" data-item-name="كابتشينو" data-item-price="14">
-                        <span class="material-symbols-outlined text-[18px]">add</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Item 4 -->
-        <div class="flex items-center gap-4 bg-surface-container p-3 rounded-lg border border-outline-variant/10 hover:border-primary/40 transition-all group">
-            <div class="relative w-24 h-24 flex-shrink-0 overflow-hidden rounded-lg">
-                <img alt="فلتر" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=200&auto=format&fit=crop"/>
-            </div>
-            <div class="flex-grow">
-                <h3 class="font-headline-lg text-[20px] text-on-surface">فلتر</h3>
-                <p class="font-body-md text-body-md text-on-surface-variant">محاصيل مختارة بعناية</p>
-                <div class="mt-2 flex justify-between items-center">
-                    <span class="font-headline-lg text-[20px] text-primary">12 ريال</span>
-                    <button class="w-8 h-8 rounded-lg bg-primary/20 text-primary flex items-center justify-center hover:bg-primary/30 transition-colors active:scale-90" data-add-to-cart data-item-id="filter" data-item-name="فلتر" data-item-price="12">
-                        <span class="material-symbols-outlined text-[18px]">add</span>
-                    </button>
-                </div>
-            </div>
-        </div>
+    <section id="menu-items-container" class="mt-6 px-margin-mobile space-y-4">
+        <!-- Rendered dynamically via JS -->
     </section>
+</main>
 </main>
 
 <!-- Bottom Navigation Bar -->
@@ -311,6 +247,10 @@
                 <span class="material-symbols-outlined">settings</span>
                 <span>إعدادات الحساب</span>
             </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-primary bg-primary/10 border border-primary/20 hover:bg-primary/20 transition-all font-semibold" href="cafe-admin.html">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span>إدارة كافيهي (لوحة الملاك)</span>
+            </a>
             <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface hover:bg-surface-variant transition-all" href="index.html">
                 <span class="material-symbols-outlined">info</span>
                 <span>عن المنصة</span>
@@ -334,50 +274,203 @@
 <script src="shared.js"></script>
 
 <script>
-    // Toggle category active state
-    const catButtons = document.querySelectorAll('.category-btn');
-    catButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            catButtons.forEach(b => {
-                b.classList.remove('bg-primary', 'text-on-primary');
-                b.classList.add('bg-surface-container', 'text-on-surface-variant', 'border', 'border-outline-variant/30');
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. Get Cafe ID from query params
+        const urlParams = new URLSearchParams(window.location.search);
+        let cafeId = urlParams.get('id') || 'hodoo';
+        
+        // Fetch cafe data from shared.js getCafeById
+        const cafe = getCafeById(cafeId);
+        
+        // 2. Populate shop header details
+        document.getElementById('cafe-hero-image').src = cafe.image;
+        document.getElementById('cafe-hero-image').alt = cafe.name;
+        document.title = `Cloud Coffee | ${cafe.name} - القائمة`;
+        document.getElementById('cafe-name').innerText = cafe.name;
+        document.getElementById('cafe-description').innerText = cafe.description;
+        document.getElementById('cafe-rating').innerText = `${cafe.rating} (${cafe.reviews})`;
+        
+        const statusText = document.getElementById('cafe-status');
+        const statusDot = document.getElementById('cafe-status-dot');
+        if (cafe.isOpen) {
+            statusText.innerText = 'مفتوح الآن';
+            statusText.className = 'font-label-sm text-label-sm text-emerald-500';
+            statusDot.className = 'w-2 h-2 rounded-full bg-emerald-500 animate-pulse';
+        } else {
+            statusText.innerText = 'مغلق مؤقتاً';
+            statusText.className = 'font-label-sm text-label-sm text-rose-500';
+            statusDot.className = 'w-2 h-2 rounded-full bg-rose-500';
+        }
+        
+        // 3. Quick action buttons setup
+        document.getElementById('btn-call').onclick = () => {
+            showToast(`جاري الاتصال بـ ${cafe.name} 📞`, 'call');
+            setTimeout(() => {
+                window.location.href = `tel:${cafe.phone}`;
+            }, 1000);
+        };
+        document.getElementById('btn-whatsapp').onclick = () => {
+            showToast('جاري فتح محادثة الواتساب 💬', 'chat');
+            setTimeout(() => {
+                window.open(`https://wa.me/${cafe.whatsapp.replace(/\+/g, '').replace(/ /g, '')}`, '_blank');
+            }, 1000);
+        };
+        
+        // 4. GPS and Walking directions setup
+        let userLat = 24.7136; // Default Center
+        let userLng = 46.6753;
+        
+        function updateLocationLink() {
+            const cafeLat = userLat + cafe.latOffset;
+            const cafeLng = userLng + cafe.lngOffset;
+            const locationLink = document.getElementById('location-link');
+            if (locationLink) {
+                locationLink.href = `navigation.html?userLat=${userLat}&userLng=${userLng}&cafeLat=${cafeLat}&cafeLng=${cafeLng}&name=${encodeURIComponent(cafe.name)}&distance=${encodeURIComponent(cafe.distance)}&time=${encodeURIComponent(cafe.time)}`;
+            }
+        }
+        
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    userLat = position.coords.latitude;
+                    userLng = position.coords.longitude;
+                    updateLocationLink();
+                },
+                (error) => {
+                    console.warn('Geolocation failed or denied in menu page. Using defaults.', error);
+                    updateLocationLink();
+                },
+                { enableHighAccuracy: true, timeout: 5000 }
+            );
+        } else {
+            updateLocationLink();
+        }
+        
+        // 5. Render Menu Items based on Category Filter
+        const itemsContainer = document.getElementById('menu-items-container');
+        
+        function renderMenuItems(category = 'all') {
+            // Smoothly fade out before re-rendering
+            itemsContainer.style.opacity = '0';
+            itemsContainer.style.transform = 'translateY(10px)';
+            itemsContainer.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+            
+            setTimeout(() => {
+                itemsContainer.innerHTML = '';
+                
+                const filteredItems = category === 'all' 
+                    ? cafe.menuItems 
+                    : cafe.menuItems.filter(item => item.category === category);
+                
+                if (filteredItems.length === 0) {
+                    itemsContainer.innerHTML = `
+                        <div class="text-center py-12 text-on-surface-variant/60">
+                            <span class="material-symbols-outlined text-[48px] mb-2 opacity-50">layers_clear</span>
+                            <p class="font-medium text-sm">عذراً، لا توجد منتجات متوفرة حالياً في هذا القسم.</p>
+                        </div>
+                    `;
+                } else {
+                    filteredItems.forEach((item, index) => {
+                        const itemCard = document.createElement('div');
+                        itemCard.className = 'flex items-center gap-4 bg-surface-container p-3 rounded-lg border border-outline-variant/10 hover:border-primary/40 transition-all group duration-300 opacity-0 transform translate-y-3';
+                        itemCard.style.animation = `fadeInUp 0.3s ease forwards ${index * 0.05}s`;
+                        
+                        itemCard.innerHTML = `
+                            <div class="relative w-24 h-24 flex-shrink-0 overflow-hidden rounded-lg">
+                                <img alt="${item.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" src="${item.image}"/>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="font-headline-lg text-[20px] text-on-surface font-bold">${item.name}</h3>
+                                <p class="font-body-md text-sm text-on-surface-variant opacity-80 mt-0.5 line-clamp-1">${item.description}</p>
+                                <div class="mt-2 flex justify-between items-center">
+                                    <span class="font-headline-lg text-lg text-primary font-bold">${item.price} ر.س</span>
+                                    <button class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center hover:bg-primary/20 transition-all active:scale-90" data-add-to-cart data-item-id="${item.id}" data-item-name="${item.name}" data-item-price="${item.price}">
+                                        <span class="material-symbols-outlined text-[20px]">add</span>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        itemsContainer.appendChild(itemCard);
+                    });
+                }
+                
+                // Fade back in
+                itemsContainer.style.opacity = '1';
+                itemsContainer.style.transform = 'translateY(0)';
+            }, 200);
+        }
+        
+        // Add dynamic fadeInUp keyframes stylesheet if not present
+        if (!document.getElementById('fadeInUpStyle')) {
+            const style = document.createElement('style');
+            style.id = 'fadeInUpStyle';
+            style.textContent = `
+                @keyframes fadeInUp {
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // Initial render
+        renderMenuItems('all');
+        
+        // 6. Hookup Category Chips Filtering
+        const catButtons = document.querySelectorAll('.category-btn');
+        catButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active classes
+                catButtons.forEach(b => {
+                    b.classList.remove('bg-primary', 'text-on-primary');
+                    b.classList.add('bg-surface-container', 'text-on-surface-variant', 'border', 'border-outline-variant/30');
+                });
+                
+                // Add active classes to clicked
+                btn.classList.add('bg-primary', 'text-on-primary');
+                btn.classList.remove('bg-surface-container', 'text-on-surface-variant', 'border', 'border-outline-variant/30');
+                
+                const selectedCat = btn.getAttribute('data-category');
+                
+                // Show dynamic category toast
+                const toastLabels = {
+                    'all': 'عرض كافة المنتجات ☕',
+                    'coffee': 'عرض مشروبات القهوة الساخنة ☕',
+                    'cold': 'عرض المشروبات الباردة والمنعشة 🍹',
+                    'sweet': 'عرض الحلويات اللذيذة 🍰',
+                    'sandwich': 'عرض الساندوتشات الطازجة 🥪'
+                };
+                const toastIcons = {
+                    'all': 'menu_book',
+                    'coffee': 'coffee',
+                    'cold': 'icecream',
+                    'sweet': 'cake',
+                    'sandwich': 'lunch_dining'
+                };
+                showToast(toastLabels[selectedCat], toastIcons[selectedCat]);
+                
+                // Trigger dynamic filtering
+                renderMenuItems(selectedCat);
             });
-            btn.classList.add('bg-primary', 'text-on-primary');
-            btn.classList.remove('bg-surface-container', 'text-on-surface-variant', 'border', 'border-outline-variant/30');
+        });
+        
+        // 7. Event delegation for dynamically rendered add to cart buttons
+        itemsContainer.addEventListener('click', (e) => {
+            const btn = e.target.closest('[data-add-to-cart]');
+            if (btn) {
+                const itemId = btn.getAttribute('data-item-id');
+                const itemName = btn.getAttribute('data-item-name');
+                const itemPrice = parseFloat(btn.getAttribute('data-item-price'));
+                addToCart({
+                    id: itemId,
+                    name: itemName,
+                    price: itemPrice
+                });
+            }
         });
     });
-
-    // Dynamically fetch location and prepare premium directions link for "كوفي هدوء"
-    let userLat = 24.7136; // Default Riyadh
-    let userLng = 46.6753;
-    const cafeLatOffset = 0.0025; // "كوفي هدوء" offsets
-    const cafeLngOffset = -0.0020;
-
-    function updateLocationLink() {
-        const cafeLat = userLat + cafeLatOffset;
-        const cafeLng = userLng + cafeLngOffset;
-        const locationLink = document.getElementById('location-link');
-        if (locationLink) {
-            locationLink.href = `navigation.html?userLat=${userLat}&userLng=${userLng}&cafeLat=${cafeLat}&cafeLng=${cafeLng}&name=${encodeURIComponent('كوفي هدوء')}&distance=${encodeURIComponent('250 م')}&time=${encodeURIComponent('5 دقائق مشي')}`;
-        }
-    }
-
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                userLat = position.coords.latitude;
-                userLng = position.coords.longitude;
-                updateLocationLink();
-            },
-            (error) => {
-                console.warn('Geolocation failed or denied in menu page. Using defaults.', error);
-                updateLocationLink();
-            },
-            { enableHighAccuracy: true, timeout: 5000 }
-        );
-    } else {
-        updateLocationLink();
-    }
 </script>
 </body>
 </html>

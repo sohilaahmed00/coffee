@@ -353,6 +353,10 @@
                 <span class="material-symbols-outlined">settings</span>
                 <span>إعدادات الحساب</span>
             </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-primary bg-primary/10 border border-primary/20 hover:bg-primary/20 transition-all font-semibold" href="cafe-admin.html">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span>إدارة كافيهي (لوحة الملاك)</span>
+            </a>
             <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface hover:bg-surface-variant transition-all" href="index.html">
                 <span class="material-symbols-outlined">info</span>
                 <span>عن المنصة</span>
@@ -382,40 +386,52 @@
     // providing a realistic navigation experience anywhere in the world!
     const PREDEFINED_CAFES = [
         {
-            id: "hadou",
+            id: "hodoo",
             name: "كوفي هدوء",
             latOffset: 0.0025,   // ~250m North
             lngOffset: -0.0020,  // ~200m West
             rating: 4.8,
             distance: "250 م",
             time: "5 دقائق مشي",
-            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDsjVWiof2QdP8HAICBVM5CW0ltGw-mKi3nJzfHK22q41IPAhEK5TvQF6HwlyZrr0PeKO-oiNGzwYA6fGBl7t1VClnwXAH_KDQ3Enyl9yQJcZsZwD0wtFRQx2CKU801KJ8HFxVrfnRgmjGzdAjlFD3Rs8X0wTaENqT3GirdcpdbvvAnsCaOSg5tB8OzNUZG4AYl59OjN2x4k7a6AWty84e82yos0NN6h70lnogkxa8O5ikkQJO1hHDskGTIVrFkyt-YuYNwvbhhWa4v",
+            image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
             tag: "سحابي",
-            about: "كوفي سحابي يتميز بالهدوء التام، القهوة المختصة الفاخرة، والدراسة أو العمل المريح."
+            about: "تجربة قهوة مختصة فريدة في أجواء هادئة وتصميم عصري يبعث على الراحة."
         },
         {
-            id: "zawiya",
-            name: "كوفي زاوية",
+            id: "artisan",
+            name: "كوفي أرتيزان",
             latOffset: -0.0035,  // ~350m South
-            lngOffset: 0.0040,   // ~400m East
-            rating: 4.5,
-            distance: "410 م",
+            lngOffset: 0.0045,   // ~450m East
+            rating: 4.9,
+            distance: "800 م",
             time: "8 دقائق مشي",
-            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBws7CXRRIPP4F1ID1dga-9_S9bsgNZmxVBceJvStqlw6AU1gWncUTGH0qdRrIZOrJof3DIN2WykfS69MqO2XMbmxJOQYuZ-0rB3NH8HOo40bUfRPQeHZlZ3kiAu7S8DInF5NMNXhtEuEi3-O1nEeJGls5Uefx_79cvJj6G_sPCP66yBm1zBHUvQ5PMeqccGaEEbp_IcnH8buhwHu3hItrkUqNgluOG4tnyykLq4f7FfkKypVeY1zDaGq20gDtr_crIMe35qOgRWtNC",
+            image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop",
             tag: "مفتوح الآن",
-            about: "زاوية هادئة مخصصة لعشاق الإسبريسو الفاخر والكرواسون الساخن."
+            about: "لعشاق القهوة المختصة، نقدم لكم أفضل أنواع البن المحمص يدوياً بكل حب."
         },
         {
-            id: "sahab",
-            name: "كوفي سحاب",
-            latOffset: 0.0045,   // ~450m North
-            lngOffset: 0.0035,   // ~350m East
-            rating: 4.9,
-            distance: "550 م",
-            time: "7 دقائق مشي",
-            image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=600&auto=format&fit=crop",
-            tag: "رائج",
-            about: "ملاذ قهوة سحابية مميزة توفر تشكيلة استثنائية من المخبوزات والقهوة الباردة المبتكرة."
+            id: "night",
+            name: "كوفي نايت",
+            latOffset: 0.0050,   // ~500m North
+            lngOffset: 0.0060,   // ~600m East
+            rating: 4.6,
+            distance: "1.2 كم",
+            time: "15 دقيقة مشي",
+            image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+            tag: "مسائي رائع",
+            about: "وجهتك المثالية للعمل أو الدراسة في ساعات المساء المتأخرة مع كوب من القهوة الدافئة."
+        },
+        {
+            id: "corner",
+            name: "ركن القهوة",
+            latOffset: -0.0040,  // ~400m South
+            lngOffset: -0.0035,  // ~350m West
+            rating: 4.7,
+            distance: "2.5 كم",
+            time: "30 دقيقة مشي",
+            image: "https://images.unsplash.com/photo-1453614512568-c4024d13c247?q=80&w=800&auto=format&fit=crop",
+            tag: "تراثي خشبي",
+            about: "تصاميم خشبية دافئة وتشكيلة واسعة من الحلويات الطازجة التي تناسب قهوتك العربية."
         }
     ];
 
@@ -668,7 +684,7 @@
                         <span class="material-symbols-outlined text-[20px]">navigation</span>
                         ابدأ الاتجاهات
                     </a>
-                    <a href="menu.html" class="bg-surface-variant text-on-surface border border-outline-variant/30 h-12 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-surface-variant/80 active:scale-95 transition-all text-center">
+                    <a href="menu.html?id=${cafe.id}" class="bg-surface-variant text-on-surface border border-outline-variant/30 h-12 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-surface-variant/80 active:scale-95 transition-all text-center">
                         <span class="material-symbols-outlined text-[20px]">coffee_maker</span>
                         طلب المنتجات
                     </a>
