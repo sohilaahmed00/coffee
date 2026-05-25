@@ -114,8 +114,6 @@
         h2,
         h3 {
             font-family: 'Tajawal', sans-serif;
-            ,
-            serif;
         }
 
         .material-symbols-outlined {
@@ -564,16 +562,96 @@
                 }
             });
 
-            // Bottom Sheet Pull Bar
+            // Bottom Sheet Pull Bar - Drag & Swipe gestures
             let sheet = document.getElementById('bottom-sheet');
-            sheet.querySelector('.pull-bar').addEventListener('click', () => {
-                if (!isExpanded) {
-                    sheet.style.height = '75%';
-                } else {
-                    sheet.style.height = '320px';
+            let pullBar = sheet.querySelector('.pull-bar');
+            let startY = 0;
+            let startHeight = 0;
+            let isDragging = false;
+            let hasDragged = false;
+            let clickThreshold = 5;
+
+            function getY(e) {
+                return e.touches ? e.touches[0].clientY : e.clientY;
+            }
+
+            function dragStart(e) {
+                isDragging = true;
+                hasDragged = false;
+                startY = getY(e);
+                startHeight = sheet.offsetHeight;
+                
+                sheet.style.transition = 'none';
+                sheet.style.cursor = 'grabbing';
+            }
+
+            function dragMove(e) {
+                if (!isDragging) return;
+                let currentY = getY(e);
+                let deltaY = startY - currentY; // Positive = Dragged Up
+                
+                if (Math.abs(deltaY) > clickThreshold) {
+                    hasDragged = true;
                 }
-                isExpanded = !isExpanded;
-            });
+                
+                let newHeight = startHeight + deltaY;
+                let maxHeight = window.innerHeight * 0.95;
+                let minHeight = 150;
+                
+                if (newHeight > maxHeight) newHeight = maxHeight;
+                if (newHeight < minHeight) newHeight = minHeight;
+                
+                sheet.style.height = `${newHeight}px`;
+                
+                // Prevent page scroll when swiping sheet on mobile
+                if (e.cancelable) {
+                    e.preventDefault();
+                }
+            }
+
+            function dragEnd(e) {
+                if (!isDragging) return;
+                isDragging = false;
+                
+                sheet.style.transition = 'height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15)';
+                sheet.style.cursor = 'grab';
+                
+                let isCafeFocused = sheet.innerHTML.includes('العودة للقائمة');
+                let collapsedHeight = window.innerWidth >= 768 ? 400 : (isCafeFocused ? 360 : 320);
+                
+                if (!hasDragged) {
+                    // Simple click toggle
+                    if (!isExpanded) {
+                        sheet.style.height = '75%';
+                        isExpanded = true;
+                    } else {
+                        sheet.style.height = `${collapsedHeight}px`;
+                        isExpanded = false;
+                    }
+                } else {
+                    // Snapping based on drag position
+                    let currentHeight = sheet.offsetHeight;
+                    if (currentHeight > (collapsedHeight + 80)) {
+                        // Snap to Expanded
+                        sheet.style.height = '75%';
+                        isExpanded = true;
+                    } else {
+                        // Snap to Collapsed
+                        sheet.style.height = `${collapsedHeight}px`;
+                        isExpanded = false;
+                    }
+                }
+            }
+
+            // Touch event listeners
+            pullBar.addEventListener('touchstart', dragStart, { passive: true });
+            window.addEventListener('touchmove', dragMove, { passive: false });
+            window.addEventListener('touchend', dragEnd);
+
+            // Mouse event listeners
+            pullBar.addEventListener('mousedown', dragStart);
+            window.addEventListener('mousemove', dragMove);
+            window.addEventListener('mouseup', dragEnd);
         });
 
         // --- 4. MAP AND MARKERS SETUP ---
@@ -586,7 +664,7 @@
                 userMarker.setLatLng([userLat, userLng]);
             } else {
                 userMarker = L.marker([userLat, userLng], { icon: userIcon }).addTo(map);
-                userMarker.bindPopup(`<strong class="text-surface font-bold text-center block text-sm">موقعك الحالي</strong>`);
+                userMarker.bindPopup(`<strong class="text-white font-bold text-center block text-sm">موقعك الحالي</strong>`);
             }
 
             // 3. Calculate absolute coordinates for predefined cafes based on offset
@@ -604,7 +682,7 @@
                 const marker = L.marker([cafe.lat, cafe.lng], { icon: cafeIcon }).addTo(map);
 
                 // Standard Popup text
-                marker.bindPopup(`<strong class="text-surface font-bold text-center block text-sm">${cafe.name}</strong>`);
+                marker.bindPopup(`<strong class="text-white font-bold text-center block text-sm">${cafe.name}</strong>`);
                 marker.cafeId = cafe.id;
 
                 // Marker Tap Event

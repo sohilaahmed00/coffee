@@ -219,6 +219,30 @@
             background: none !important;
             border: none !important;
         }
+
+        /* Custom Leaflet Popup styling */
+        .leaflet-popup-content-wrapper {
+            background: #221f1d !important;
+            color: #e8e1dd !important;
+            border: 1px solid rgba(155, 143, 131, 0.2) !important;
+            border-radius: 12px !important;
+            padding: 4px !important;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        .leaflet-popup-tip {
+            background: #221f1d !important;
+            border: 1px solid rgba(155, 143, 131, 0.2) !important;
+        }
+
+        .leaflet-popup-close-button {
+            color: #beb3ad !important;
+            padding: 8px !important;
+        }
+
+        .leaflet-popup-close-button:hover {
+            color: #e5c095 !important;
+        }
     </style>
 </head>
 
@@ -473,11 +497,11 @@
 
             // Plot User Marker
             userMarker = L.marker([userLat, userLng], { icon: userIcon }).addTo(map);
-            userMarker.bindPopup(`<strong class="text-surface font-bold text-center block text-sm">موقعك الحالي</strong>`);
+            userMarker.bindPopup(`<strong class="text-white font-bold text-center block text-sm">موقعك الحالي</strong>`);
 
             // Plot Cafe Marker
             cafeMarker = L.marker([cafeLat, cafeLng], { icon: cafeIcon }).addTo(map);
-            cafeMarker.bindPopup(`<strong class="text-surface font-bold text-center block text-sm">${cafeName}</strong>`);
+            cafeMarker.bindPopup(`<strong class="text-white font-bold text-center block text-sm">${cafeName}</strong>`);
 
             // Get walking street routing coordinates from OSRM public API
             fetchRoute();
