@@ -1,109 +1,122 @@
 <!DOCTYPE html>
-<html class="dark" dir="rtl" lang="ar">
+<html dir="rtl" lang="ar">
+
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Cloud Coffee - مستكشف الخريطة</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&amp;display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
     <!-- Leaflet.js mapping library for interactive live maps -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <!-- Shared Tailwind Configuration -->
     <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "on-secondary-container": "#beb3ad",
-                    "surface-bright": "#3c3936",
-                    "tertiary-container": "#a59a92",
-                    "surface-variant": "#373432",
-                    "surface": "#151311",
-                    "on-secondary-fixed": "#201a17",
-                    "primary-container": "#b8966e",
-                    "inverse-primary": "#755936",
-                    "surface-container-highest": "#373432",
-                    "on-tertiary-fixed": "#211a15",
-                    "surface-dim": "#151311",
-                    "surface-container-lowest": "#100e0c",
-                    "on-error": "#690005",
-                    "on-primary-fixed": "#2a1700",
-                    "secondary": "#cfc4be",
-                    "background": "#151311",
-                    "inverse-surface": "#e8e1dd",
-                    "primary": "#e5c095",
-                    "inverse-on-surface": "#33302d",
-                    "error-container": "#93000a",
-                    "on-primary": "#422c0d",
-                    "on-surface-variant": "#d2c4b8",
-                    "on-tertiary-fixed-variant": "#4e453f",
-                    "outline": "#9b8f83",
-                    "surface-container-high": "#2c2927",
-                    "surface-container": "#221f1d",
-                    "tertiary-fixed": "#eee0d7",
-                    "on-primary-fixed-variant": "#5b4221",
-                    "on-surface": "#e8e1dd",
-                    "surface-container-low": "#1d1b19",
-                    "tertiary-fixed-dim": "#d1c4bc",
-                    "on-secondary": "#362f2b",
-                    "error": "#ffb4ab",
-                    "on-error-container": "#ffdad6",
-                    "on-background": "#e8e1dd",
-                    "tertiary": "#d1c4bc",
-                    "on-primary-container": "#462f10",
-                    "primary-fixed": "#ffddb7",
-                    "outline-variant": "#4e453c",
-                    "secondary-fixed-dim": "#cfc4be",
-                    "secondary-container": "#4d4541",
-                    "on-tertiary-container": "#3a322c",
-                    "secondary-fixed": "#ece0da",
-                    "primary-fixed-dim": "#e5c095",
-                    "on-secondary-fixed-variant": "#4d4541",
-                    "surface-tint": "#e5c095",
-                    "on-tertiary": "#362f29"
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#beb3ad",
+                        "surface-bright": "#3c3936",
+                        "tertiary-container": "#a59a92",
+                        "surface-variant": "#373432",
+                        "surface": "#151311",
+                        "on-secondary-fixed": "#201a17",
+                        "primary-container": "#b8966e",
+                        "inverse-primary": "#755936",
+                        "surface-container-highest": "#373432",
+                        "on-tertiary-fixed": "#211a15",
+                        "surface-dim": "#151311",
+                        "surface-container-lowest": "#100e0c",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#2a1700",
+                        "secondary": "#cfc4be",
+                        "background": "#151311",
+                        "inverse-surface": "#e8e1dd",
+                        "primary": "#e5c095",
+                        "inverse-on-surface": "#33302d",
+                        "error-container": "#93000a",
+                        "on-primary": "#422c0d",
+                        "on-surface-variant": "#d2c4b8",
+                        "on-tertiary-fixed-variant": "#4e453f",
+                        "outline": "#9b8f83",
+                        "surface-container-high": "#2c2927",
+                        "surface-container": "#221f1d",
+                        "tertiary-fixed": "#eee0d7",
+                        "on-primary-fixed-variant": "#5b4221",
+                        "on-surface": "#e8e1dd",
+                        "surface-container-low": "#1d1b19",
+                        "tertiary-fixed-dim": "#d1c4bc",
+                        "on-secondary": "#362f2b",
+                        "error": "#ffb4ab",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#e8e1dd",
+                        "tertiary": "#d1c4bc",
+                        "on-primary-container": "#462f10",
+                        "primary-fixed": "#ffddb7",
+                        "outline-variant": "#4e453c",
+                        "secondary-fixed-dim": "#cfc4be",
+                        "secondary-container": "#4d4541",
+                        "on-tertiary-container": "#3a322c",
+                        "secondary-fixed": "#ece0da",
+                        "primary-fixed-dim": "#e5c095",
+                        "on-secondary-fixed-variant": "#4d4541",
+                        "surface-tint": "#e5c095",
+                        "on-tertiary": "#362f29"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max-width-content": "1200px",
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "gutter-desktop": "24px",
+                        "gutter-mobile": "16px",
+                        "margin-desktop": "auto"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Tajawal", "sans-serif"],
+                        "headline-lg": ["Tajawal", "sans-serif"],
+                        "headline-lg-mobile": ["Tajawal", "sans-serif"],
+                        "body-md": ["Tajawal", "sans-serif"],
+                        "label-sm": ["Tajawal", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["Tajawal", "sans-serif"],
+                        "headline-lg": ["Tajawal", "sans-serif"],
+                        "headline-lg-mobile": ["Tajawal", "sans-serif"],
+                        "body-md": ["Tajawal", "sans-serif"],
+                        "label-sm": ["Tajawal", "sans-serif"]
+                    }
+                },
             },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
-            },
-            "spacing": {
-                    "max-width-content": "1200px",
-                    "margin-mobile": "20px",
-                    "unit": "8px",
-                    "gutter-desktop": "24px",
-                    "gutter-mobile": "16px",
-                    "margin-desktop": "auto"
-            },
-            "fontFamily": {
-                    "headline-xl": ["Tajawal", "sans-serif"],
-                    "headline-lg": ["Tajawal", "sans-serif"],
-                    "headline-lg-mobile": ["Tajawal", "sans-serif"],
-                    "body-md": ["Tajawal", "sans-serif"],
-                    "label-sm": ["Tajawal", "sans-serif"]
-            },
-            "fontSize": {
-                    "headline-xl": ["Tajawal", "sans-serif"],
-                    "headline-lg": ["Tajawal", "sans-serif"],
-                    "headline-lg-mobile": ["Tajawal", "sans-serif"],
-                    "body-md": ["Tajawal", "sans-serif"],
-                    "label-sm": ["Tajawal", "sans-serif"]
-            }
-          },
-        },
-      }
+        }
     </script>
     <style>
         body {
-            background-color: #151311;
+            background-color: #f7f7f8;
             font-family: 'Tajawal', sans-serif;
             overflow: hidden;
         }
-        h1, h2, h3 { font-family: 'Tajawal', sans-serif;, serif; }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Tajawal', sans-serif;
+            ,
+            serif;
+        }
 
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -120,9 +133,11 @@
         ::-webkit-scrollbar {
             width: 4px;
         }
+
         ::-webkit-scrollbar-track {
-            background: #151311;
+            background: #f3f4f6;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #b8966e;
             border-radius: 10px;
@@ -130,22 +145,41 @@
 
         /* Map Marker Animation */
         @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 1; }
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
+
         .marker-pulse {
             animation: pulse 2s infinite ease-in-out;
         }
 
         /* Custom Leaflet Dark Mode & Gold Adjustments */
         #map {
-            background-color: #151311;
+            background-color: #eef2f6;
         }
+
         .leaflet-container {
-            background: #151311 !important;
+            background: #eef2f6 !important;
             font-family: 'Tajawal', sans-serif !important;
         }
+
+        /* Ensure Leaflet controls sit above the app header/search and bottom nav */
+        .leaflet-control {
+            z-index: 55 !important;
+        }
+
         /* Style Leaflet controls to look gold and dark */
         .leaflet-bar {
             border: 1px solid rgba(155, 143, 131, 0.15) !important;
@@ -153,19 +187,24 @@
             border-radius: 8px !important;
             overflow: hidden;
         }
+
         .leaflet-bar a {
             background-color: #221f1d !important;
             color: #e5c095 !important;
             border-bottom: 1px solid rgba(155, 143, 131, 0.1) !important;
             transition: all 0.2s ease;
         }
+
         .leaflet-bar a:hover {
             background-color: #373432 !important;
             color: #ffddb7 !important;
         }
-        .leaflet-control-zoom-in, .leaflet-control-zoom-out {
+
+        .leaflet-control-zoom-in,
+        .leaflet-control-zoom-out {
             font-weight: bold !important;
         }
+
         .leaflet-control-attribution {
             background: rgba(21, 19, 17, 0.8) !important;
             color: #9b8f83 !important;
@@ -173,13 +212,16 @@
             border-radius: 4px;
             padding: 2px 6px !important;
         }
+
         .leaflet-control-attribution a {
             color: #e5c095 !important;
         }
+
         /* Custom User Location Glow */
         .user-gps-pulse {
             position: relative;
         }
+
         .user-gps-pulse::after {
             content: '';
             width: 32px;
@@ -192,10 +234,19 @@
             animation: user-ping 2s infinite ease-out;
             box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
         }
+
         @keyframes user-ping {
-            0% { transform: scale(0.5); opacity: 1; }
-            100% { transform: scale(2.2); opacity: 0; }
+            0% {
+                transform: scale(0.5);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(2.2);
+                opacity: 0;
+            }
         }
+
         /* Custom Leaflet Popup styling */
         .leaflet-popup-content-wrapper {
             background: #221f1d !important;
@@ -205,17 +256,21 @@
             padding: 4px !important;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5) !important;
         }
+
         .leaflet-popup-tip {
             background: #221f1d !important;
             border: 1px solid rgba(155, 143, 131, 0.2) !important;
         }
+
         .leaflet-popup-close-button {
             color: #beb3ad !important;
             padding: 8px !important;
         }
+
         .leaflet-popup-close-button:hover {
             color: #e5c095 !important;
         }
+
         /* Custom leaflet icon styles override */
         .custom-div-icon {
             background: none !important;
@@ -234,364 +289,348 @@
             left: 50%;
             transform: translateX(-50%);
         }
-        
+
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
+
         .no-scrollbar {
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
     </style>
 </head>
+
 <body class="dark text-on-surface">
 
-<!-- Top AppBar -->
-<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-background/95 transition-all" id="main-header">
-    <button aria-label="Menu" class="p-2 rounded-full hover:bg-surface-variant transition-colors text-primary" id="menuToggle">
-        <span class="material-symbols-outlined">menu</span>
-    </button>
-    <h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary tracking-tight">Cloud Coffee</h1>
-    <a href="browse.html" aria-label="Search" class="p-2 rounded-full hover:bg-surface-variant transition-colors text-primary">
-        <span class="material-symbols-outlined">search</span>
-    </a>
-</header>
-
-<!-- Main Map Canvas -->
-<main class="relative w-full h-screen pt-16 overflow-hidden">
-    <!-- Interactive Live Leaflet Map Container -->
-    <div id="map" class="absolute inset-0 bg-surface-container-lowest z-0 w-full h-full"></div>
-    
-    <!-- Location Filter Chips -->
-    <div class="absolute top-20 left-0 w-full flex gap-3 px-4 overflow-x-auto no-scrollbar py-2 z-20">
-        <button onclick="filterNearby()" class="flex items-center gap-2 bg-primary text-on-primary px-4 py-2 rounded-lg font-bold text-[14px] whitespace-nowrap shadow-md hover:brightness-110 transition-all">
-            <span class="material-symbols-outlined text-[18px]">nearby</span>
-            قريب مني
+    <!-- Top AppBar -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-background/95 transition-all"
+        id="main-header">
+        <button aria-label="Menu" class="p-2 rounded-full hover:bg-surface-variant transition-colors text-primary"
+            id="menuToggle">
+            <span class="material-symbols-outlined">menu</span>
         </button>
-        <button onclick="filterHighestRated()" class="flex items-center gap-2 bg-surface-container-high text-on-surface px-4 py-2 rounded-lg font-bold text-[14px] whitespace-nowrap border border-outline-variant/30 hover:bg-surface-variant transition-all">
-            <span class="material-symbols-outlined text-[18px]">star</span>
-            الأعلى تقييماً
-        </button>
-        <button onclick="filterOpenNow()" class="flex items-center gap-2 bg-surface-container-high text-on-surface px-4 py-2 rounded-lg font-bold text-[14px] whitespace-nowrap border border-outline-variant/30 hover:bg-surface-variant transition-all">
-            <span class="material-symbols-outlined text-[18px]">schedule</span>
-            مفتوح الآن
-        </button>
-    </div>
-    
-    <!-- Floating FAB -->
-    <button onclick="centerOnUser()" class="fixed bottom-32 left-6 z-40 bg-primary text-on-primary w-14 h-14 rounded-xl shadow-2xl flex items-center justify-center transition-all active:scale-90 hover:brightness-110 hover:shadow-primary/20">
-        <span class="material-symbols-outlined">my_location</span>
-    </button>
-    
-    <!-- Bottom Sheet Context: Nearby Coffee Shops -->
-    <div class="fixed bottom-0 left-0 w-full z-40 bg-surface-container-high/95 backdrop-blur-xl rounded-t-xl shadow-[0_-8px_30px_rgb(0,0,0,0.6)] transition-all duration-500 ease-out h-[320px] md:h-[400px] border-t border-outline-variant/20" id="bottom-sheet">
-        <div class="pull-bar h-12 w-full relative cursor-grab"></div>
-        <div class="px-margin-mobile flex flex-col gap-4 overflow-y-auto h-full pb-32">
-            <div class="flex justify-between items-center mb-2">
-                <h2 class="text-headline-lg text-on-surface font-semibold">الكوفيهات القريبة</h2>
-                <a href="browse.html" class="text-primary font-bold text-[14px] cursor-pointer">رؤية الكل</a>
-            </div>
-            <!-- Coffee Cards Dynamically Populated -->
-            <div id="cafe-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- Javascript will inject cafes here -->
-            </div>
-        </div>
-    </div>
-            </div>
-        </div>
-    </div>
-</main>
-
-<!-- Navigation Bar -->
-<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container-high/90 backdrop-blur-lg rounded-t-xl shadow-lg border-t border-outline-variant/30" id="bottom-nav">
-    <a class="flex flex-col items-center justify-center text-primary bg-primary-container/20 rounded-xl px-4 py-1.5 transition-all" href="map.html">
-        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
-        <span class="font-bold text-[12px] mt-1">الرئيسية</span>
-    </a>
-    <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="browse.html">
-        <span class="material-symbols-outlined">favorite</span>
-        <span class="font-bold text-[12px] mt-1">المفضلة</span>
-    </a>
-    <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all relative" href="featured.html">
-        <span class="material-symbols-outlined">stars</span>
-        <span class="font-bold text-[12px] mt-1">المميز</span>
-    </a>
-    <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="profile.html">
-        <span class="material-symbols-outlined">person</span>
-        <span class="font-bold text-[12px] mt-1">الحساب</span>
-    </a>
-</nav>
-
-<!-- Side Navigation Drawer -->
-<div class="fixed inset-0 bg-black/70 z-[60] hidden backdrop-blur-sm transition-opacity opacity-0" id="drawerOverlay"></div>
-<aside class="fixed top-0 right-0 h-full w-80 z-[70] bg-surface-container shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col py-8 px-5" id="navDrawer">
-    <div class="flex flex-col h-full">
-        <!-- Header -->
-        <a href="profile.html" class="flex items-center gap-4 mb-8 border-b border-outline-variant/20 pb-6 hover:opacity-95 transition-opacity">
-            <div class="w-14 h-14 rounded-lg overflow-hidden border-2 border-primary">
-                <img alt="صورة المستخدم" class="w-full h-full object-cover profile-avatar" src=""/>
-            </div>
-            <div class="text-right">
-                <h2 class="text-xl font-bold text-primary profile-name">...</h2>
-                <p class="text-sm text-on-surface-variant profile-status">...</p>
-                <p class="text-[10px] text-outline profile-member-since">...</p>
-            </div>
+        <h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary tracking-tight">Cloud Coffee
+        </h1>
+        <a href="browse.html" aria-label="Search"
+            class="p-2 rounded-full hover:bg-surface-variant transition-colors text-primary">
+            <span class="material-symbols-outlined">search</span>
         </a>
-        
-        <!-- Links -->
-        <nav class="flex flex-col gap-2 flex-grow">
-            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface hover:bg-surface-variant transition-all" href="browse.html">
-                <span class="material-symbols-outlined">coffee_maker</span>
-                <span>تصفح الكافيهات</span>
-            </a>
-            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface hover:bg-surface-variant transition-all" href="featured.html">
-                <span class="material-symbols-outlined">stars</span>
-                <span>المنيو المميز</span>
-            </a>
-            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface hover:bg-surface-variant transition-all" href="settings.html">
-                <span class="material-symbols-outlined">settings</span>
-                <span>إعدادات الحساب</span>
-            </a>
-            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-primary bg-primary/10 border border-primary/20 hover:bg-primary/20 transition-all font-semibold" href="cafe-admin.html">
-                <span class="material-symbols-outlined">dashboard</span>
-                <span>إدارة كافيهي (لوحة الملاك)</span>
-            </a>
-            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface hover:bg-surface-variant transition-all" href="index.html">
-                <span class="material-symbols-outlined">info</span>
-                <span>عن المنصة</span>
-            </a>
-            
-            <div class="mt-8 pt-8 border-t border-outline-variant/20">
-                <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-error hover:bg-error-container/20 transition-all" href="index.html" onclick="localStorage.clear(); location.reload();">
-                    <span class="material-symbols-outlined">logout</span>
-                    <span>تسجيل الخروج</span>
-                </a>
+    </header>
+
+    <!-- Main Map Canvas -->
+    <main class="relative w-full h-screen pt-16 overflow-hidden">
+        <!-- Interactive Live Leaflet Map Container -->
+        <div id="map" class="absolute inset-0 bg-surface-container-lowest z-0 w-full h-full"></div>
+
+        <!-- Location Filter Chips -->
+        <div class="absolute top-20 left-0 w-full flex gap-3 px-4 overflow-x-auto no-scrollbar py-2 z-20">
+            <button onclick="filterNearby()"
+                class="flex items-center gap-2 bg-primary text-on-primary px-4 py-2 rounded-lg font-bold text-[14px] whitespace-nowrap shadow-md hover:brightness-110 transition-all">
+                <span class="material-symbols-outlined text-[18px]">nearby</span>
+                قريب مني
+            </button>
+            <button onclick="filterHighestRated()"
+                class="flex items-center gap-2 bg-surface-container-high text-on-surface px-4 py-2 rounded-lg font-bold text-[14px] whitespace-nowrap border border-outline-variant/30 hover:bg-surface-variant transition-all">
+                <span class="material-symbols-outlined text-[18px]">star</span>
+                الأعلى تقييماً
+            </button>
+            <button onclick="filterOpenNow()"
+                class="flex items-center gap-2 bg-surface-container-high text-on-surface px-4 py-2 rounded-lg font-bold text-[14px] whitespace-nowrap border border-outline-variant/30 hover:bg-surface-variant transition-all">
+                <span class="material-symbols-outlined text-[18px]">schedule</span>
+                مفتوح الآن
+            </button>
+        </div>
+
+        <!-- Floating FAB -->
+        <button onclick="centerOnUser()"
+            class="fixed bottom-32 left-6 z-40 bg-primary text-on-primary w-14 h-14 rounded-xl shadow-2xl flex items-center justify-center transition-all active:scale-90 hover:brightness-110 hover:shadow-primary/20">
+            <span class="material-symbols-outlined">my_location</span>
+        </button>
+
+        <!-- Bottom Sheet Context: Nearby Coffee Shops -->
+        <div class="fixed bottom-0 left-0 w-full z-40 bg-surface-container-high/95 backdrop-blur-xl rounded-t-xl shadow-[0_-8px_30px_rgb(0,0,0,0.6)] transition-all duration-500 ease-out h-[320px] md:h-[400px] border-t border-outline-variant/20"
+            id="bottom-sheet">
+            <div class="pull-bar h-12 w-full relative cursor-grab"></div>
+            <div class="px-margin-mobile flex flex-col gap-4 overflow-y-auto h-full pb-32">
+                <div class="flex justify-between items-center mb-2">
+                    <h2 class="text-headline-lg text-on-surface font-semibold">الكوفيهات القريبة</h2>
+                    <a href="browse.html" class="text-primary font-bold text-[14px] cursor-pointer">رؤية الكل</a>
+                </div>
+                <!-- Coffee Cards Dynamically Populated -->
+                <div id="cafe-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Javascript will inject cafes here -->
+                </div>
             </div>
-        </nav>
-        
-        <footer class="text-center text-xs text-outline-variant mt-auto">
-            Cloud Coffee v2.4.0
-        </footer>
-    </div>
-</aside>
+        </div>
+        </div>
+        </div>
+        </div>
+    </main>
 
-<!-- Shared State Management Scripts -->
-<script src="shared.js"></script>
+    <!-- Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container-high/90 backdrop-blur-lg rounded-t-xl shadow-lg border-t border-outline-variant/30"
+        id="bottom-nav">
+        <a class="flex flex-col items-center justify-center text-primary bg-primary-container/20 rounded-xl px-4 py-1.5 transition-all"
+            href="map.html">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+            <span class="font-bold text-[12px] mt-1">الرئيسية</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all"
+            href="browse.html">
+            <span class="material-symbols-outlined">favorite</span>
+            <span class="font-bold text-[12px] mt-1">المفضلة</span>
+        </a>
+        <!-- removed featured and profile links as requested -->
+    </nav>
 
-<script>
-    // --- 1. PREDEFINED CAFES CONFIGURATION ---
-    // You can easily modify, add or delete these cafes!
-    // We use relative latOffset/lngOffset so they automatically spawn around YOUR live GPS location,
-    // providing a realistic navigation experience anywhere in the world!
-    const PREDEFINED_CAFES = [
-        {
-            id: "hodoo",
-            name: "كوفي هدوء",
-            latOffset: 0.0025,   // ~250m North
-            lngOffset: -0.0020,  // ~200m West
-            rating: 4.8,
-            distance: "250 م",
-            time: "5 دقائق مشي",
-            image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
-            tag: "سحابي",
-            about: "تجربة قهوة مختصة فريدة في أجواء هادئة وتصميم عصري يبعث على الراحة."
-        },
-        {
-            id: "artisan",
-            name: "كوفي أرتيزان",
-            latOffset: -0.0035,  // ~350m South
-            lngOffset: 0.0045,   // ~450m East
-            rating: 4.9,
-            distance: "800 م",
-            time: "8 دقائق مشي",
-            image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop",
-            tag: "مفتوح الآن",
-            about: "لعشاق القهوة المختصة، نقدم لكم أفضل أنواع البن المحمص يدوياً بكل حب."
-        },
-        {
-            id: "night",
-            name: "كوفي نايت",
-            latOffset: 0.0050,   // ~500m North
-            lngOffset: 0.0060,   // ~600m East
-            rating: 4.6,
-            distance: "1.2 كم",
-            time: "15 دقيقة مشي",
-            image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
-            tag: "مسائي رائع",
-            about: "وجهتك المثالية للعمل أو الدراسة في ساعات المساء المتأخرة مع كوب من القهوة الدافئة."
-        },
-        {
-            id: "corner",
-            name: "ركن القهوة",
-            latOffset: -0.0040,  // ~400m South
-            lngOffset: -0.0035,  // ~350m West
-            rating: 4.7,
-            distance: "2.5 كم",
-            time: "30 دقيقة مشي",
-            image: "https://images.unsplash.com/photo-1453614512568-c4024d13c247?q=80&w=800&auto=format&fit=crop",
-            tag: "تراثي خشبي",
-            about: "تصاميم خشبية دافئة وتشكيلة واسعة من الحلويات الطازجة التي تناسب قهوتك العربية."
-        }
-    ];
+    <!-- Side Navigation Drawer -->
+    <div class="fixed inset-0 bg-black/70 z-[60] hidden backdrop-blur-sm transition-opacity opacity-0"
+        id="drawerOverlay"></div>
+    <aside
+        class="fixed top-0 right-0 h-full w-80 z-[70] bg-surface-container shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col py-8 px-5"
+        id="navDrawer">
+        <div class="flex flex-col h-full">
 
-    // --- 2. GLOBAL STATE ---
-    let map;
-    let userMarker;
-    let cafeMarkers = [];
-    let userLat = 24.7136; // Default Center (Riyadh)
-    let userLng = 46.6753;
-    let cafesData = [];
-    let isExpanded = false;
+            <!-- Links -->
+            <nav class="flex flex-col gap-2 flex-grow">
+                <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface hover:bg-surface-variant transition-all"
+                    href="map.html">
+                    <span class="material-symbols-outlined">home</span>
+                    <span>الرئيسية</span>
+                </a>
+                <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface hover:bg-surface-variant transition-all"
+                    href="browse.html">
+                    <span class="material-symbols-outlined">coffee_maker</span>
+                    <span>تصفح الكافيهات</span>
+                </a>
 
-    // Custom Map Markers Icons using Leaflet divIcon
-    const cafeIcon = L.divIcon({
-        html: `
+            </nav>
+
+            <footer class="text-center text-xs text-outline-variant mt-auto">
+                Cloud Coffee v2.4.0
+            </footer>
+        </div>
+    </aside>
+
+    <!-- Shared State Management Scripts -->
+    <script src="shared.js"></script>
+
+    <script>
+        // --- 1. PREDEFINED CAFES CONFIGURATION ---
+        // You can easily modify, add or delete these cafes!
+        // We use relative latOffset/lngOffset so they automatically spawn around YOUR live GPS location,
+        // providing a realistic navigation experience anywhere in the world!
+        const PREDEFINED_CAFES = [
+            {
+                id: "hodoo",
+                name: "كوفي هدوء",
+                latOffset: 0.0025,   // ~250m North
+                lngOffset: -0.0020,  // ~200m West
+                rating: 4.8,
+                distance: "250 م",
+                time: "5 دقائق مشي",
+                image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+                tag: "سحابي",
+                about: "تجربة قهوة مختصة فريدة في أجواء هادئة وتصميم عصري يبعث على الراحة."
+            },
+            {
+                id: "artisan",
+                name: "كوفي أرتيزان",
+                latOffset: -0.0035,  // ~350m South
+                lngOffset: 0.0045,   // ~450m East
+                rating: 4.9,
+                distance: "800 م",
+                time: "8 دقائق مشي",
+                image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop",
+                tag: "مفتوح الآن",
+                about: "لعشاق القهوة المختصة، نقدم لكم أفضل أنواع البن المحمص يدوياً بكل حب."
+            },
+            {
+                id: "night",
+                name: "كوفي نايت",
+                latOffset: 0.0050,   // ~500m North
+                lngOffset: 0.0060,   // ~600m East
+                rating: 4.6,
+                distance: "1.2 كم",
+                time: "15 دقيقة مشي",
+                image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
+                tag: "مسائي رائع",
+                about: "وجهتك المثالية للعمل أو الدراسة في ساعات المساء المتأخرة مع كوب من القهوة الدافئة."
+            },
+            {
+                id: "corner",
+                name: "ركن القهوة",
+                latOffset: -0.0040,  // ~400m South
+                lngOffset: -0.0035,  // ~350m West
+                rating: 4.7,
+                distance: "2.5 كم",
+                time: "30 دقيقة مشي",
+                image: "https://images.unsplash.com/photo-1453614512568-c4024d13c247?q=80&w=800&auto=format&fit=crop",
+                tag: "تراثي خشبي",
+                about: "تصاميم خشبية دافئة وتشكيلة واسعة من الحلويات الطازجة التي تناسب قهوتك العربية."
+            }
+        ];
+
+        // --- 2. GLOBAL STATE ---
+        let map;
+        let userMarker;
+        let cafeMarkers = [];
+        let userLat = 24.7136; // Default Center (Riyadh)
+        let userLng = 46.6753;
+        let cafesData = [];
+        let isExpanded = false;
+
+        // Custom Map Markers Icons using Leaflet divIcon
+        const cafeIcon = L.divIcon({
+            html: `
             <div class="bg-primary text-on-primary w-10 h-10 rounded-xl border-2 border-surface flex items-center justify-center shadow-2xl transform transition-all duration-300 hover:scale-125 active:scale-95 cursor-pointer hover:shadow-primary/30">
                 <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">coffee</span>
             </div>
         `,
-        className: 'custom-div-icon',
-        iconSize: [40, 40],
-        iconAnchor: [20, 20]
-    });
+            className: 'custom-div-icon',
+            iconSize: [40, 40],
+            iconAnchor: [20, 20]
+        });
 
-    const userIcon = L.divIcon({
-        html: `
+        const userIcon = L.divIcon({
+            html: `
             <div class="relative flex items-center justify-center user-gps-pulse">
                 <div class="relative bg-blue-500 text-white w-6 h-6 rounded-full border-2 border-white flex items-center justify-center shadow-2xl z-10">
                     <span class="material-symbols-outlined text-[14px]">my_location</span>
                 </div>
             </div>
         `,
-        className: 'custom-div-icon',
-        iconSize: [32, 32],
-        iconAnchor: [16, 16]
-    });
+            className: 'custom-div-icon',
+            iconSize: [32, 32],
+            iconAnchor: [16, 16]
+        });
 
-    // --- 3. INITIALIZATION ---
-    document.addEventListener('DOMContentLoaded', () => {
-        // Initialize Map
-        map = L.map('map', {
-            zoomControl: false, // Disabling standard zoom for custom themed placement
-            rtl: true
-        }).setView([userLat, userLng], 14);
+        // --- 3. INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Map
+            map = L.map('map', {
+                zoomControl: false, // Disabling standard zoom for custom themed placement
+                rtl: true
+            }).setView([userLat, userLng], 14);
 
-        // Custom Zoom Control position
-        L.control.zoom({
-            position: 'topleft'
-        }).addTo(map);
+            // Custom Zoom Control position moved to bottom-right for better placement
+            L.control.zoom({
+                position: 'bottomright'
+            }).addTo(map);
 
-        // Load stunning CartoDB Dark Matter tile layer
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-            subdomains: 'abcd',
-            maxZoom: 20
-        }).addTo(map);
+            // Load CartoDB Light (possbile) tile layer for a light map
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 20
+            }).addTo(map);
 
-        // Force Leaflet to recalculate container size
-        setTimeout(() => {
-            map.invalidateSize();
-        }, 100);
+            // Force Leaflet to recalculate container size
+            setTimeout(() => {
+                map.invalidateSize();
+            }, 100);
 
-        // Query Browser GPS Geolocation
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    userLat = position.coords.latitude;
-                    userLng = position.coords.longitude;
-                    
-                    showToast('تم جلب موقعك الحالي بنجاح 📍', 'my_location');
-                    setupMapState();
-                },
-                (error) => {
-                    console.warn('Geolocation failed or denied, using defaults.', error);
-                    showToast('تم استخدام الموقع الافتراضي للمنصة 📍', 'nearby');
-                    setupMapState();
-                },
-                { enableHighAccuracy: true, timeout: 5000 }
-            );
-        } else {
-            showToast('تم استخدام الموقع الافتراضي للمنصة 📍', 'nearby');
-            setupMapState();
-        }
+            // Query Browser GPS Geolocation
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        userLat = position.coords.latitude;
+                        userLng = position.coords.longitude;
 
-        // Header transparency scroll controller
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('main-header');
-            if (window.scrollY > 20) {
-                header.classList.add('bg-background/95', 'backdrop-blur-md', 'shadow-md');
+                        showToast('تم جلب موقعك الحالي بنجاح 📍', 'my_location');
+                        setupMapState();
+                    },
+                    (error) => {
+                        console.warn('Geolocation failed or denied, using defaults.', error);
+                        showToast('تم استخدام الموقع الافتراضي للمنصة 📍', 'nearby');
+                        setupMapState();
+                    },
+                    { enableHighAccuracy: true, timeout: 5000 }
+                );
             } else {
-                header.classList.remove('bg-background/95', 'backdrop-blur-md', 'shadow-md');
+                showToast('تم استخدام الموقع الافتراضي للمنصة 📍', 'nearby');
+                setupMapState();
             }
-        });
 
-        // Bottom Sheet Pull Bar
-        let sheet = document.getElementById('bottom-sheet');
-        sheet.querySelector('.pull-bar').addEventListener('click', () => {
-            if (!isExpanded) {
-                sheet.style.height = '75%';
-            } else {
-                sheet.style.height = '320px';
-            }
-            isExpanded = !isExpanded;
-        });
-    });
-
-    // --- 4. MAP AND MARKERS SETUP ---
-    function setupMapState() {
-        // 1. Center map on resolved user location
-        map.setView([userLat, userLng], 15);
-
-        // 2. Put user dynamic GPS marker
-        if (userMarker) {
-            userMarker.setLatLng([userLat, userLng]);
-        } else {
-            userMarker = L.marker([userLat, userLng], { icon: userIcon }).addTo(map);
-            userMarker.bindPopup(`<strong class="text-surface font-bold text-center block text-sm">موقعك الحالي</strong>`);
-        }
-
-        // 3. Calculate absolute coordinates for predefined cafes based on offset
-        cafesData = PREDEFINED_CAFES.map(cafe => {
-            return {
-                ...cafe,
-                lat: userLat + cafe.latOffset,
-                lng: userLng + cafe.lngOffset
-            };
-        });
-
-        // 4. Draw Cafe Markers on map
-        clearCafeMarkers();
-        cafesData.forEach(cafe => {
-            const marker = L.marker([cafe.lat, cafe.lng], { icon: cafeIcon }).addTo(map);
-            
-            // Standard Popup text
-            marker.bindPopup(`<strong class="text-surface font-bold text-center block text-sm">${cafe.name}</strong>`);
-            marker.cafeId = cafe.id;
-            
-            // Marker Tap Event
-            marker.on('click', () => {
-                focusCafe(cafe.id);
+            // Header transparency scroll controller
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('main-header');
+                if (window.scrollY > 20) {
+                    header.classList.add('bg-background/95', 'backdrop-blur-md', 'shadow-md');
+                } else {
+                    header.classList.remove('bg-background/95', 'backdrop-blur-md', 'shadow-md');
+                }
             });
-            
-            cafeMarkers.push(marker);
+
+            // Bottom Sheet Pull Bar
+            let sheet = document.getElementById('bottom-sheet');
+            sheet.querySelector('.pull-bar').addEventListener('click', () => {
+                if (!isExpanded) {
+                    sheet.style.height = '75%';
+                } else {
+                    sheet.style.height = '320px';
+                }
+                isExpanded = !isExpanded;
+            });
         });
 
-        // 5. Render Cafe Cards list inside the bottom sheet
-        renderCafeCards();
-    }
+        // --- 4. MAP AND MARKERS SETUP ---
+        function setupMapState() {
+            // 1. Center map on resolved user location
+            map.setView([userLat, userLng], 15);
 
-    function clearCafeMarkers() {
-        cafeMarkers.forEach(m => map.removeLayer(m));
-        cafeMarkers = [];
-    }
+            // 2. Put user dynamic GPS marker
+            if (userMarker) {
+                userMarker.setLatLng([userLat, userLng]);
+            } else {
+                userMarker = L.marker([userLat, userLng], { icon: userIcon }).addTo(map);
+                userMarker.bindPopup(`<strong class="text-surface font-bold text-center block text-sm">موقعك الحالي</strong>`);
+            }
 
-    // --- 5. RENDER CARDS & DYNAMIC INTERACTION ---
-    function renderCafeCards() {
-        const container = document.getElementById('cafe-cards-container');
-        if (!container) return;
+            // 3. Calculate absolute coordinates for predefined cafes based on offset
+            cafesData = PREDEFINED_CAFES.map(cafe => {
+                return {
+                    ...cafe,
+                    lat: userLat + cafe.latOffset,
+                    lng: userLng + cafe.lngOffset
+                };
+            });
 
-        container.innerHTML = cafesData.map(cafe => {
-            return `
+            // 4. Draw Cafe Markers on map
+            clearCafeMarkers();
+            cafesData.forEach(cafe => {
+                const marker = L.marker([cafe.lat, cafe.lng], { icon: cafeIcon }).addTo(map);
+
+                // Standard Popup text
+                marker.bindPopup(`<strong class="text-surface font-bold text-center block text-sm">${cafe.name}</strong>`);
+                marker.cafeId = cafe.id;
+
+                // Marker Tap Event
+                marker.on('click', () => {
+                    focusCafe(cafe.id);
+                });
+
+                cafeMarkers.push(marker);
+            });
+
+            // 5. Render Cafe Cards list inside the bottom sheet
+            renderCafeCards();
+        }
+
+        function clearCafeMarkers() {
+            cafeMarkers.forEach(m => map.removeLayer(m));
+            cafeMarkers = [];
+        }
+
+        // --- 5. RENDER CARDS & DYNAMIC INTERACTION ---
+        function renderCafeCards() {
+            const container = document.getElementById('cafe-cards-container');
+            if (!container) return;
+
+            container.innerHTML = cafesData.map(cafe => {
+                return `
                 <div onclick="focusCafe('${cafe.id}')" class="bg-surface-container p-4 rounded-xl border border-outline-variant/10 hover:border-primary/40 transition-all flex gap-4 items-center group cursor-pointer text-right">
                     <div class="relative w-20 h-20 rounded-lg overflow-hidden shrink-0 border border-outline-variant/20">
                         <img class="w-full h-full object-cover transition-transform group-hover:scale-110" src="${cafe.image}" alt="${cafe.name}"/>
@@ -613,36 +652,36 @@
                     </div>
                 </div>
             `;
-        }).join('');
-    }
-
-    function focusCafe(cafeId) {
-        const cafe = cafesData.find(c => c.id === cafeId);
-        if (!cafe) return;
-
-        // Pan camera
-        map.setView([cafe.lat, cafe.lng], 16, { animate: true, duration: 1 });
-
-        // Update markers scale representation visually if desired, and trigger popup
-        const marker = cafeMarkers.find(m => m.cafeId === cafeId);
-        if (marker) {
-            marker.openPopup();
+            }).join('');
         }
 
-        // Show focused details bottom card
-        showCafeDetailsInSheet(cafe);
-    }
+        function focusCafe(cafeId) {
+            const cafe = cafesData.find(c => c.id === cafeId);
+            if (!cafe) return;
 
-    function showCafeDetailsInSheet(cafe) {
-        const container = document.getElementById('bottom-sheet');
-        if (!container) return;
+            // Pan camera
+            map.setView([cafe.lat, cafe.lng], 16, { animate: true, duration: 1 });
 
-        // Adjust sheet height to accommodate actions
-        container.style.height = '360px';
-        isExpanded = true;
+            // Update markers scale representation visually if desired, and trigger popup
+            const marker = cafeMarkers.find(m => m.cafeId === cafeId);
+            if (marker) {
+                marker.openPopup();
+            }
 
-        const contentDiv = container.querySelector('.px-margin-mobile');
-        contentDiv.innerHTML = `
+            // Show focused details bottom card
+            showCafeDetailsInSheet(cafe);
+        }
+
+        function showCafeDetailsInSheet(cafe) {
+            const container = document.getElementById('bottom-sheet');
+            if (!container) return;
+
+            // Adjust sheet height to accommodate actions
+            container.style.height = '360px';
+            isExpanded = true;
+
+            const contentDiv = container.querySelector('.px-margin-mobile');
+            contentDiv.innerHTML = `
             <div class="flex flex-col gap-4">
                 <!-- Header with Back Button -->
                 <div class="flex justify-between items-center">
@@ -690,17 +729,17 @@
                 </div>
             </div>
         `;
-    }
+        }
 
-    function resetBottomSheet() {
-        const container = document.getElementById('bottom-sheet');
-        if (!container) return;
+        function resetBottomSheet() {
+            const container = document.getElementById('bottom-sheet');
+            if (!container) return;
 
-        container.style.height = '320px';
-        isExpanded = false;
+            container.style.height = '320px';
+            isExpanded = false;
 
-        const contentDiv = container.querySelector('.px-margin-mobile');
-        contentDiv.innerHTML = `
+            const contentDiv = container.querySelector('.px-margin-mobile');
+            contentDiv.innerHTML = `
             <div class="flex justify-between items-center mb-2">
                 <h2 class="text-headline-lg text-on-surface font-semibold">الكوفيهات القريبة</h2>
                 <a href="browse.html" class="text-primary font-bold text-[14px] cursor-pointer">رؤية الكل</a>
@@ -709,43 +748,44 @@
                 <!-- Dynamically populated -->
             </div>
         `;
-        renderCafeCards();
-    }
-
-    // --- 6. FLOATING FAB AND FILTER ACTIONS ---
-    function centerOnUser() {
-        if (map && userMarker) {
-            map.setView([userLat, userLng], 15, { animate: true, duration: 1.2 });
-            showToast('تم تحديد موقعك بدقة 📍', 'my_location');
+            renderCafeCards();
         }
-    }
 
-    function filterNearby() {
-        showToast('جاري تصفية الكوفيهات القريبة 📍', 'nearby');
-        // Sort by total distance offset magnitude ascending
-        cafesData.sort((a, b) => {
-            const distA = Math.sqrt(Math.pow(a.latOffset, 2) + Math.pow(a.lngOffset, 2));
-            const distB = Math.sqrt(Math.pow(b.latOffset, 2) + Math.pow(b.lngOffset, 2));
-            return distA - distB;
-        });
-        renderCafeCards();
-    }
-
-    function filterHighestRated() {
-        showToast('عرض الكوفيهات الأعلى تقييماً ⭐', 'star');
-        // Sort by rating descending
-        cafesData.sort((a, b) => b.rating - a.rating);
-        renderCafeCards();
-        if (cafesData.length > 0) {
-            focusCafe(cafesData[0].id);
+        // --- 6. FLOATING FAB AND FILTER ACTIONS ---
+        function centerOnUser() {
+            if (map && userMarker) {
+                map.setView([userLat, userLng], 15, { animate: true, duration: 1.2 });
+                showToast('تم تحديد موقعك بدقة 📍', 'my_location');
+            }
         }
-    }
 
-    function filterOpenNow() {
-        showToast('عرض الكوفيهات المفتوحة الآن 🕒', 'schedule');
-        // Predefined cafes are active, re-render standard list
-        renderCafeCards();
-    }
-</script>
+        function filterNearby() {
+            showToast('جاري تصفية الكوفيهات القريبة 📍', 'nearby');
+            // Sort by total distance offset magnitude ascending
+            cafesData.sort((a, b) => {
+                const distA = Math.sqrt(Math.pow(a.latOffset, 2) + Math.pow(a.lngOffset, 2));
+                const distB = Math.sqrt(Math.pow(b.latOffset, 2) + Math.pow(b.lngOffset, 2));
+                return distA - distB;
+            });
+            renderCafeCards();
+        }
+
+        function filterHighestRated() {
+            showToast('عرض الكوفيهات الأعلى تقييماً ⭐', 'star');
+            // Sort by rating descending
+            cafesData.sort((a, b) => b.rating - a.rating);
+            renderCafeCards();
+            if (cafesData.length > 0) {
+                focusCafe(cafesData[0].id);
+            }
+        }
+
+        function filterOpenNow() {
+            showToast('عرض الكوفيهات المفتوحة الآن 🕒', 'schedule');
+            // Predefined cafes are active, re-render standard list
+            renderCafeCards();
+        }
+    </script>
 </body>
+
 </html>

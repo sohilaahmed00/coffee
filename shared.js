@@ -396,50 +396,7 @@ function initDynamicUI() {
         document.head.appendChild(style);
     }
 
-    // 2. Cart Drawer HTML
-    if (!document.getElementById('cart-drawer')) {
-        const cartHtml = `
-            <div id="cart-drawer" class="fixed inset-0 z-[100] hidden items-end justify-center pointer-events-none transition-all duration-300">
-                <div id="cart-drawer-overlay" class="absolute inset-0 bg-black/70 backdrop-blur-sm opacity-0 transition-opacity duration-300 pointer-events-auto"></div>
-                <div id="cart-drawer-sheet" class="absolute bottom-0 left-0 w-full bg-[#151311] border-t border-outline-variant/30 rounded-t-[2.5rem] shadow-[0_-10px_40px_rgba(0,0,0,0.85)] transition-transform duration-300 ease-out translate-y-full flex flex-col max-h-[85%] max-w-lg mx-auto pointer-events-auto z-10 text-right">
-                    <!-- Drawer Header -->
-                    <div class="flex justify-between items-center p-6 border-b border-outline-variant/10">
-                        <h3 class="text-primary text-xl font-bold flex items-center gap-2 font-headline-lg">
-                            <span class="material-symbols-outlined text-primary text-2xl">shopping_basket</span>
-                            سلة المشتريات
-                        </h3>
-                        <button id="cart-close-btn" class="w-10 h-10 rounded-full bg-[#221f1d] text-on-surface-variant flex items-center justify-center hover:bg-[#2c2927] transition-all active:scale-95">
-                            <span class="material-symbols-outlined text-lg">close</span>
-                        </button>
-                    </div>
-                    <!-- Cart Items List -->
-                    <div id="cart-items-list" class="flex-grow overflow-y-auto p-6 space-y-4 max-h-[380px] min-h-[180px] custom-scrollbar">
-                        <!-- Items injected dynamically -->
-                    </div>
-                    <!-- Drawer Footer -->
-                    <div class="p-6 border-t border-outline-variant/10 bg-[#1d1b19]/80 backdrop-blur-md rounded-b-[2.5rem]">
-                        <div class="flex justify-between items-center mb-6 text-on-surface">
-                            <span class="text-sm font-semibold text-on-surface-variant">إجمالي السلة:</span>
-                            <span id="cart-total-price" class="text-2xl font-bold text-primary">0 ر.س</span>
-                        </div>
-                        <button id="cart-checkout-btn" class="w-full h-14 bg-primary text-on-primary font-bold rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:brightness-110 active:scale-95 transition-all">
-                            <span>تأكيد وإرسال الطلب</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `;
-        const div = document.createElement('div');
-        div.innerHTML = cartHtml.trim();
-        document.body.appendChild(div.firstChild);
-        
-        // Bind Close Click
-        document.getElementById('cart-close-btn').addEventListener('click', closeCartDrawer);
-        document.getElementById('cart-drawer-overlay').addEventListener('click', closeCartDrawer);
-        
-        // Bind Checkout Click
-        document.getElementById('cart-checkout-btn').addEventListener('click', handleCheckout);
-    }
+
 
     // 3. Auth Modal HTML
     if (!document.getElementById('auth-modal')) {
@@ -541,174 +498,14 @@ function initDynamicUI() {
             
             closeAuthModal();
             showToast(`مرحباً بك يا ${displayName}! تم تسجيل الدخول بنجاح 🎉`, 'done');
-            
-            // If checkout was pending, run it
-            if (pendingCheckout) {
-                pendingCheckout = false;
-                setTimeout(handleCheckout, 500);
-            } else if (pendingCartItem) {
-                const itemToAdd = pendingCartItem;
-                pendingCartItem = null;
-                setTimeout(() => {
-                    addToCart(itemToAdd);
-                    openCartDrawer();
-                }, 500);
-            }
+
         });
     }
 
-    // 4. Dynamic Floating Cart Button Injection
-    const path = window.location.pathname.toLowerCase();
-    const isLandingPage = path.endsWith('index.html') || path === '/' || path.endsWith('/');
-    const isCafeAdmin = path.includes('cafe-admin.html');
-    
-    if (!isLandingPage && !isCafeAdmin && !document.querySelector('.cart-badge')) {
-        const cartBtn = document.createElement('button');
-        cartBtn.id = 'dynamic-floating-cart-btn';
-        cartBtn.className = 'fixed bottom-24 left-6 w-16 h-16 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center z-50 group hover:scale-110 transition-transform active:scale-90';
-        cartBtn.innerHTML = `
-            <span class="material-symbols-outlined text-3xl">shopping_basket</span>
-            <span class="absolute -top-1 -right-1 bg-white text-primary text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shadow-md cart-badge">0</span>
-        `;
-        document.body.appendChild(cartBtn);
-        
-        // Bind click event to open the cart drawer
-        cartBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            e.preventDefault();
-            openCartDrawer();
-        });
 
-        // Sync count immediately for this new button
-        const cartCount = getCartCount();
-        const badge = cartBtn.querySelector('.cart-badge');
-        if (badge) {
-            badge.innerText = cartCount;
-            if (cartCount > 0) {
-                badge.classList.remove('hidden');
-            } else {
-                badge.classList.add('hidden');
-            }
-        }
-    }
 }
 
-function openCartDrawer() {
-    initDynamicUI();
-    const drawer = document.getElementById('cart-drawer');
-    const overlay = document.getElementById('cart-drawer-overlay');
-    const sheet = document.getElementById('cart-drawer-sheet');
-    
-    document.body.classList.add('no-scroll');
-    drawer.classList.add('active');
-    setTimeout(() => {
-        overlay.classList.remove('opacity-0');
-        sheet.classList.remove('translate-y-full');
-    }, 20);
-    
-    renderCartItems();
-}
 
-function closeCartDrawer() {
-    const overlay = document.getElementById('cart-drawer-overlay');
-    const sheet = document.getElementById('cart-drawer-sheet');
-    const drawer = document.getElementById('cart-drawer');
-    
-    document.body.classList.remove('no-scroll');
-    if (overlay && sheet && drawer) {
-        overlay.classList.add('opacity-0');
-        sheet.classList.add('translate-y-full');
-        setTimeout(() => {
-            drawer.classList.remove('active');
-        }, 300);
-    }
-}
-
-function renderCartItems() {
-    const list = document.getElementById('cart-items-list');
-    const totalEl = document.getElementById('cart-total-price');
-    const cart = getCart();
-    
-    if (!list) return;
-    list.innerHTML = '';
-    
-    if (cart.length === 0) {
-        list.innerHTML = `
-            <div class="text-center py-12 text-on-surface-variant/60 flex flex-col items-center">
-                <span class="material-symbols-outlined text-[48px] mb-2 opacity-50">shopping_cart_checkout</span>
-                <p class="font-medium text-sm">سلة المشتريات فارغة تماماً ☕</p>
-            </div>
-        `;
-        totalEl.innerText = "0 ر.س";
-        return;
-    }
-    
-    let total = 0;
-    cart.forEach(item => {
-        total += item.price * item.quantity;
-        const div = document.createElement('div');
-        div.className = "flex items-center gap-4 bg-[#221f1d] p-4 rounded-2xl border border-outline-variant/10 text-right shadow-sm w-full";
-        div.innerHTML = `
-            <div class="flex-grow">
-                <h4 class="font-bold text-on-surface text-base">${item.name}</h4>
-                <p class="text-primary text-sm font-bold mt-1">${item.price} ر.س</p>
-            </div>
-            <div class="flex items-center gap-2 bg-[#1d1b19] border border-outline-variant/20 rounded-xl p-1 shrink-0">
-                <button onclick="changeQty('${item.id}', -1)" class="w-7 h-7 rounded-lg flex items-center justify-center text-on-surface hover:bg-surface-variant font-bold text-sm transition-colors">-</button>
-                <span class="text-on-surface font-bold text-sm px-1 min-w-[20px] text-center">${item.quantity}</span>
-                <button onclick="changeQty('${item.id}', 1)" class="w-7 h-7 rounded-lg flex items-center justify-center text-on-surface hover:bg-surface-variant font-bold text-sm transition-colors">+</button>
-            </div>
-            <button onclick="deleteItem('${item.id}')" class="text-error hover:text-[#ffdad6] p-2 flex items-center justify-center shrink-0 transition-colors">
-                <span class="material-symbols-outlined text-[22px]">delete</span>
-            </button>
-        `;
-        list.appendChild(div);
-    });
-    
-    totalEl.innerText = `${total} ر.س`;
-}
-
-window.changeQty = function(id, offset) {
-    let cart = getCart();
-    let item = cart.find(i => i.id === id);
-    if (item) {
-        item.quantity += offset;
-        if (item.quantity <= 0) {
-            cart = cart.filter(i => i.id !== id);
-        }
-        saveCart(cart);
-        renderCartItems();
-    }
-};
-
-window.deleteItem = function(id) {
-    let cart = getCart();
-    cart = cart.filter(i => i.id !== id);
-    saveCart(cart);
-    renderCartItems();
-};
-
-function handleCheckout() {
-    const cart = getCart();
-    if (cart.length === 0) {
-        showToast('السلة فارغة، أضف بعض المنتجات أولاً ☕', 'warning');
-        return;
-    }
-    
-    const loggedIn = localStorage.getItem('cloud_coffee_logged_in') === 'true';
-    if (!loggedIn) {
-        closeCartDrawer();
-        pendingCheckout = true;
-        setTimeout(openAuthModal, 400);
-        showToast('يرجى تسجيل الدخول لإتمام طلبك 🔐', 'lock');
-        return;
-    }
-    
-    // Process Checkout
-    closeCartDrawer();
-    saveCart([]); // Empty the cart
-    showToast('🚀 تم تأكيد وإرسال طلبك بنجاح! جاري تحضير قهوتك المميزة...', 'local_cafe');
-}
 
 function openAuthModal() {
     initDynamicUI();
@@ -747,21 +544,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Dynamic UI and Cart Badge Hijacker
     initDynamicUI();
     
-    const setupBadgeClick = () => {
-        document.querySelectorAll('.cart-badge').forEach(badge => {
-            let btn = badge.closest('button') || badge.parentElement;
-            if (btn) {
-                btn.removeAttribute('onclick');
-                btn.onclick = (e) => {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    openCartDrawer();
-                };
-            }
-        });
-    };
-    setupBadgeClick();
-    setTimeout(setupBadgeClick, 500);
+
 
     // Bind profile clicks for guests to open the Auth Modal
     const bindProfileClick = () => {
@@ -828,20 +611,7 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.addEventListener('click', toggleDrawer);
     }
 
-    // 4. Add to Cart listener delegation
-    document.querySelectorAll('[data-add-to-cart]').forEach(button => {
-        button.addEventListener('click', function(e) {
-            const itemId = this.getAttribute('data-item-id') || 'item';
-            const itemName = this.getAttribute('data-item-name') || 'منتج';
-            const itemPrice = parseFloat(this.getAttribute('data-item-price') || '0');
-            
-            addToCart({
-                id: itemId,
-                name: itemName,
-                price: itemPrice
-            });
-        });
-    });
+
 
     // 5. Tap Animations for primary action buttons (Micro-interactions)
     document.querySelectorAll('button, a.btn, nav a').forEach(el => {

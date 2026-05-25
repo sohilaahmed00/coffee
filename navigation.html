@@ -1,102 +1,108 @@
 <!DOCTYPE html>
-<html class="dark" dir="rtl" lang="ar">
+<html dir="rtl" lang="ar">
+
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Cloud Coffee | تحديد الموقع والاتجاهات</title>
     <!-- Material Symbols -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
     <!-- Leaflet.js mapping library for interactive live maps -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&amp;display=swap"
+        rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "on-secondary-container": "#beb3ad",
-                    "surface-bright": "#3c3936",
-                    "tertiary-container": "#a59a92",
-                    "surface-variant": "#373432",
-                    "surface": "#151311",
-                    "on-secondary-fixed": "#201a17",
-                    "primary-container": "#b8966e",
-                    "inverse-primary": "#755936",
-                    "surface-container-highest": "#373432",
-                    "on-tertiary-fixed": "#211a15",
-                    "surface-dim": "#151311",
-                    "surface-container-lowest": "#100e0c",
-                    "on-error": "#690005",
-                    "on-primary-fixed": "#2a1700",
-                    "secondary": "#cfc4be",
-                    "background": "#151311",
-                    "inverse-surface": "#e8e1dd",
-                    "primary": "#e5c095",
-                    "inverse-on-surface": "#33302d",
-                    "error-container": "#93000a",
-                    "on-primary": "#422c0d",
-                    "on-surface-variant": "#d2c4b8",
-                    "on-tertiary-fixed-variant": "#4e453f",
-                    "outline": "#9b8f83",
-                    "surface-container-high": "#2c2927",
-                    "surface-container": "#221f1d",
-                    "tertiary-fixed": "#eee0d7",
-                    "on-primary-fixed-variant": "#5b4221",
-                    "on-surface": "#e8e1dd",
-                    "surface-container-low": "#1d1b19",
-                    "tertiary-fixed-dim": "#d1c4bc",
-                    "on-secondary": "#362f2b",
-                    "error": "#ffb4ab",
-                    "on-error-container": "#ffdad6",
-                    "on-background": "#e8e1dd",
-                    "tertiary": "#d1c4bc",
-                    "on-primary-container": "#462f10",
-                    "primary-fixed": "#ffddb7",
-                    "outline-variant": "#4e453c",
-                    "secondary-fixed-dim": "#cfc4be",
-                    "secondary-container": "#4d4541",
-                    "on-tertiary-container": "#3a322c",
-                    "secondary-fixed": "#ece0da",
-                    "primary-fixed-dim": "#e5c095",
-                    "on-secondary-fixed-variant": "#4d4541",
-                    "surface-tint": "#e5c095",
-                    "on-tertiary": "#362f29"
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#beb3ad",
+                        "surface-bright": "#3c3936",
+                        "tertiary-container": "#a59a92",
+                        "surface-variant": "#373432",
+                        "surface": "#151311",
+                        "on-secondary-fixed": "#201a17",
+                        "primary-container": "#b8966e",
+                        "inverse-primary": "#755936",
+                        "surface-container-highest": "#373432",
+                        "on-tertiary-fixed": "#211a15",
+                        "surface-dim": "#151311",
+                        "surface-container-lowest": "#100e0c",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#2a1700",
+                        "secondary": "#cfc4be",
+                        "background": "#151311",
+                        "inverse-surface": "#e8e1dd",
+                        "primary": "#e5c095",
+                        "inverse-on-surface": "#33302d",
+                        "error-container": "#93000a",
+                        "on-primary": "#422c0d",
+                        "on-surface-variant": "#d2c4b8",
+                        "on-tertiary-fixed-variant": "#4e453f",
+                        "outline": "#9b8f83",
+                        "surface-container-high": "#2c2927",
+                        "surface-container": "#221f1d",
+                        "tertiary-fixed": "#eee0d7",
+                        "on-primary-fixed-variant": "#5b4221",
+                        "on-surface": "#e8e1dd",
+                        "surface-container-low": "#1d1b19",
+                        "tertiary-fixed-dim": "#d1c4bc",
+                        "on-secondary": "#362f2b",
+                        "error": "#ffb4ab",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#e8e1dd",
+                        "tertiary": "#d1c4bc",
+                        "on-primary-container": "#462f10",
+                        "primary-fixed": "#ffddb7",
+                        "outline-variant": "#4e453c",
+                        "secondary-fixed-dim": "#cfc4be",
+                        "secondary-container": "#4d4541",
+                        "on-tertiary-container": "#3a322c",
+                        "secondary-fixed": "#ece0da",
+                        "primary-fixed-dim": "#e5c095",
+                        "on-secondary-fixed-variant": "#4d4541",
+                        "surface-tint": "#e5c095",
+                        "on-tertiary": "#362f29"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max-width-content": "1200px",
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "gutter-desktop": "24px",
+                        "gutter-mobile": "16px",
+                        "margin-desktop": "auto"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Tajawal", "sans-serif"],
+                        "headline-lg": ["Tajawal", "sans-serif"],
+                        "headline-lg-mobile": ["Tajawal", "sans-serif"],
+                        "body-md": ["Tajawal", "sans-serif"],
+                        "label-sm": ["Tajawal", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["Tajawal", "sans-serif"],
+                        "headline-lg": ["Tajawal", "sans-serif"],
+                        "headline-lg-mobile": ["Tajawal", "sans-serif"],
+                        "body-md": ["Tajawal", "sans-serif"],
+                        "label-sm": ["Tajawal", "sans-serif"]
+                    }
+                },
             },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
-            },
-            "spacing": {
-                    "max-width-content": "1200px",
-                    "margin-mobile": "20px",
-                    "unit": "8px",
-                    "gutter-desktop": "24px",
-                    "gutter-mobile": "16px",
-                    "margin-desktop": "auto"
-            },
-            "fontFamily": {
-                    "headline-xl": ["Tajawal", "sans-serif"],
-                    "headline-lg": ["Tajawal", "sans-serif"],
-                    "headline-lg-mobile": ["Tajawal", "sans-serif"],
-                    "body-md": ["Tajawal", "sans-serif"],
-                    "label-sm": ["Tajawal", "sans-serif"]
-            },
-            "fontSize": {
-                    "headline-xl": ["Tajawal", "sans-serif"],
-                    "headline-lg": ["Tajawal", "sans-serif"],
-                    "headline-lg-mobile": ["Tajawal", "sans-serif"],
-                    "body-md": ["Tajawal", "sans-serif"],
-                    "label-sm": ["Tajawal", "sans-serif"]
-            }
-          },
-        },
-      }
+        }
     </script>
     <style>
         .material-symbols-outlined {
@@ -104,31 +110,43 @@
             display: inline-block;
             line-height: 1;
         }
+
         .map-gradient-overlay {
             background: linear-gradient(to top, rgba(21, 19, 17, 1) 0%, rgba(21, 19, 17, 0.4) 30%, rgba(21, 19, 17, 0) 100%);
         }
+
         .route-path {
             stroke-linecap: round;
             stroke-linejoin: round;
             filter: drop-shadow(0px 0px 6px rgba(26, 115, 232, 0.8));
         }
+
         .spring-animate-bounce:active {
             transform: scale(0.95);
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+
         body {
             min-height: max(884px, 100dvh);
-            background-color: #151311;
+            background-color: #f7f7f8;
+            color: #111827;
         }
 
-        /* Custom Leaflet Dark Mode & Gold Adjustments */
+        /* Custom Leaflet Light Mode Adjustments */
         #map {
-            background-color: #151311;
+            background-color: #eef2f6;
         }
+
         .leaflet-container {
-            background: #151311 !important;
+            background: #eef2f6 !important;
             font-family: 'Tajawal', sans-serif !important;
         }
+
+        /* Ensure Leaflet controls sit above the app header/search and bottom nav */
+        .leaflet-control {
+            z-index: 55 !important;
+        }
+
         /* Style Leaflet controls to look gold and dark */
         .leaflet-bar {
             border: 1px solid rgba(155, 143, 131, 0.15) !important;
@@ -136,19 +154,24 @@
             border-radius: 8px !important;
             overflow: hidden;
         }
+
         .leaflet-bar a {
             background-color: #221f1d !important;
             color: #e5c095 !important;
             border-bottom: 1px solid rgba(155, 143, 131, 0.1) !important;
             transition: all 0.2s ease;
         }
+
         .leaflet-bar a:hover {
             background-color: #373432 !important;
             color: #ffddb7 !important;
         }
-        .leaflet-control-zoom-in, .leaflet-control-zoom-out {
+
+        .leaflet-control-zoom-in,
+        .leaflet-control-zoom-out {
             font-weight: bold !important;
         }
+
         .leaflet-control-attribution {
             background: rgba(21, 19, 17, 0.8) !important;
             color: #9b8f83 !important;
@@ -156,13 +179,16 @@
             border-radius: 4px;
             padding: 2px 6px !important;
         }
+
         .leaflet-control-attribution a {
             color: #e5c095 !important;
         }
+
         /* Custom User Location Glow */
         .user-gps-pulse {
             position: relative;
         }
+
         .user-gps-pulse::after {
             content: '';
             width: 32px;
@@ -175,11 +201,19 @@
             animation: user-ping 2s infinite ease-out;
             box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
         }
+
         @keyframes user-ping {
-            0% { transform: scale(0.5); opacity: 1; }
-            100% { transform: scale(2.2); opacity: 0; }
+            0% {
+                transform: scale(0.5);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(2.2);
+                opacity: 0;
+            }
         }
-        
+
         /* Custom leaflet icon styles override */
         .custom-div-icon {
             background: none !important;
@@ -187,164 +221,182 @@
         }
     </style>
 </head>
+
 <body class="bg-background text-on-background font-body-md overflow-hidden pb-24">
 
-<!-- Full Screen Map Background -->
-<div class="fixed inset-0 z-0">
-    <div id="map" class="w-full h-full bg-surface-container-lowest"></div>
-    <div class="absolute inset-0 map-gradient-overlay pointer-events-none z-10"></div>
-</div>
-
-<!-- Floating Top Controls -->
-<div id="top-floating-controls" class="fixed top-6 left-6 right-6 z-50 flex justify-between items-center pointer-events-none transition-all duration-500 transform translate-y-0">
-    <!-- Top-Left close button (X) -->
-    <a href="map.html" onclick="history.back(); return false;" class="w-12 h-12 flex items-center justify-center rounded-full bg-[#100e0c]/80 backdrop-blur-md border border-outline-variant/15 text-white shadow-xl spring-animate-bounce pointer-events-auto hover:bg-[#221f1d] hover:border-primary/30 transition-all duration-300">
-        <span class="material-symbols-outlined text-lg">close</span>
-    </a>
-    
-    <!-- Top-Right actions -->
-    <div class="flex gap-3 pointer-events-auto">
-        <button onclick="toggleRouteStepsDrawer()" class="w-12 h-12 flex items-center justify-center rounded-full bg-[#100e0c]/80 backdrop-blur-md border border-outline-variant/15 text-[#c5a880] shadow-xl spring-animate-bounce hover:bg-[#221f1d] hover:border-primary/30 transition-all duration-300">
-            <span class="material-symbols-outlined text-lg">format_list_bulleted</span>
-        </button>
-        <button onclick="reCenterMap()" class="w-12 h-12 flex items-center justify-center rounded-full bg-[#100e0c]/80 backdrop-blur-md border border-outline-variant/15 text-[#c5a880] shadow-xl spring-animate-bounce hover:bg-[#221f1d] hover:border-primary/30 transition-all duration-300">
-            <span class="material-symbols-outlined text-lg">my_location</span>
-        </button>
+    <!-- Full Screen Map Background -->
+    <div class="fixed inset-0 z-0">
+        <div id="map" class="w-full h-full bg-surface-container-lowest"></div>
+        <div class="absolute inset-0 map-gradient-overlay pointer-events-none z-10"></div>
     </div>
-</div>
 
-<!-- Content Canvas -->
-<main class="relative z-20 flex flex-col justify-end h-screen pb-12 px-margin-mobile pointer-events-none">
-    <!-- Sleek Minimal Destination Card (Mockup Aligned) -->
-    <div id="destination-card" class="bg-[#100e0c]/95 backdrop-blur-xl rounded-[2.5rem] p-8 border border-outline-variant/10 shadow-[0_20px_50px_rgba(0,0,0,0.9)] transition-all duration-500 transform translate-y-0 pointer-events-auto w-full max-w-[420px] mx-auto text-center">
-        <!-- Cafe Title Centered -->
-        <h2 id="cafe-title" class="font-headline-lg text-2xl font-bold text-white mb-2">كوفي هدوء</h2>
-        
-        <!-- Route Info Centered with Bullet Separator -->
-        <div class="flex items-center justify-center gap-2 text-[#c5a880]/90 mb-6 font-semibold text-[15px]">
-            <span id="route-meta" class="font-body-md">جاري احتساب المسار...</span>
-        </div>
-        
-        <!-- Single Prominent Wide Gold Button -->
-        <button id="start-nav-btn" onclick="startWalkingSimulation()" class="w-full bg-[#c5a880] text-[#100e0c] h-14 rounded-full font-bold flex items-center justify-center gap-2 spring-animate-bounce shadow-lg shadow-amber-500/10 hover:bg-[#d8baa3] transition-all duration-300 cursor-pointer text-lg">
-            <span id="nav-btn-text">ابدأ الاتجاهات</span>
-        </button>
-    </div>
-</main>
-
-<!-- Active Google Maps Navigation Mode Overlay UI -->
-<!-- Top Green Instruction Banner -->
-<div id="gmaps-top-banner" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 transform -translate-y-full bg-[#1b1b1f]/95 border-b border-zinc-800 shadow-xl px-4 py-4 flex items-center gap-3 dir-rtl text-right">
-    <!-- Green Navigation Direction box -->
-    <div class="w-12 h-12 rounded-xl bg-[#0f9d58] flex items-center justify-center text-white shrink-0 shadow-lg shadow-green-900/20">
-        <span id="gmaps-turn-icon" class="material-symbols-outlined text-[30px]" style="font-variation-settings: 'FILL' 1;">arrow_upward</span>
-    </div>
-    <!-- Direct step-by-step navigation text -->
-    <div class="flex-grow text-right">
-        <p id="gmaps-instruction" class="font-bold text-white text-[16px] leading-tight font-headline-lg-mobile">اتجه شمالاً لمسافة 50 م</p>
-        <p id="gmaps-sub-instruction" class="text-zinc-400 text-[12px] mt-1 font-body-md">ثم انعطف يميناً نحو وجهتك</p>
-    </div>
-    <!-- Sound voice direction controller -->
-    <button onclick="toggleMute()" class="w-10 h-10 rounded-full bg-zinc-800 text-zinc-300 flex items-center justify-center shrink-0 hover:bg-zinc-700 hover:text-white transition-all cursor-pointer">
-        <span id="speaker-icon" class="material-symbols-outlined text-[20px]">volume_up</span>
-    </button>
-</div>
-
-<!-- Bottom Status HUD Banner -->
-<div id="gmaps-bottom-hud" class="fixed bottom-0 left-0 w-full z-50 transition-all duration-500 transform translate-y-full bg-[#1b1b1f]/95 border-t border-zinc-800 shadow-[0_-10px_35px_rgba(0,0,0,0.6)] px-6 py-5 flex items-center justify-between dir-rtl">
-    <!-- Estimated Time / ETA / Dynamic count labels -->
-    <div class="text-right flex flex-col justify-center">
-        <div class="flex items-baseline gap-2">
-            <span id="gmaps-time-val" class="font-bold text-[#0f9d58] text-[26px] leading-none">5 د</span>
-            <span id="gmaps-distance-val" class="text-zinc-400 text-[14px] font-semibold">250 م</span>
-        </div>
-        <span id="gmaps-eta-val" class="text-zinc-500 text-[12px] mt-1 block font-medium">الوصول 16:45</span>
-    </div>
-    
-    <!-- Large prominent close circular red button -->
-    <button onclick="startWalkingSimulation()" class="w-12 h-12 rounded-full bg-red-600 hover:bg-red-500 text-white flex items-center justify-center shrink-0 shadow-lg shadow-red-900/30 transition-all spring-animate-bounce cursor-pointer">
-        <span class="material-symbols-outlined text-[24px]">close</span>
-    </button>
-</div>
-
-<!-- Step-by-Step Route Steps Slide-Up Drawer -->
-<div id="route-steps-drawer" class="fixed bottom-0 left-0 w-full z-50 transition-all duration-500 transform translate-y-full bg-surface-container-high/95 backdrop-blur-xl border-t border-outline-variant/30 shadow-[0_-10px_35px_rgba(0,0,0,0.7)] rounded-t-3xl max-h-[70%] overflow-hidden px-6 py-6 dir-rtl text-right pointer-events-auto">
-    <div class="flex justify-between items-center mb-6 border-b border-outline-variant/10 pb-4">
-        <h3 class="font-headline-lg text-primary text-xl font-bold flex items-center gap-2">
-            <span class="material-symbols-outlined text-primary">navigation</span>
-            تفاصيل خطة السير
-        </h3>
-        <button onclick="toggleRouteStepsDrawer()" class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center hover:bg-outline-variant/30 transition-all cursor-pointer">
+    <!-- Floating Top Controls -->
+    <div id="top-floating-controls"
+        class="fixed top-6 left-6 right-6 z-50 flex justify-between items-center pointer-events-none transition-all duration-500 transform translate-y-0">
+        <!-- Top-Left close button (X) -->
+        <a href="map.html" onclick="history.back(); return false;"
+            class="w-12 h-12 flex items-center justify-center rounded-full bg-[#100e0c]/80 backdrop-blur-md border border-outline-variant/15 text-white shadow-xl spring-animate-bounce pointer-events-auto hover:bg-[#221f1d] hover:border-primary/30 transition-all duration-300">
             <span class="material-symbols-outlined text-lg">close</span>
+        </a>
+
+        <!-- Top-Right actions -->
+        <div class="flex gap-3 pointer-events-auto">
+            <button onclick="toggleRouteStepsDrawer()"
+                class="w-12 h-12 flex items-center justify-center rounded-full bg-[#100e0c]/80 backdrop-blur-md border border-outline-variant/15 text-[#c5a880] shadow-xl spring-animate-bounce hover:bg-[#221f1d] hover:border-primary/30 transition-all duration-300">
+                <span class="material-symbols-outlined text-lg">format_list_bulleted</span>
+            </button>
+            <button onclick="reCenterMap()"
+                class="w-12 h-12 flex items-center justify-center rounded-full bg-[#100e0c]/80 backdrop-blur-md border border-outline-variant/15 text-[#c5a880] shadow-xl spring-animate-bounce hover:bg-[#221f1d] hover:border-primary/30 transition-all duration-300">
+                <span class="material-symbols-outlined text-lg">my_location</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Content Canvas -->
+    <main class="relative z-20 flex flex-col justify-end h-screen pb-12 px-margin-mobile pointer-events-none">
+        <!-- Sleek Minimal Destination Card (Mockup Aligned) -->
+        <div id="destination-card"
+            class="bg-[#100e0c]/95 backdrop-blur-xl rounded-[2.5rem] p-8 border border-outline-variant/10 shadow-[0_20px_50px_rgba(0,0,0,0.9)] transition-all duration-500 transform translate-y-0 pointer-events-auto w-full max-w-[420px] mx-auto text-center">
+            <!-- Cafe Title Centered -->
+            <h2 id="cafe-title" class="font-headline-lg text-2xl font-bold text-white mb-2">كوفي هدوء</h2>
+
+            <!-- Route Info Centered with Bullet Separator -->
+            <div class="flex items-center justify-center gap-2 text-[#c5a880]/90 mb-6 font-semibold text-[15px]">
+                <span id="route-meta" class="font-body-md">جاري احتساب المسار...</span>
+            </div>
+
+            <!-- Single Prominent Wide Gold Button -->
+            <button id="start-nav-btn" onclick="startWalkingSimulation()"
+                class="w-full bg-[#c5a880] text-[#100e0c] h-14 rounded-full font-bold flex items-center justify-center gap-2 spring-animate-bounce shadow-lg shadow-amber-500/10 hover:bg-[#d8baa3] transition-all duration-300 cursor-pointer text-lg">
+                <span id="nav-btn-text">ابدأ الاتجاهات</span>
+            </button>
+        </div>
+    </main>
+
+    <!-- Active Google Maps Navigation Mode Overlay UI -->
+    <!-- Top Green Instruction Banner -->
+    <div id="gmaps-top-banner"
+        class="fixed top-0 left-0 w-full z-50 transition-all duration-500 transform -translate-y-full bg-[#1b1b1f]/95 border-b border-zinc-800 shadow-xl px-4 py-4 flex items-center gap-3 dir-rtl text-right">
+        <!-- Green Navigation Direction box -->
+        <div
+            class="w-12 h-12 rounded-xl bg-[#0f9d58] flex items-center justify-center text-white shrink-0 shadow-lg shadow-green-900/20">
+            <span id="gmaps-turn-icon" class="material-symbols-outlined text-[30px]"
+                style="font-variation-settings: 'FILL' 1;">arrow_upward</span>
+        </div>
+        <!-- Direct step-by-step navigation text -->
+        <div class="flex-grow text-right">
+            <p id="gmaps-instruction" class="font-bold text-white text-[16px] leading-tight font-headline-lg-mobile">
+                اتجه شمالاً لمسافة 50 م</p>
+            <p id="gmaps-sub-instruction" class="text-zinc-400 text-[12px] mt-1 font-body-md">ثم انعطف يميناً نحو وجهتك
+            </p>
+        </div>
+        <!-- Sound voice direction controller -->
+        <button onclick="toggleMute()"
+            class="w-10 h-10 rounded-full bg-zinc-800 text-zinc-300 flex items-center justify-center shrink-0 hover:bg-zinc-700 hover:text-white transition-all cursor-pointer">
+            <span id="speaker-icon" class="material-symbols-outlined text-[20px]">volume_up</span>
         </button>
     </div>
-    <div id="steps-list-container" class="space-y-4 max-h-[300px] overflow-y-auto pr-2 pb-6">
-        <!-- Dynamically filled with step-by-step elements -->
+
+    <!-- Bottom Status HUD Banner -->
+    <div id="gmaps-bottom-hud"
+        class="fixed bottom-0 left-0 w-full z-50 transition-all duration-500 transform translate-y-full bg-[#1b1b1f]/95 border-t border-zinc-800 shadow-[0_-10px_35px_rgba(0,0,0,0.6)] px-6 py-5 flex items-center justify-between dir-rtl">
+        <!-- Estimated Time / ETA / Dynamic count labels -->
+        <div class="text-right flex flex-col justify-center">
+            <div class="flex items-baseline gap-2">
+                <span id="gmaps-time-val" class="font-bold text-[#0f9d58] text-[26px] leading-none">5 د</span>
+                <span id="gmaps-distance-val" class="text-zinc-400 text-[14px] font-semibold">250 م</span>
+            </div>
+            <span id="gmaps-eta-val" class="text-zinc-500 text-[12px] mt-1 block font-medium">الوصول 16:45</span>
+        </div>
+
+        <!-- Large prominent close circular red button -->
+        <button onclick="startWalkingSimulation()"
+            class="w-12 h-12 rounded-full bg-red-600 hover:bg-red-500 text-white flex items-center justify-center shrink-0 shadow-lg shadow-red-900/30 transition-all spring-animate-bounce cursor-pointer">
+            <span class="material-symbols-outlined text-[24px]">close</span>
+        </button>
     </div>
-</div>
 
-<!-- Shared State Management Scripts -->
-<script src="shared.js"></script>
+    <!-- Step-by-Step Route Steps Slide-Up Drawer -->
+    <div id="route-steps-drawer"
+        class="fixed bottom-0 left-0 w-full z-50 transition-all duration-500 transform translate-y-full bg-surface-container-high/95 backdrop-blur-xl border-t border-outline-variant/30 shadow-[0_-10px_35px_rgba(0,0,0,0.7)] rounded-t-3xl max-h-[70%] overflow-hidden px-6 py-6 dir-rtl text-right pointer-events-auto">
+        <div class="flex justify-between items-center mb-6 border-b border-outline-variant/10 pb-4">
+            <h3 class="font-headline-lg text-primary text-xl font-bold flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">navigation</span>
+                تفاصيل خطة السير
+            </h3>
+            <button onclick="toggleRouteStepsDrawer()"
+                class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center hover:bg-outline-variant/30 transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-lg">close</span>
+            </button>
+        </div>
+        <div id="steps-list-container" class="space-y-4 max-h-[300px] overflow-y-auto pr-2 pb-6">
+            <!-- Dynamically filled with step-by-step elements -->
+        </div>
+    </div>
 
-<script>
-    // --- 1. PREDEFINED CAFES CONFIGURATION ---
-    const PREDEFINED_CAFES = [
-        {
-            id: "hadou",
-            name: "كوفي هدوء",
-            rating: 4.8,
-            reviews: "200+ تقييم",
-            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDsjVWiof2QdP8HAICBVM5CW0ltGw-mKi3nJzfHK22q41IPAhEK5TvQF6HwlyZrr0PeKO-oiNGzwYA6fGBl7t1VClnwXAH_KDQ3Enyl9yQJcZsZwD0wtFRQx2CKU801KJ8HFxVrfnRgmjGzdAjlFD3Rs8X0wTaENqT3GirdcpdbvvAnsCaOSg5tB8OzNUZG4AYl59OjN2x4k7a6AWty84e82yos0NN6h70lnogkxa8O5ikkQJO1hHDskGTIVrFkyt-YuYNwvbhhWa4v",
-            tag: "سحابي"
-        },
-        {
-            id: "zawiya",
-            name: "كوفي زاوية",
-            rating: 4.5,
-            reviews: "150+ تقييم",
-            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBws7CXRRIPP4F1ID1dga-9_S9bsgNZmxVBceJvStqlw6AU1gWncUTGH0qdRrIZOrJof3DIN2WykfS69MqO2XMbmxJOQYuZ-0rB3NH8HOo40bUfRPQeHZlZ3kiAu7S8DInF5NMNXhtEuEi3-O1nEeJGls5Uefx_79cvJj6G_sPCP66yBm1zBHUvQ5PMeqccGaEEbp_IcnH8buhwHu3hItrkUqNgluOG4tnyykLq4f7FfkKypVeY1zDaGq20gDtr_crIMe35qOgRWtNC",
-            tag: "مفتوح الآن"
-        },
-        {
-            id: "sahab",
-            name: "كوفي سحاب",
-            rating: 4.9,
-            reviews: "320+ تقييم",
-            image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=600&auto=format&fit=crop",
-            tag: "رائج"
-        }
-    ];
+    <!-- Shared State Management Scripts -->
+    <script src="shared.js"></script>
 
-    // --- 2. EXTRACT URL PARAMETERS ---
-    const urlParams = new URLSearchParams(window.location.search);
-    let userLat = parseFloat(urlParams.get('userLat')) || 24.7136;
-    let userLng = parseFloat(urlParams.get('userLng')) || 46.6753;
-    let cafeLat = parseFloat(urlParams.get('cafeLat')) || 24.7161;
-    let cafeLng = parseFloat(urlParams.get('cafeLng')) || 46.6733;
-    let cafeName = urlParams.get('name') || "كوفي هدوء";
-    let defaultDistance = urlParams.get('distance') || "250 م";
-    let defaultTime = urlParams.get('time') || "5 دقائق مشي";
+    <script>
+        // --- 1. PREDEFINED CAFES CONFIGURATION ---
+        const PREDEFINED_CAFES = [
+            {
+                id: "hadou",
+                name: "كوفي هدوء",
+                rating: 4.8,
+                reviews: "200+ تقييم",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDsjVWiof2QdP8HAICBVM5CW0ltGw-mKi3nJzfHK22q41IPAhEK5TvQF6HwlyZrr0PeKO-oiNGzwYA6fGBl7t1VClnwXAH_KDQ3Enyl9yQJcZsZwD0wtFRQx2CKU801KJ8HFxVrfnRgmjGzdAjlFD3Rs8X0wTaENqT3GirdcpdbvvAnsCaOSg5tB8OzNUZG4AYl59OjN2x4k7a6AWty84e82yos0NN6h70lnogkxa8O5ikkQJO1hHDskGTIVrFkyt-YuYNwvbhhWa4v",
+                tag: "سحابي"
+            },
+            {
+                id: "zawiya",
+                name: "كوفي زاوية",
+                rating: 4.5,
+                reviews: "150+ تقييم",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBws7CXRRIPP4F1ID1dga-9_S9bsgNZmxVBceJvStqlw6AU1gWncUTGH0qdRrIZOrJof3DIN2WykfS69MqO2XMbmxJOQYuZ-0rB3NH8HOo40bUfRPQeHZlZ3kiAu7S8DInF5NMNXhtEuEi3-O1nEeJGls5Uefx_79cvJj6G_sPCP66yBm1zBHUvQ5PMeqccGaEEbp_IcnH8buhwHu3hItrkUqNgluOG4tnyykLq4f7FfkKypVeY1zDaGq20gDtr_crIMe35qOgRWtNC",
+                tag: "مفتوح الآن"
+            },
+            {
+                id: "sahab",
+                name: "كوفي سحاب",
+                rating: 4.9,
+                reviews: "320+ تقييم",
+                image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=600&auto=format&fit=crop",
+                tag: "رائج"
+            }
+        ];
 
-    // --- 3. DYNAMIC INTERACTION STATE ---
-    let map;
-    let userMarker;
-    let cafeMarker;
-    let routingLayer;
-    let routeCoords = [];
-    let activeSteps = [];
-    let isSimulating = false;
-    let simInterval = null;
-    let simIndex = 0;
-    let isMuted = false;
-    
-    let totalDistanceMeters = 0;
-    let totalDurationSeconds = 0;
-    let originalDistanceStr = defaultDistance;
-    let originalTimeStr = defaultTime;
+        // --- 2. EXTRACT URL PARAMETERS ---
+        const urlParams = new URLSearchParams(window.location.search);
+        let userLat = parseFloat(urlParams.get('userLat')) || 24.7136;
+        let userLng = parseFloat(urlParams.get('userLng')) || 46.6753;
+        let cafeLat = parseFloat(urlParams.get('cafeLat')) || 24.7161;
+        let cafeLng = parseFloat(urlParams.get('cafeLng')) || 46.6733;
+        let cafeName = urlParams.get('name') || "كوفي هدوء";
+        let defaultDistance = urlParams.get('distance') || "250 م";
+        let defaultTime = urlParams.get('time') || "5 دقائق مشي";
 
-    // --- 4. MAP ICONS DEFINITIONS ---
-    const cafeIcon = L.divIcon({
-        html: `
+        // --- 3. DYNAMIC INTERACTION STATE ---
+        let map;
+        let userMarker;
+        let cafeMarker;
+        let routingLayer;
+        let routeCoords = [];
+        let activeSteps = [];
+        let isSimulating = false;
+        let simInterval = null;
+        let simIndex = 0;
+        let isMuted = false;
+        let watchId = null; // for real-time GPS tracking
+
+        let totalDistanceMeters = 0;
+        let totalDurationSeconds = 0;
+        let originalDistanceStr = defaultDistance;
+        let originalTimeStr = defaultTime;
+
+        // --- 4. MAP ICONS DEFINITIONS ---
+        const cafeIcon = L.divIcon({
+            html: `
             <div class="relative flex flex-col items-center">
                 <!-- Pin Head -->
                 <div class="bg-[#100e0c] text-white w-10 h-10 rounded-full border-2 border-white flex items-center justify-center shadow-2xl z-10 transform -translate-y-1">
@@ -354,13 +406,13 @@
                 <div class="w-3 h-3 bg-[#100e0c] rotate-45 transform -translate-y-3 border-r-2 border-b-2 border-white z-0"></div>
             </div>
         `,
-        className: 'custom-div-icon',
-        iconSize: [40, 48],
-        iconAnchor: [20, 44]
-    });
+            className: 'custom-div-icon',
+            iconSize: [40, 48],
+            iconAnchor: [20, 44]
+        });
 
-    const userIcon = L.divIcon({
-        html: `
+        const userIcon = L.divIcon({
+            html: `
             <div class="relative flex items-center justify-center">
                 <!-- Outer glow pulse -->
                 <div class="absolute w-10 h-10 rounded-full bg-[#c5a880]/30 animate-ping z-0"></div>
@@ -370,457 +422,515 @@
                 </div>
             </div>
         `,
-        className: 'custom-div-icon',
-        iconSize: [40, 40],
-        iconAnchor: [20, 20]
-    });
+            className: 'custom-div-icon',
+            iconSize: [40, 40],
+            iconAnchor: [20, 20]
+        });
 
-    // --- 5. INITIALIZATION ---
-    document.addEventListener('DOMContentLoaded', () => {
-        // Card entrance animation
-        const card = document.getElementById('destination-card');
-        if (card) {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(50px)';
+        // --- 5. INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Card entrance animation
+            const card = document.getElementById('destination-card');
+            if (card) {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 300);
+            }
+
+            // Update Cafe details in the Card safely
+            const matchedCafe = PREDEFINED_CAFES.find(c => c.name === cafeName || cafeName.includes(c.name) || c.name.includes(cafeName));
+            const titleEl = document.getElementById('cafe-title');
+            if (titleEl) {
+                titleEl.innerText = matchedCafe ? matchedCafe.name : cafeName;
+            }
+
+            // Initialize Live Map
+            map = L.map('map', {
+                zoomControl: false,
+                rtl: true
+            }).setView([userLat, userLng], 15);
+
+            // Custom Zoom Control position moved to bottom-right for better placement
+            L.control.zoom({
+                position: 'bottomright'
+            }).addTo(map);
+
+            // CartoDB Light tiles for a light map
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 20
+            }).addTo(map);
+
+            // Force Leaflet to recalculate container size
             setTimeout(() => {
-                card.style.transition = 'all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }, 300);
-        }
+                map.invalidateSize();
+            }, 100);
 
-        // Update Cafe details in the Card safely
-        const matchedCafe = PREDEFINED_CAFES.find(c => c.name === cafeName || cafeName.includes(c.name) || c.name.includes(cafeName));
-        const titleEl = document.getElementById('cafe-title');
-        if (titleEl) {
-            titleEl.innerText = matchedCafe ? matchedCafe.name : cafeName;
-        }
+            // Plot User Marker
+            userMarker = L.marker([userLat, userLng], { icon: userIcon }).addTo(map);
+            userMarker.bindPopup(`<strong class="text-surface font-bold text-center block text-sm">موقعك الحالي</strong>`);
 
-        // Initialize Live Map
-        map = L.map('map', {
-            zoomControl: false,
-            rtl: true
-        }).setView([userLat, userLng], 15);
+            // Plot Cafe Marker
+            cafeMarker = L.marker([cafeLat, cafeLng], { icon: cafeIcon }).addTo(map);
+            cafeMarker.bindPopup(`<strong class="text-surface font-bold text-center block text-sm">${cafeName}</strong>`);
 
-        // CartoDB Dark Matter tiles
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-            subdomains: 'abcd',
-            maxZoom: 20
-        }).addTo(map);
+            // Get walking street routing coordinates from OSRM public API
+            fetchRoute();
+        });
 
-        // Force Leaflet to recalculate container size
-        setTimeout(() => {
-            map.invalidateSize();
-        }, 100);
+        // --- 6. ROUTING LOGIC ---
+        function fetchRoute() {
+            const url = `https://router.project-osrm.org/route/v1/foot/${userLng},${userLat};${cafeLng},${cafeLat}?geometries=geojson&steps=true`;
 
-        // Plot User Marker
-        userMarker = L.marker([userLat, userLng], { icon: userIcon }).addTo(map);
-        userMarker.bindPopup(`<strong class="text-surface font-bold text-center block text-sm">موقعك الحالي</strong>`);
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.routes && data.routes.length > 0) {
+                        const route = data.routes[0];
+                        const geojson = route.geometry;
 
-        // Plot Cafe Marker
-        cafeMarker = L.marker([cafeLat, cafeLng], { icon: cafeIcon }).addTo(map);
-        cafeMarker.bindPopup(`<strong class="text-surface font-bold text-center block text-sm">${cafeName}</strong>`);
+                        // geojson coords are [lng, lat], convert to [lat, lng] for polyline tracking
+                        routeCoords = geojson.coordinates.map(c => [c[1], c[0]]);
 
-        // Get walking street routing coordinates from OSRM public API
-        fetchRoute();
-    });
-
-    // --- 6. ROUTING LOGIC ---
-    function fetchRoute() {
-        const url = `https://router.project-osrm.org/route/v1/foot/${userLng},${userLat};${cafeLng},${cafeLat}?geometries=geojson&steps=true`;
-        
-        fetch(url)
-            .then(res => res.json())
-            .then(data => {
-                if (data.routes && data.routes.length > 0) {
-                    const route = data.routes[0];
-                    const geojson = route.geometry;
-                    
-                    // geojson coords are [lng, lat], convert to [lat, lng] for polyline tracking
-                    routeCoords = geojson.coordinates.map(c => [c[1], c[0]]);
-                    
-                    if (routingLayer) {
-                        map.removeLayer(routingLayer);
-                    }
-                    
-                    // Draw Animated Premium Blue route line
-                    routingLayer = L.geoJSON({
-                        type: "Feature",
-                        geometry: geojson
-                    }, {
-                        style: {
-                            color: '#1a73e8',
-                            weight: 6,
-                            opacity: 0.9,
-                            className: 'route-path'
+                        if (routingLayer) {
+                            map.removeLayer(routingLayer);
                         }
-                    }).addTo(map);
-                    
-                    totalDistanceMeters = route.distance;
-                    totalDurationSeconds = route.duration;
-                    
-                    const distanceStr = totalDistanceMeters >= 1000 
-                        ? (totalDistanceMeters / 1000).toFixed(1) + ' كم' 
-                        : Math.round(totalDistanceMeters) + ' م';
-                    
-                    const durationMins = Math.ceil(totalDurationSeconds / 60);
-                    const durationStr = durationMins + ' دقائق مشي';
-                    
-                    originalDistanceStr = distanceStr;
-                    originalTimeStr = durationStr;
-                    
-                    document.getElementById('route-meta').innerText = `${distanceStr} • ${durationStr}`;
-                    
-                    // Fit map bounds
-                    const bounds = L.latLngBounds([ [userLat, userLng], [cafeLat, cafeLng] ]);
-                    map.fitBounds(bounds, { padding: [80, 80] });
-                    
-                    // Save real steps and populate drawer
-                    activeSteps = (route.legs && route.legs[0] && route.legs[0].steps) ? route.legs[0].steps : [];
-                    populateStepsDrawer(activeSteps);
-                    
-                    showToast('تم جلب مسار المشي الفعلي بنجاح 🗺️', 'directions_walk');
-                } else {
-                    console.warn("Empty routes returned, using direct fallback.");
+
+                        // Draw Animated Premium Blue route line
+                        routingLayer = L.geoJSON({
+                            type: "Feature",
+                            geometry: geojson
+                        }, {
+                            style: {
+                                color: '#1a73e8',
+                                weight: 6,
+                                opacity: 0.9,
+                                className: 'route-path'
+                            }
+                        }).addTo(map);
+
+                        totalDistanceMeters = route.distance;
+                        totalDurationSeconds = route.duration;
+
+                        const distanceStr = totalDistanceMeters >= 1000
+                            ? (totalDistanceMeters / 1000).toFixed(1) + ' كم'
+                            : Math.round(totalDistanceMeters) + ' م';
+
+                        const durationMins = Math.ceil(totalDurationSeconds / 60);
+                        const durationStr = durationMins + ' دقائق مشي';
+
+                        originalDistanceStr = distanceStr;
+                        originalTimeStr = durationStr;
+
+                        document.getElementById('route-meta').innerText = `${distanceStr} • ${durationStr}`;
+
+                        // Fit map bounds
+                        const bounds = L.latLngBounds([[userLat, userLng], [cafeLat, cafeLng]]);
+                        map.fitBounds(bounds, { padding: [80, 80] });
+
+                        // Save real steps and populate drawer
+                        activeSteps = (route.legs && route.legs[0] && route.legs[0].steps) ? route.legs[0].steps : [];
+                        populateStepsDrawer(activeSteps);
+
+                        showToast('تم جلب مسار المشي الفعلي بنجاح 🗺️', 'directions_walk');
+                    } else {
+                        console.warn("Empty routes returned, using direct fallback.");
+                        drawFallbackLine();
+                    }
+                })
+                .catch(err => {
+                    console.error("OSRM call failed:", err);
                     drawFallbackLine();
-                }
-            })
-            .catch(err => {
-                console.error("OSRM call failed:", err);
-                drawFallbackLine();
-            });
-    }
-
-    function drawFallbackLine() {
-        routeCoords = [
-            [userLat, userLng],
-            [cafeLat, cafeLng]
-        ];
-        
-        if (routingLayer) {
-            map.removeLayer(routingLayer);
+                });
         }
-        
-        routingLayer = L.polyline(routeCoords, {
-            color: '#1a73e8',
-            weight: 6,
-            opacity: 0.9,
-            className: 'route-path'
-        }).addTo(map);
-        
-        document.getElementById('route-meta').innerText = `${defaultDistance} • ${defaultTime}`;
-        
-        const bounds = L.latLngBounds(routeCoords);
-        map.fitBounds(bounds, { padding: [80, 80] });
-        
-        // Reset activeSteps and populate fallback drawer
-        activeSteps = [];
-        populateStepsDrawer([]);
-        
-        showToast('تم رسم مسار تقريبي للموقع 📍', 'navigation');
-    }
 
-    // --- 7. WALKING NAVIGATION SIMULATION ---
-    function startWalkingSimulation() {
-        const topBanner = document.getElementById('gmaps-top-banner');
-        const bottomHud = document.getElementById('gmaps-bottom-hud');
-        const normalCard = document.getElementById('destination-card');
-        const floatingControls = document.getElementById('top-floating-controls');
+        function drawFallbackLine() {
+            routeCoords = [
+                [userLat, userLng],
+                [cafeLat, cafeLng]
+            ];
 
-        if (isSimulating) {
-            // Stop navigation
-            clearInterval(simInterval);
-            isSimulating = false;
-            
-            // Revert layout
-            if (normalCard) {
-                normalCard.style.opacity = '1';
-                normalCard.style.transform = 'translateY(0)';
+            if (routingLayer) {
+                map.removeLayer(routingLayer);
             }
-            if (floatingControls) {
-                floatingControls.style.opacity = '1';
-                floatingControls.style.transform = 'translateY(0)';
-                floatingControls.style.pointerEvents = 'auto';
+
+            routingLayer = L.polyline(routeCoords, {
+                color: '#1a73e8',
+                weight: 6,
+                opacity: 0.9,
+                className: 'route-path'
+            }).addTo(map);
+
+            document.getElementById('route-meta').innerText = `${defaultDistance} • ${defaultTime}`;
+
+            const bounds = L.latLngBounds(routeCoords);
+            map.fitBounds(bounds, { padding: [80, 80] });
+
+            // Reset activeSteps and populate fallback drawer
+            activeSteps = [];
+            populateStepsDrawer([]);
+
+            showToast('تم رسم مسار تقريبي للموقع 📍', 'navigation');
+        }
+
+        // --- 7. WALKING NAVIGATION SIMULATION ---
+        function startWalkingSimulation() {
+            const topBanner = document.getElementById('gmaps-top-banner');
+            const bottomHud = document.getElementById('gmaps-bottom-hud');
+            const normalCard = document.getElementById('destination-card');
+            const floatingControls = document.getElementById('top-floating-controls');
+
+            if (isSimulating) {
+                // Stop navigation
+                clearInterval(simInterval);
+                isSimulating = false;
+
+                // Revert layout
+                if (normalCard) {
+                    normalCard.style.opacity = '1';
+                    normalCard.style.transform = 'translateY(0)';
+                }
+                if (floatingControls) {
+                    floatingControls.style.opacity = '1';
+                    floatingControls.style.transform = 'translateY(0)';
+                    floatingControls.style.pointerEvents = 'auto';
+                }
+
+                topBanner.classList.add('-translate-y-full');
+                bottomHud.classList.add('translate-y-full');
+
+                showToast('تم إيقاف الملاحة مؤقتاً ⏸️', 'pause');
+                // stop live GPS watch if active
+                if (watchId !== null && navigator.geolocation && navigator.geolocation.clearWatch) {
+                    navigator.geolocation.clearWatch(watchId);
+                    watchId = null;
+                }
+            } else {
+                // Start active Google Maps Navigation Overlay mode
+                isSimulating = true;
+
+                if (normalCard) {
+                    normalCard.style.opacity = '0';
+                    normalCard.style.transform = 'translateY(250px)';
+                }
+                if (floatingControls) {
+                    floatingControls.style.opacity = '0';
+                    floatingControls.style.transform = 'translateY(-100px)';
+                    floatingControls.style.pointerEvents = 'none';
+                }
+
+                topBanner.classList.remove('-translate-y-full');
+                bottomHud.classList.remove('translate-y-full');
+
+                showToast('جاري تشغيل الملاحة الحية 🚶‍♂️', 'directions_walk');
+
+                if (simIndex >= routeCoords.length || simIndex === 0) {
+                    simIndex = 0;
+                }
+
+                // Try to use real device GPS (watchPosition). If it fails or is denied, fallback to route simulation.
+                if (navigator.geolocation && navigator.geolocation.watchPosition) {
+                    try {
+                        watchId = navigator.geolocation.watchPosition((position) => {
+                            const cur = [position.coords.latitude, position.coords.longitude];
+                            userMarker.setLatLng(cur);
+
+                            // compute real distance to destination and zoom accordingly
+                            const distToDest = L.latLng(cur[0], cur[1]).distanceTo(L.latLng(cafeLat, cafeLng));
+                            const zoomLevel = getZoomForDistance(distToDest);
+                            map.setView(cur, zoomLevel, { animate: true, duration: 0.6 });
+
+                            // update HUD
+                            const remDistanceStr = distToDest >= 1000 ? (distToDest / 1000).toFixed(1) + ' كم' : Math.round(distToDest) + ' م';
+                            const remDurationMins = Math.ceil((distToDest / 84)); // approx 84 m/min walking
+                            document.getElementById('gmaps-distance-val').innerText = remDistanceStr;
+                            document.getElementById('gmaps-time-val').innerText = remDurationMins + ' د';
+                            const eta = new Date(new Date().getTime() + remDurationMins * 60 * 1000);
+                            document.getElementById('gmaps-eta-val').innerText = `الوصول ${String(eta.getHours()).padStart(2, '0')}:${String(eta.getMinutes()).padStart(2, '0')}`;
+                        }, (err) => {
+                            console.warn('watchPosition failed or denied, falling back to simulation', err);
+                            fallbackToSimulation();
+                        }, { enableHighAccuracy: true, maximumAge: 1000, timeout: 8000 });
+                    } catch (e) {
+                        console.warn('watchPosition exception, fallback to simulation', e);
+                        fallbackToSimulation();
+                    }
+                } else {
+                    fallbackToSimulation();
+                }
             }
-            
-            topBanner.classList.add('-translate-y-full');
-            bottomHud.classList.add('translate-y-full');
-            
-            showToast('تم إيقاف الملاحة مؤقتاً ⏸️', 'pause');
-        } else {
-            // Start active Google Maps Navigation Overlay mode
-            isSimulating = true;
-            
-            if (normalCard) {
-                normalCard.style.opacity = '0';
-                normalCard.style.transform = 'translateY(250px)';
-            }
-            if (floatingControls) {
-                floatingControls.style.opacity = '0';
-                floatingControls.style.transform = 'translateY(-100px)';
-                floatingControls.style.pointerEvents = 'none';
-            }
-            
-            topBanner.classList.remove('-translate-y-full');
-            bottomHud.classList.remove('translate-y-full');
-            
-            showToast('جاري تشغيل الملاحة الحية 🚶‍♂️', 'directions_walk');
-            
-            if (simIndex >= routeCoords.length || simIndex === 0) {
-                simIndex = 0;
-            }
-            
+        }
+
+        function fallbackToSimulation() {
+            if (simInterval) clearInterval(simInterval);
+            simIndex = 0;
             simInterval = setInterval(stepSimulation, 1000);
         }
-    }
 
-    function stepSimulation() {
-        const topBanner = document.getElementById('gmaps-top-banner');
-        const bottomHud = document.getElementById('gmaps-bottom-hud');
-        const normalCard = document.getElementById('destination-card');
-        const floatingControls = document.getElementById('top-floating-controls');
+        function getZoomForDistance(distMeters) {
+            // Choose zoom levels empirically for Leaflet/Carto tiles
+            if (distMeters > 3000) return 13;
+            if (distMeters > 2000) return 14;
+            if (distMeters > 1000) return 15;
+            if (distMeters > 500) return 16;
+            if (distMeters > 200) return 17;
+            if (distMeters > 80) return 18;
+            return 19;
+        }
 
-        if (simIndex >= routeCoords.length) {
-            clearInterval(simInterval);
-            isSimulating = false;
-            
-            if (normalCard) {
-                normalCard.style.opacity = '1';
-                normalCard.style.transform = 'translateY(0)';
-            }
-            if (floatingControls) {
-                floatingControls.style.opacity = '1';
-                floatingControls.style.transform = 'translateY(0)';
-                floatingControls.style.pointerEvents = 'auto';
-            }
-            topBanner.classList.add('-translate-y-full');
-            bottomHud.classList.add('translate-y-full');
-            
-            showToast('لقد وصلت إلى وجهتك! استمتع بقهوتك ☕', 'local_cafe');
-            
-            simIndex = 0;
-            if (document.getElementById('route-meta')) {
-                document.getElementById('route-meta').innerText = "وصلت بالسلامة 🎉";
-            }
-            
-            const navBtn = document.getElementById('start-nav-btn');
-            if (navBtn) {
-                let targetId = 'hodoo';
-                if (typeof matchedCafe !== 'undefined' && matchedCafe) {
-                    if (matchedCafe.id === 'hadou') targetId = 'hodoo';
-                    else if (matchedCafe.id === 'zawiya') targetId = 'corner';
-                    else if (matchedCafe.id === 'sahab') targetId = 'artisan';
-                    else targetId = matchedCafe.id;
+        function stepSimulation() {
+            const topBanner = document.getElementById('gmaps-top-banner');
+            const bottomHud = document.getElementById('gmaps-bottom-hud');
+            const normalCard = document.getElementById('destination-card');
+            const floatingControls = document.getElementById('top-floating-controls');
+
+            if (simIndex >= routeCoords.length) {
+                clearInterval(simInterval);
+                isSimulating = false;
+
+                if (normalCard) {
+                    normalCard.style.opacity = '1';
+                    normalCard.style.transform = 'translateY(0)';
                 }
-                navBtn.innerHTML = '<span class="material-symbols-outlined">coffee_maker</span><span>تصفح منيو الكافيه ☕</span>';
-                navBtn.className = "w-full bg-[#e5c095] text-[#100e0c] h-14 rounded-full font-bold flex items-center justify-center gap-2 spring-animate-bounce shadow-lg shadow-amber-500/10 hover:bg-[#d8baa3] transition-all duration-300 cursor-pointer text-lg";
-                navBtn.onclick = () => {
-                    window.location.href = `menu.html?id=${targetId}`;
-                };
-            }
-            map.setView([cafeLat, cafeLng], 16, { animate: true, duration: 1.2 });
-            return;
-        }
-        
-        const currentLatLng = routeCoords[simIndex];
-        if (!currentLatLng || isNaN(currentLatLng[0]) || isNaN(currentLatLng[1])) {
-            console.warn("Simulation step stopped: Invalid coordinate at index", simIndex);
-            clearInterval(simInterval);
-            isSimulating = false;
-            return;
-        }
-        userMarker.setLatLng(currentLatLng);
-        
-        // Auto pan map camera to follow simulation with high zoom
-        map.setView(currentLatLng, 18, { animate: true, duration: 0.8 });
-        
-        // Calculate remaining details
-        const totalSteps = routeCoords.length;
-        const remainingSteps = totalSteps - 1 - simIndex;
-        const fraction = totalSteps > 1 ? (remainingSteps / (totalSteps - 1)) : 0;
-        
-        // Calculate ETA
-        const now = new Date();
-        const remDurationSeconds = totalDurationSeconds * fraction;
-        const eta = new Date(now.getTime() + remDurationSeconds * 1000);
-        const etaHours = String(eta.getHours()).padStart(2, '0');
-        const etaMins = String(eta.getMinutes()).padStart(2, '0');
-        
-        const remDistance = Math.round(totalDistanceMeters * fraction);
-        const remDurationMins = Math.ceil(remDurationSeconds / 60);
-        
-        const remDistanceStr = remDistance >= 1000 
-            ? (remDistance / 1000).toFixed(1) + ' كم' 
-            : remDistance + ' م';
-            
-        // Update Bottom HUD
-        document.getElementById('gmaps-time-val').innerText = `${remDurationMins} د`;
-        document.getElementById('gmaps-distance-val').innerText = remDistanceStr;
-        document.getElementById('gmaps-eta-val').innerText = `الوصول ${etaHours}:${etaMins}`;
-        
-        // Update Top Instruction banner details dynamically based on walking progress
-        const turnIcon = document.getElementById('gmaps-turn-icon');
-        const instruction = document.getElementById('gmaps-instruction');
-        const subInstruction = document.getElementById('gmaps-sub-instruction');
-        
-        if (activeSteps && activeSteps.length > 0) {
-            // Find the closest step to the current simulated coordinate
-            let minDistance = Infinity;
-            let closestStepIdx = 0;
-            
-            for (let i = 0; i < activeSteps.length; i++) {
-                const stepLoc = activeSteps[i].maneuver.location; // [lng, lat]
-                const stepLat = stepLoc[1];
-                const stepLng = stepLoc[0];
-                const d2 = Math.pow(currentLatLng[0] - stepLat, 2) + Math.pow(currentLatLng[1] - stepLng, 2);
-                if (d2 < minDistance) {
-                    minDistance = d2;
-                    closestStepIdx = i;
+                if (floatingControls) {
+                    floatingControls.style.opacity = '1';
+                    floatingControls.style.transform = 'translateY(0)';
+                    floatingControls.style.pointerEvents = 'auto';
                 }
+                topBanner.classList.add('-translate-y-full');
+                bottomHud.classList.add('translate-y-full');
+
+                showToast('لقد وصلت إلى وجهتك! استمتع بقهوتك ☕', 'local_cafe');
+
+                simIndex = 0;
+                if (document.getElementById('route-meta')) {
+                    document.getElementById('route-meta').innerText = "وصلت بالسلامة 🎉";
+                }
+
+                const navBtn = document.getElementById('start-nav-btn');
+                if (navBtn) {
+                    let targetId = 'hodoo';
+                    if (typeof matchedCafe !== 'undefined' && matchedCafe) {
+                        if (matchedCafe.id === 'hadou') targetId = 'hodoo';
+                        else if (matchedCafe.id === 'zawiya') targetId = 'corner';
+                        else if (matchedCafe.id === 'sahab') targetId = 'artisan';
+                        else targetId = matchedCafe.id;
+                    }
+                    navBtn.innerHTML = '<span class="material-symbols-outlined">coffee_maker</span><span>تصفح منيو الكافيه ☕</span>';
+                    navBtn.className = "w-full bg-[#e5c095] text-[#100e0c] h-14 rounded-full font-bold flex items-center justify-center gap-2 spring-animate-bounce shadow-lg shadow-amber-500/10 hover:bg-[#d8baa3] transition-all duration-300 cursor-pointer text-lg";
+                    navBtn.onclick = () => {
+                        window.location.href = `menu.html?id=${targetId}`;
+                    };
+                }
+                map.setView([cafeLat, cafeLng], 16, { animate: true, duration: 1.2 });
+                return;
             }
-            
-            const currentStep = activeSteps[closestStepIdx];
-            const nextStep = activeSteps[closestStepIdx + 1];
-            
-            const currentManeuver = translateManeuver(currentStep);
-            
-            turnIcon.innerText = currentManeuver.icon;
-            instruction.innerText = currentManeuver.text;
-            
-            if (nextStep) {
-                const nextManeuver = translateManeuver(nextStep);
-                subInstruction.innerText = "ثم " + nextManeuver.text.replace("ابدأ السير من موقعك الحالي", "").trim();
-            } else {
-                subInstruction.innerText = "لقد اقتربت جداً من وجهتك!";
+
+            const currentLatLng = routeCoords[simIndex];
+            if (!currentLatLng || isNaN(currentLatLng[0]) || isNaN(currentLatLng[1])) {
+                console.warn("Simulation step stopped: Invalid coordinate at index", simIndex);
+                clearInterval(simInterval);
+                isSimulating = false;
+                return;
             }
-        } else {
-            // Fallback hardcoded progress banners
-            const percentProgress = (simIndex / totalSteps) * 100;
-            if (percentProgress < 15) {
-                turnIcon.innerText = "arrow_upward";
-                instruction.innerText = "اتجه شمالاً لمسافة 50 م";
-                subInstruction.innerText = "ثم انعطف يساراً نحو شارع العليا الرئيسي";
-            } else if (percentProgress < 45) {
-                turnIcon.innerText = "turn_left";
-                instruction.innerText = "انعطف يساراً لمسافة 120 م";
-                subInstruction.innerText = "استمر بمحاذاة الممشى والأبراج التجارية";
-            } else if (percentProgress < 75) {
-                turnIcon.innerText = "arrow_upward";
-                instruction.innerText = "استمر مباشرة لمسافة 80 م";
-                subInstruction.innerText = "ستمر بجانب ساحة النافورة على اليسار";
-            } else if (percentProgress < 95) {
-                turnIcon.innerText = "turn_right";
-                instruction.innerText = "انعطف يميناً بعد 20 م";
-                subInstruction.innerText = "كوفي هدوء على اليمين مباشرة";
-            } else {
-                turnIcon.innerText = "local_cafe";
-                instruction.innerText = "لقد اقتربت جداً من وجهتك";
-                subInstruction.innerText = "كوفي هدوء أمامك مباشرة!";
-            }
-        }
-        
-        simIndex++;
-    }
+            userMarker.setLatLng(currentLatLng);
 
-    // --- 8. MAP VIEWPORT ACTIONS ---
-    function reCenterMap() {
-        if (map && userMarker) {
-            map.setView([userLat, userLng], 16, { animate: true, duration: 1 });
-            showToast('تم إعادة التوسيط على موقعك الحالي 🎯', 'my_location');
-        }
-    }
+            // Auto pan map camera to follow simulation with dynamic zoom based on remaining distance
+            const distToDest = L.latLng(currentLatLng[0], currentLatLng[1]).distanceTo(L.latLng(cafeLat, cafeLng));
+            const zoomLevel = getZoomForDistance(distToDest);
+            map.setView(currentLatLng, zoomLevel, { animate: true, duration: 0.8 });
 
-    // --- 9. BUTTON ACTIONS ---
-    let isStepsDrawerOpen = false;
-    function toggleRouteStepsDrawer() {
-        const drawer = document.getElementById('route-steps-drawer');
-        if (!drawer) return;
-        
-        if (isStepsDrawerOpen) {
-            drawer.classList.add('translate-y-full');
-            drawer.classList.remove('translate-y-0');
-            isStepsDrawerOpen = false;
-        } else {
-            drawer.classList.remove('translate-y-full');
-            drawer.classList.add('translate-y-0');
-            isStepsDrawerOpen = true;
-            showToast('تم فتح تفاصيل خطة السير 📋', 'format_list_bulleted');
-        }
-    }
+            // Calculate remaining details
+            const totalSteps = routeCoords.length;
+            const remainingSteps = totalSteps - 1 - simIndex;
+            const fraction = totalSteps > 1 ? (remainingSteps / (totalSteps - 1)) : 0;
 
-    function translateManeuver(step) {
-        const maneuver = step.maneuver;
-        const type = maneuver.type;
-        const modifier = maneuver.modifier;
-        const streetName = step.name || "";
-        const dist = Math.round(step.distance);
+            // Calculate ETA
+            const now = new Date();
+            const remDurationSeconds = totalDurationSeconds * fraction;
+            const eta = new Date(now.getTime() + remDurationSeconds * 1000);
+            const etaHours = String(eta.getHours()).padStart(2, '0');
+            const etaMins = String(eta.getMinutes()).padStart(2, '0');
 
-        let arText = "";
-        let icon = "navigation";
+            const remDistance = Math.round(totalDistanceMeters * fraction);
+            const remDurationMins = Math.ceil(remDurationSeconds / 60);
 
-        switch(type) {
-            case "depart":
-                arText = "ابدأ السير من موقعك الحالي";
-                icon = "my_location";
-                break;
-            case "arrive":
-                arText = "لقد وصلت إلى وجهتك النهائية";
-                icon = "local_cafe";
-                break;
-            case "continue":
-                arText = "استمر في السير مباشرة";
-                icon = "arrow_upward";
-                break;
-            case "new name":
-                arText = "استمر في السير";
-                icon = "arrow_upward";
-                break;
-            case "turn":
-            case "on ramp":
-            case "off ramp":
-            case "merge":
-                if (modifier === "left" || modifier === "slight left" || modifier === "sharp left") {
-                    arText = "انعطف يساراً";
-                    icon = "turn_left";
-                } else if (modifier === "right" || modifier === "slight right" || modifier === "sharp right") {
-                    arText = "انعطف يميناً";
-                    icon = "turn_right";
+            const remDistanceStr = remDistance >= 1000
+                ? (remDistance / 1000).toFixed(1) + ' كم'
+                : remDistance + ' م';
+
+            // Update Bottom HUD
+            document.getElementById('gmaps-time-val').innerText = `${remDurationMins} د`;
+            document.getElementById('gmaps-distance-val').innerText = remDistanceStr;
+            document.getElementById('gmaps-eta-val').innerText = `الوصول ${etaHours}:${etaMins}`;
+
+            // Update Top Instruction banner details dynamically based on walking progress
+            const turnIcon = document.getElementById('gmaps-turn-icon');
+            const instruction = document.getElementById('gmaps-instruction');
+            const subInstruction = document.getElementById('gmaps-sub-instruction');
+
+            if (activeSteps && activeSteps.length > 0) {
+                // Find the closest step to the current simulated coordinate
+                let minDistance = Infinity;
+                let closestStepIdx = 0;
+
+                for (let i = 0; i < activeSteps.length; i++) {
+                    const stepLoc = activeSteps[i].maneuver.location; // [lng, lat]
+                    const stepLat = stepLoc[1];
+                    const stepLng = stepLoc[0];
+                    const d2 = Math.pow(currentLatLng[0] - stepLat, 2) + Math.pow(currentLatLng[1] - stepLng, 2);
+                    if (d2 < minDistance) {
+                        minDistance = d2;
+                        closestStepIdx = i;
+                    }
+                }
+
+                const currentStep = activeSteps[closestStepIdx];
+                const nextStep = activeSteps[closestStepIdx + 1];
+
+                const currentManeuver = translateManeuver(currentStep);
+
+                turnIcon.innerText = currentManeuver.icon;
+                instruction.innerText = currentManeuver.text;
+
+                if (nextStep) {
+                    const nextManeuver = translateManeuver(nextStep);
+                    subInstruction.innerText = "ثم " + nextManeuver.text.replace("ابدأ السير من موقعك الحالي", "").trim();
                 } else {
-                    arText = "انعطف";
-                    icon = "turn_slight_right";
+                    subInstruction.innerText = "لقد اقتربت جداً من وجهتك!";
                 }
-                break;
-            default:
-                if (modifier && modifier.includes("left")) {
-                    arText = "انعطف يساراً";
-                    icon = "turn_left";
-                } else if (modifier && modifier.includes("right")) {
-                    arText = "انعطف يميناً";
-                    icon = "turn_right";
+            } else {
+                // Fallback hardcoded progress banners
+                const percentProgress = (simIndex / totalSteps) * 100;
+                if (percentProgress < 15) {
+                    turnIcon.innerText = "arrow_upward";
+                    instruction.innerText = "اتجه شمالاً لمسافة 50 م";
+                    subInstruction.innerText = "ثم انعطف يساراً نحو شارع العليا الرئيسي";
+                } else if (percentProgress < 45) {
+                    turnIcon.innerText = "turn_left";
+                    instruction.innerText = "انعطف يساراً لمسافة 120 م";
+                    subInstruction.innerText = "استمر بمحاذاة الممشى والأبراج التجارية";
+                } else if (percentProgress < 75) {
+                    turnIcon.innerText = "arrow_upward";
+                    instruction.innerText = "استمر مباشرة لمسافة 80 م";
+                    subInstruction.innerText = "ستمر بجانب ساحة النافورة على اليسار";
+                } else if (percentProgress < 95) {
+                    turnIcon.innerText = "turn_right";
+                    instruction.innerText = "انعطف يميناً بعد 20 م";
+                    subInstruction.innerText = "كوفي هدوء على اليمين مباشرة";
                 } else {
-                    arText = "استمر في الاتجاه";
+                    turnIcon.innerText = "local_cafe";
+                    instruction.innerText = "لقد اقتربت جداً من وجهتك";
+                    subInstruction.innerText = "كوفي هدوء أمامك مباشرة!";
+                }
+            }
+
+            simIndex++;
+        }
+
+        // --- 8. MAP VIEWPORT ACTIONS ---
+        function reCenterMap() {
+            if (map && userMarker) {
+                map.setView([userLat, userLng], 16, { animate: true, duration: 1 });
+                showToast('تم إعادة التوسيط على موقعك الحالي 🎯', 'my_location');
+            }
+        }
+
+        // --- 9. BUTTON ACTIONS ---
+        let isStepsDrawerOpen = false;
+        function toggleRouteStepsDrawer() {
+            const drawer = document.getElementById('route-steps-drawer');
+            if (!drawer) return;
+
+            if (isStepsDrawerOpen) {
+                drawer.classList.add('translate-y-full');
+                drawer.classList.remove('translate-y-0');
+                isStepsDrawerOpen = false;
+            } else {
+                drawer.classList.remove('translate-y-full');
+                drawer.classList.add('translate-y-0');
+                isStepsDrawerOpen = true;
+                showToast('تم فتح تفاصيل خطة السير 📋', 'format_list_bulleted');
+            }
+        }
+
+        function translateManeuver(step) {
+            const maneuver = step.maneuver;
+            const type = maneuver.type;
+            const modifier = maneuver.modifier;
+            const streetName = step.name || "";
+            const dist = Math.round(step.distance);
+
+            let arText = "";
+            let icon = "navigation";
+
+            switch (type) {
+                case "depart":
+                    arText = "ابدأ السير من موقعك الحالي";
+                    icon = "my_location";
+                    break;
+                case "arrive":
+                    arText = "لقد وصلت إلى وجهتك النهائية";
+                    icon = "local_cafe";
+                    break;
+                case "continue":
+                    arText = "استمر في السير مباشرة";
                     icon = "arrow_upward";
-                }
+                    break;
+                case "new name":
+                    arText = "استمر في السير";
+                    icon = "arrow_upward";
+                    break;
+                case "turn":
+                case "on ramp":
+                case "off ramp":
+                case "merge":
+                    if (modifier === "left" || modifier === "slight left" || modifier === "sharp left") {
+                        arText = "انعطف يساراً";
+                        icon = "turn_left";
+                    } else if (modifier === "right" || modifier === "slight right" || modifier === "sharp right") {
+                        arText = "انعطف يميناً";
+                        icon = "turn_right";
+                    } else {
+                        arText = "انعطف";
+                        icon = "turn_slight_right";
+                    }
+                    break;
+                default:
+                    if (modifier && modifier.includes("left")) {
+                        arText = "انعطف يساراً";
+                        icon = "turn_left";
+                    } else if (modifier && modifier.includes("right")) {
+                        arText = "انعطف يميناً";
+                        icon = "turn_right";
+                    } else {
+                        arText = "استمر في الاتجاه";
+                        icon = "arrow_upward";
+                    }
+            }
+
+            if (streetName && streetName !== "" && streetName !== "undefined") {
+                arText += ` نحو ${streetName}`;
+            }
+
+            if (dist > 0 && type !== "arrive") {
+                arText += ` لمسافة ${dist} م`;
+            }
+
+            return { text: arText, icon: icon };
         }
 
-        if (streetName && streetName !== "" && streetName !== "undefined") {
-            arText += ` نحو ${streetName}`;
-        }
-        
-        if (dist > 0 && type !== "arrive") {
-            arText += ` لمسافة ${dist} م`;
-        }
+        function populateStepsDrawer(steps) {
+            const container = document.getElementById('steps-list-container');
+            if (!container) return;
 
-        return { text: arText, icon: icon };
-    }
-
-    function populateStepsDrawer(steps) {
-        const container = document.getElementById('steps-list-container');
-        if (!container) return;
-
-        if (!steps || steps.length === 0) {
-            container.innerHTML = `
+            if (!steps || steps.length === 0) {
+                container.innerHTML = `
                 <div class="flex gap-4 items-start p-4 bg-surface-container rounded-2xl border border-outline-variant/10 text-right">
                     <div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                         <span class="material-symbols-outlined text-[20px]">my_location</span>
@@ -849,12 +959,12 @@
                     </div>
                 </div>
             `;
-            return;
-        }
+                return;
+            }
 
-        container.innerHTML = steps.map((step, idx) => {
-            const item = translateManeuver(step);
-            return `
+            container.innerHTML = steps.map((step, idx) => {
+                const item = translateManeuver(step);
+                return `
                 <div class="flex gap-4 items-start p-4 bg-surface-container rounded-2xl border border-outline-variant/10 text-right hover:border-primary/30 transition-all">
                     <div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                         <span class="material-symbols-outlined text-[20px]">${item.icon}</span>
@@ -865,48 +975,49 @@
                     </div>
                 </div>
             `;
-        }).join('');
-    }
-
-    function shareLocation() {
-        if (navigator.share) {
-            navigator.share({
-                title: cafeName,
-                text: `تعال معي إلى ${cafeName}!`,
-                url: window.location.href
-            }).then(() => {
-                showToast('تمت المشاركة بنجاح 🔗', 'share');
-            }).catch(console.error);
-        } else {
-            navigator.clipboard.writeText(window.location.href);
-            showToast('تم نسخ رابط الموقع بنجاح 🔗', 'content_copy');
+            }).join('');
         }
-    }
 
-    let isFavorite = false;
-    function toggleFavorite() {
-        isFavorite = !isFavorite;
-        const favIcon = document.getElementById('fav-icon');
-        if (isFavorite) {
-            favIcon.style.fontVariationSettings = "'FILL' 1";
-            showToast('تم إضافة الكافيه للمفضلة ❤️', 'favorite');
-        } else {
-            favIcon.style.fontVariationSettings = "'FILL' 0";
-            showToast('تم الإزالة من المفضلة 🤍', 'favorite');
+        function shareLocation() {
+            if (navigator.share) {
+                navigator.share({
+                    title: cafeName,
+                    text: `تعال معي إلى ${cafeName}!`,
+                    url: window.location.href
+                }).then(() => {
+                    showToast('تمت المشاركة بنجاح 🔗', 'share');
+                }).catch(console.error);
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                showToast('تم نسخ رابط الموقع بنجاح 🔗', 'content_copy');
+            }
         }
-    }
 
-    function toggleMute() {
-        isMuted = !isMuted;
-        const speaker = document.getElementById('speaker-icon');
-        if (isMuted) {
-            speaker.innerText = "volume_off";
-            showToast('تم كتم التوجيه الصوتي 🔇', 'volume_off');
-        } else {
-            speaker.innerText = "volume_up";
-            showToast('تم تفعيل التوجيه الصوتي 🔊', 'volume_up');
+        let isFavorite = false;
+        function toggleFavorite() {
+            isFavorite = !isFavorite;
+            const favIcon = document.getElementById('fav-icon');
+            if (isFavorite) {
+                favIcon.style.fontVariationSettings = "'FILL' 1";
+                showToast('تم إضافة الكافيه للمفضلة ❤️', 'favorite');
+            } else {
+                favIcon.style.fontVariationSettings = "'FILL' 0";
+                showToast('تم الإزالة من المفضلة 🤍', 'favorite');
+            }
         }
-    }
-</script>
+
+        function toggleMute() {
+            isMuted = !isMuted;
+            const speaker = document.getElementById('speaker-icon');
+            if (isMuted) {
+                speaker.innerText = "volume_off";
+                showToast('تم كتم التوجيه الصوتي 🔇', 'volume_off');
+            } else {
+                speaker.innerText = "volume_up";
+                showToast('تم تفعيل التوجيه الصوتي 🔊', 'volume_up');
+            }
+        }
+    </script>
 </body>
+
 </html>
